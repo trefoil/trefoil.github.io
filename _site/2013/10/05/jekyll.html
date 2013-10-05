@@ -7,9 +7,9 @@
   <header>
     <meta charset="utf-8">
     
-    <title>Trefoil</title>
+    <title>用Jekyll搭建博客记 | Trefoil</title>
     
-    
+    <meta name="description" content="">
     <meta name="author" content="trefoil">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -155,59 +155,57 @@
       <div class="content">
         
 
+<div class="row post">
+  <div class="span8">
+    <h1 class="title">用Jekyll搭建博客记</h1>
 
-  <div class="row post">
+    
+
+
+    <p class="meta"> -- EOF -- </p>
+
+    <ul class="pager">
+
+      
+      <li class="next"><a href="/2013/10/02/testing-prose-io.html" title="Testing Prose-io">Testing Prose-io&rarr;</a></li>
+      
+
+      
+      <li class="previous"><a href="/2013/10/05/ubuntu-1304rhythmbox.html" title="Ubuntu 13.04下解决Rhythmbox乱码问题">&larr; Ubuntu 13.04下解决Rhythmbox乱码问题</a></li>
+      
+
+
+    </ul>
+
     <div class="span8">
-      <h1 class="title"><a href="/2013/10/05/ubuntu-1304rhythmbox.html" title="Ubuntu 13.04下解决Rhythmbox乱码问题">Ubuntu 13.04下解决Rhythmbox乱码问题</a> </h1>
-
-      <p>虽然非常想念Windows下的foobar2000，但是正在尝试着迁移到Linux环境下的我，听歌也想试试原生的音乐播放器，于是尝试着从文件夹中导入歌曲。导入之后，就可以整个Playlist播放了。</p>
-
-<p>老问题出现了：导入的歌曲的标签，由于有中文，出现了乱码。作为条件反射，我默默打开google搜索对策。很不错，很快搜索到了解决方案：<a href="http://www.softbunny.net/post/rhythmbox_encoding.shtml">好心情Blog-Rhythmbox乱码快速解决</a>.</p>
-
-<p>按照该文中的解决方案，只需建一个属性为</p>
-
-<pre><code>env GST_ID3_TAG_ENCODING=GBK rhythmbox %U
-</code></pre>
-
-<p>的Application launcher就可以了。</p>
-
-<p>至于如何建立launcher，请参考<a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/">How to create Application launcher and add icon to Unity in Ubuntu 13.04 / 12.10 / 12.04</a>。</p>
-
-<p>Good luck!</p>
-
-      
-      <ul class="pager">
-	<li class="next"><a href="/archive.html" title="所有文章">查看所有文章 &rarr;</a></li>
-      </ul>
-
-
-      
-      <div id="disqus_thread">
-      <script type="text/javascript">
-	var disqus_developer = 1;
-	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-	var disqus_shortname = 'trefoil'; // required: replace example with your forum shortname
-
-	/* * * DON'T EDIT BELOW THIS LINE * * */
-	(function() {
-	var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-	BYB.includeScript('/assets/themes/twitter/prettify/prettify.js',function(){prettyPrint()});
-      </script>
-
-      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-      </noscript>
-      <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/05/jekyll.html" title="用Jekyll搭建博客记" rel="nofollow">用Jekyll搭建博客记</a></p>
     </div>
 
-  </div>
 
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_developer = 1;
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'trefoil'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+      BYB.includeScript('/assets/themes/twitter/prettify/prettify.js',function(){prettyPrint()});
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+  </div>
+  
 
   <div class="span4 sidebar">
-
     <h4 class="date">发布日期：<span>05 October 2013</span></h4>
+    <!-- <p class="meta">By <a href="/about.html" class="author" title="author">Trefoil</a><g:plusone size="small"></g:plusone></p> -->
+
 
     
     <h4>标签</h4>
@@ -218,7 +216,7 @@
 
   
      
-    	<li><a href="/tags.html#ubuntu-ref">ubuntu <span>1</span></a></li>
+    	<li><a href="/tags.html#Jekyll-ref">Jekyll <span>1</span></a></li>
     
   
 
@@ -231,7 +229,7 @@
       <ul>
 	<li><a href="/" >首页</a></li>
 	<li><a href="/archive.html" >归档</a></li>
-	<li><a href="/tags.html">标签</a></li>
+	<li><a href="/tags.html" >标签</a></li>
 	<li><a href="/about.html" >关于</a></li>
 	<li><a href="/atom.xml" target="_blank" >RSS</a></li>
       </ul>
@@ -262,7 +260,7 @@
       <h4 class="v-section-tit">链接</h4>
       <ul>
 	<!--<li><a href="http://www.wutianqi.com/" target="_blank" rel="nofollow">Tanky Woo</a></li>
-	<li><a href="http://beiyuu.com/blog"  target="_blank" rel="nofollow">Beiyuu</a></li>
+	<li><a href="http://beiyuu.com/"  target="_blank" rel="nofollow">Beiyuu</a></li>
 	<li><a href="http://wangcong.org/blog/" target="_blank" rel="nofollow">王聪</a></li>
 	<li><a href="http://helloworld.tk/" target="_blank" rel="nofollow">邓甜</a></li>
 	<li><a href="http://www.cguage.com/" target="_blank" rel="nofollow">C瓜</a></li>
@@ -273,6 +271,8 @@
 
   </div>
 </div>
+
+
 
 
       </div>

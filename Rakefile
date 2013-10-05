@@ -68,6 +68,8 @@ task :post do
     post.puts "---"
     post.puts "{% include JB/setup %}"
   end
+  puts "Now opening #{filename} in vim..."
+  system "vim #{filename}"
 end # task :post
 
 # Usage: rake page name="about.html"
@@ -97,7 +99,7 @@ end # task :page
 
 desc "Launch preview environment"
 task :preview do
-  system "jekyll --auto --server"
+  system "jekyll serve --watch"
 end # task :preview
 
 # Public: Alias - Maintains backwards compatability for theme switching.
