@@ -10,7 +10,7 @@ tags: [ubuntu]
 
 老问题出现了：导入的歌曲的标签，由于有中文，出现了乱码。作为条件反射，我默默打开google搜索对策。很不错，很快搜索到了解决方案：[好心情Blog-Rhythmbox乱码快速解决](http://www.softbunny.net/post/rhythmbox_encoding.shtml).
 
-按照该文中的解决方案，只需建一个属性为
+按照该文中的解决方案，只需建一个链接为
 
     env GST_ID3_TAG_ENCODING=GBK rhythmbox %U
 

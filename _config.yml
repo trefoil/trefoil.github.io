@@ -16,8 +16,10 @@ author :
   github : trefoil
   name: trefoil
   description: "anything fascinating"
-markdown: rdiscount
-#markdown: kramdown
+#markdown: rdiscount
+markdown: kramdown
+#use markdown with pygment. see https://github.com/navarroj/krampygs
+
 #url: http://www.moorekang.com
 #url: http://cyukang.com
 

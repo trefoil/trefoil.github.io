@@ -4,7 +4,7 @@
  <title>Trefoil</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-10-05T16:40:44+08:00</updated>
+ <updated>2013-10-06T13:46:23+08:00</updated>
  <id></id>
  <author>
    <name>trefoil</name>
@@ -17,11 +17,12 @@
    <link href="/2013/10/05/ubuntu-1304rhythmbox.html"/>
    <updated>2013-10-05T00:00:00+08:00</updated>
    <id>/2013/10/05/ubuntu-1304rhythmbox</id>
-   <content type="html">&lt;p&gt;虽然非常想念Windows下的foobar2000，但是正在尝试着迁移到Linux环境下的我，听歌也想试试原生的音乐播放器，于是尝试着从文件夹中导入歌曲。导入之后，就可以整个Playlist播放了。&lt;/p&gt;
+   <content type="html">
+&lt;p&gt;虽然非常想念Windows下的foobar2000，但是正在尝试着迁移到Linux环境下的我，听歌也想试试原生的音乐播放器，于是尝试着从文件夹中导入歌曲。导入之后，就可以整个Playlist播放了。&lt;/p&gt;
 
 &lt;p&gt;老问题出现了：导入的歌曲的标签，由于有中文，出现了乱码。作为条件反射，我默默打开google搜索对策。很不错，很快搜索到了解决方案：&lt;a href=&quot;http://www.softbunny.net/post/rhythmbox_encoding.shtml&quot;&gt;好心情Blog-Rhythmbox乱码快速解决&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;按照该文中的解决方案，只需建一个属性为&lt;/p&gt;
+&lt;p&gt;按照该文中的解决方案，只需建一个链接为&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;env GST_ID3_TAG_ENCODING=GBK rhythmbox %U
 &lt;/code&gt;&lt;/pre&gt;
@@ -31,45 +32,60 @@
 &lt;p&gt;至于如何建立launcher，请参考&lt;a href=&quot;http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/&quot;&gt;How to create Application launcher and add icon to Unity in Ubuntu 13.04 / 12.10 / 12.04&lt;/a&gt;。&lt;/p&gt;
 
 &lt;p&gt;Good luck!&lt;/p&gt;
+
 </content>
  </entry>
  
  <entry>
-   <title>用Jekyll搭建博客记</title>
+   <title>用GitHub + Jekyll搭建博客 -- 以Ubuntu为例</title>
    <link href="/2013/10/05/jekyll.html"/>
    <updated>2013-10-05T00:00:00+08:00</updated>
    <id>/2013/10/05/jekyll</id>
    <content type="html">
-</content>
- </entry>
- 
- <entry>
-   <title>Testing Prose-io</title>
-   <link href="/2013/10/02/testing-prose-io.html"/>
-   <updated>2013-10-02T00:00:00+08:00</updated>
-   <id>/2013/10/02/testing-prose-io</id>
-   <content type="html">&lt;h2&gt;This is just a testing&lt;/h2&gt;
+&lt;p&gt;很久便有了用GitHub搭设个人网站的想法了，正值国庆，赶紧将这个想法付诸实施吧。&lt;/p&gt;
 
-&lt;p&gt;I have just found this &lt;a href=&quot;http://prose.io&quot;&gt;prose.io&lt;/a&gt; website for online editing GitPage Blog,
-this is just a post for testing.&lt;/p&gt;
+&lt;h2 id=&quot;github&quot;&gt;注册GitHub帐号&lt;/h2&gt;
 
-&lt;p&gt;Pretty cool, it supports the emacs key-binding!&lt;/p&gt;
+&lt;p&gt;赶快登陆&lt;a href=&quot;https://github.com&quot;&gt;github.com&lt;/a&gt;注册一个，也许你心仪的帐号还没有被人注册呢。&lt;/p&gt;
 
-&lt;h2&gt;Work with Jekyll&lt;/h2&gt;
+&lt;h2 id=&quot;jekyll&quot;&gt;安装Jekyll&lt;/h2&gt;
 
-&lt;p&gt;For the Jekyll blog, you need manully add a line at the meta part.&lt;/p&gt;
+&lt;p&gt;在命令行下，需要先安装ruby和rubygems:&lt;/p&gt;
 
-&lt;blockquote&gt;&lt;p&gt;layout: post&lt;/p&gt;&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install rubygems ruby1.9.1-dev
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;I haven't found any other good solution.&lt;/p&gt;
+&lt;p&gt;假如不安装&lt;code&gt;ruby1.9.1-dev&lt;/code&gt;的话，一会儿会有神奇的错误发生，详见&lt;a href=&quot;http://stackoverflow.com/questions/10725767/error-installing-jekyll-native-extension-build&quot;&gt;Error Installing Jekyll - Native Extension Build&lt;/a&gt;。&lt;/p&gt;
 
-&lt;p&gt;And also uploading images seems not working, that's a problem really hurt.&lt;/p&gt;
+&lt;p&gt;再接再厉，安装jekyll。在此之前，建议国内用户换成&lt;a href=&quot;http://ruby-china.org/wiki/install-rails-on-ubuntu-12-04-server&quot;&gt;淘宝服务器&lt;/a&gt;：&lt;/p&gt;
 
-&lt;h2&gt;My new gravatar&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo gem sources --remove http://rubygems.org/
+$ sudo gem sources -a http://ruby.taobao.org/
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This will be my new gravatar!&lt;/p&gt;
+&lt;p&gt;可以使用&lt;code&gt;sudo gem sources -l&lt;/code&gt;查看当前设置的服务器。接下来我们切入正题：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/jobs.jpg&quot; alt=&quot;jobs&quot; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo gem install jekyll
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;该命令会安装一系列相关的包，安装好了之后，我们的任务就完成一大半啦！不用急，我们先学习一下其他优秀博客的经验吧。
+Showoff安装非常简单:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;latex&quot;&gt;&lt;span class=&quot;k&quot;&gt;\include&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;{&lt;/span&gt;graphicx&lt;span class=&quot;nb&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_{i=1}^\infty \sin (x)&lt;/script&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reference&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_match&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_match&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pre_match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=~&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&amp;lt;[^&amp;gt;]*\z/&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;input_match&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_s&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reference_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_match&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:page&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_match&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:section&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;sx&quot;&gt;%{&amp;lt;a class=&amp;quot;md2man-xref&amp;quot; href=&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;&amp;quot;&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_match&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;&amp;lt;/a&amp;gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_match&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:addendum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_s&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 </content>
  </entry>
  

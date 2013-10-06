@@ -7,7 +7,7 @@
   <header>
     <meta charset="utf-8">
     
-    <title>用Jekyll搭建博客记 | Trefoil</title>
+    <title>用GitHub + Jekyll搭建博客 -- 以Ubuntu为例 | Trefoil</title>
     
     <meta name="description" content="">
     <meta name="author" content="trefoil">
@@ -157,17 +157,59 @@
 
 <div class="row post">
   <div class="span8">
-    <h1 class="title">用Jekyll搭建博客记</h1>
+    <h1 class="title">用GitHub + Jekyll搭建博客 -- 以Ubuntu为例</h1>
 
     
+<p>很久便有了用GitHub搭设个人网站的想法了，正值国庆，赶紧将这个想法付诸实施吧。</p>
+
+<h2 id="github">注册GitHub帐号</h2>
+
+<p>赶快登陆<a href="https://github.com">github.com</a>注册一个，也许你心仪的帐号还没有被人注册呢。</p>
+
+<h2 id="jekyll">安装Jekyll</h2>
+
+<p>在命令行下，需要先安装ruby和rubygems:</p>
+
+<pre><code>sudo apt-get install rubygems ruby1.9.1-dev
+</code></pre>
+
+<p>假如不安装<code>ruby1.9.1-dev</code>的话，一会儿会有神奇的错误发生，详见<a href="http://stackoverflow.com/questions/10725767/error-installing-jekyll-native-extension-build">Error Installing Jekyll - Native Extension Build</a>。</p>
+
+<p>再接再厉，安装jekyll。在此之前，建议国内用户换成<a href="http://ruby-china.org/wiki/install-rails-on-ubuntu-12-04-server">淘宝服务器</a>：</p>
+
+<pre><code>$ sudo gem sources --remove http://rubygems.org/
+$ sudo gem sources -a http://ruby.taobao.org/
+</code></pre>
+
+<p>可以使用<code>sudo gem sources -l</code>查看当前设置的服务器。接下来我们切入正题：</p>
+
+<pre><code>sudo gem install jekyll
+</code></pre>
+
+<p>该命令会安装一系列相关的包，安装好了之后，我们的任务就完成一大半啦！不用急，我们先学习一下其他优秀博客的经验吧。
+Showoff安装非常简单:</p>
+
+<div class="highlight"><pre><code class="latex"><span class="k">\include</span><span class="nb">{</span>graphicx<span class="nb">}</span>
+</code></pre></div>
+
+<script type="math/tex; mode=display">\sum_{i=1}^\infty \sin (x)</script>
+
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">reference</span> <span class="n">input_match</span><span class="p">,</span> <span class="n">output_match</span>
+  <span class="k">if</span> <span class="n">output_match</span><span class="o">.</span><span class="n">pre_match</span> <span class="o">=~</span> <span class="sr">/&lt;[^&gt;]*\z/</span>
+    <span class="n">input_match</span><span class="o">.</span><span class="n">to_s</span>
+  <span class="k">else</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">reference_url</span><span class="p">(</span><span class="n">input_match</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">,</span> <span class="n">input_match</span><span class="o">[</span><span class="ss">:section</span><span class="o">]</span><span class="p">)</span>
+    <span class="sx">%{&lt;a class=&quot;md2man-xref&quot; href=&quot;</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="sx">&quot;&gt;</span><span class="si">#{</span><span class="n">input_match</span><span class="si">}</span><span class="sx">&lt;/a&gt;}</span>
+  <span class="k">end</span> <span class="o">+</span> <span class="n">output_match</span><span class="o">[</span><span class="ss">:addendum</span><span class="o">].</span><span class="n">to_s</span>
+<span class="k">end</span>
+</code></pre></div>
+
 
 
     <p class="meta"> -- EOF -- </p>
 
     <ul class="pager">
 
-      
-      <li class="next"><a href="/2013/10/02/testing-prose-io.html" title="Testing Prose-io">Testing Prose-io&rarr;</a></li>
       
 
       
@@ -178,7 +220,7 @@
     </ul>
 
     <div class="span8">
-      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/05/jekyll.html" title="用Jekyll搭建博客记" rel="nofollow">用Jekyll搭建博客记</a></p>
+      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/05/jekyll.html" title="用GitHub + Jekyll搭建博客 -- 以Ubuntu为例" rel="nofollow">用GitHub + Jekyll搭建博客 -- 以Ubuntu为例</a></p>
     </div>
 
 
@@ -245,11 +287,7 @@
         </li>              	      	            
            
         <li class="v-aside-li">
-          <a href="/2013/10/05/jekyll.html" title="用Jekyll搭建博客记" rel="bookmark">用Jekyll搭建博客记</a>
-        </li>              	      	            
-           
-        <li class="v-aside-li">
-          <a href="/2013/10/02/testing-prose-io.html" title="Testing Prose-io" rel="bookmark">Testing Prose-io</a>
+          <a href="/2013/10/05/jekyll.html" title="用GitHub + Jekyll搭建博客 -- 以Ubuntu为例" rel="bookmark">用GitHub + Jekyll搭建博客 -- 以Ubuntu为例</a>
         </li>              	      	            
         
       </ul>  

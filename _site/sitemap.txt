@@ -12,4 +12,3 @@
 
 /2013/10/05/ubuntu-1304rhythmbox.html
 /2013/10/05/jekyll.html
-/2013/10/02/testing-prose-io.html
