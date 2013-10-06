@@ -173,9 +173,14 @@
 <pre><code>sudo apt-get install rubygems ruby1.9.1-dev
 </code></pre>
 
+<p>添加<a href="http://stackoverflow.com/questions/1664974/rake-command-not-found">path</a>：</p>
+
+<pre><code>export PATH=$PATH:$HOME/bin:/var/lib/gems/1.8/bin
+</code></pre>
+
 <p>假如不安装<code>ruby1.9.1-dev</code>的话，一会儿会有神奇的错误发生，详见<a href="http://stackoverflow.com/questions/10725767/error-installing-jekyll-native-extension-build">Error Installing Jekyll - Native Extension Build</a>。</p>
 
-<p>再接再厉，安装jekyll。在此之前，建议国内用户换成<a href="http://ruby-china.org/wiki/install-rails-on-ubuntu-12-04-server">淘宝服务器</a>：</p>
+<p>再接再厉，安装jekyll。在此之前，建议国内用户换成<a href="http://ruby-china.org/wiki/install-rails-on-ubuntu-12-04-server">淘宝服务器</a>，速度更快：</p>
 
 <pre><code>$ sudo gem sources --remove http://rubygems.org/
 $ sudo gem sources -a http://ruby.taobao.org/
@@ -186,24 +191,138 @@ $ sudo gem sources -a http://ruby.taobao.org/
 <pre><code>sudo gem install jekyll
 </code></pre>
 
-<p>该命令会安装一系列相关的包，安装好了之后，我们的任务就完成一大半啦！不用急，我们先学习一下其他优秀博客的经验吧。
-Showoff安装非常简单:</p>
+<p>该命令会安装一系列相关的包，安装好了之后，我们的任务就完成一大半啦！不用急，我们先学习一下其他优秀博客的经验吧。</p>
 
-<div class="highlight"><pre><code class="latex"><span class="k">\include</span><span class="nb">{</span>graphicx<span class="nb">}</span>
+<h2 id="section">获取并修改别人的博客</h2>
+
+<p>Jekyll官方建立了一个<a href="https://github.com/mojombo/jekyll/wiki/sites">页面</a>，里面有许多的模板可供参考。接下来我们就要奉行“拿来主义”了，将别人的模板为我们所用。</p>
+
+<p>我自己用了<a href="http://cyukang.com/">Yukang’s Page</a>，他采用了一个叫做<a href="http://themes.jekyllbootstrap.com/preview/twitter/">twitter</a>的Jekyll Bootstrap的模板。下面假设你已经安装了git，我们把他人的网站代码clone下来，为了举例方便，还是选取了Yukang’s Page：</p>
+
+<pre><code>git clone https://github.com/chenyukang/chenyukang.github.com.git
+</code></pre>
+
+<p>然后删去别人的.git文件夹：</p>
+
+<pre><code>rm -rf .git
+</code></pre>
+
+<p>接着，我们参考<a href="http://jekyllrb.com/docs/structure/">jekyll的文件目录</a>，可以把他人的博客删去，并且做一些小的调整。接下来，我们把改头换面的博客上传到自己的GitHub帐号中去。一般情况下，假设你的帐号名是USERNAME，你需要建一个名为USERNAME.github.io的帐号，分支为master。这样，在你将本地的网站push上去之后，不到10分钟，访问USERNAME.github.io，就可以看到你新鲜出炉的网站了：</p>
+
+<pre><code>git init
+git add -A
+git commit -m "first commit"
+git remote set-url origin https://github.com/USERNAME/USERNAME.github.io.git
+git push origin master
+</code></pre>
+
+<p>Git博大精深，我还没有熟练掌握。具体的命令可以参考下面一些参考资料：</p>
+
+<ul>
+  <li>
+    <p>入门：<a href="http://rogerdudler.github.io/git-guide/index.zh.html">git - 简易指南</a></p>
+  </li>
+  <li>
+    <p>进阶：<a href="http://think-like-a-git.net/epic.html">Think Like (a) Git</a></p>
+  </li>
+  <li>
+    <p>参考图解：<a href="http://marklodato.github.io/visual-git-guide/index-en.html">A Visual Git Reference</a></p>
+  </li>
+</ul>
+
+<p>如果你想要在push之前就在本地预览一下网站，可以使用
+<code>jekyll serve --watch</code>
+命令。默认设置下，可以在浏览器中访问localhost:4000预览。详细情况请<a href="http://jekyllrb.com/docs/usage/">点击这里</a>。</p>
+
+<p>那么，我们如何撰写新的博客呢？下面，我们隆重推出Markdown。</p>
+
+<h2 id="markdown">Markdown语法</h2>
+
+<p>根据<a href="http://zh.wikipedia.org/zh-cn/Markdown">维基百科上的介绍</a></p>
+
+<blockquote>
+  <p>Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）和亚伦·斯沃茨（Aaron Swartz）。</p>
+</blockquote>
+
+<p>想到<a href="http://zh.wikipedia.org/wiki/%E4%BA%9A%E4%BC%A6%C2%B7%E6%96%AF%E6%B2%83%E8%8C%A8">Aaron Swartz</a>已经故去，不禁一阵伤感。</p>
+
+<p>Markdown的介绍有许多，个人推荐：</p>
+
+<ul>
+  <li>
+    <p>入门：<a href="http://jianshu.io/p/q81RER">献给写作者的 Markdown 新手指南</a></p>
+  </li>
+  <li>
+    <p>进阶：<a href="http://wowubuntu.com/markdown/">Markdown 语法说明 (简体中文版) </a></p>
+  </li>
+</ul>
+
+<p>当然，细心的同学可能会发现，最原始的Markdown缺乏以下常用功能：</p>
+
+<ul>
+  <li><script type="math/tex">\mathrm{\LaTeX}</script>支持。参考<a href="http://cyukang.com/2013/03/03/try-mathjax.html">Jekyll使用MathJax来显示数学式</a>。注意，_config.yml中要用Kramdown作为解释器。使用时的语法如下例：</li>
+</ul>
+
+<div class="highlight"><pre><code class="latex"><span class="sb">$$</span><span class="nv">\sum</span><span class="nb">_{n</span><span class="o">=</span><span class="m">1</span><span class="nb">}^</span><span class="nv">\infty</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{n^</span><span class="m">2</span><span class="nb">} </span><span class="o">=</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="nv">\pi</span><span class="nb">^</span><span class="m">2</span><span class="nb">}{</span><span class="m">6</span><span class="nb">}</span><span class="s">$$</span>
 </code></pre></div>
 
-<script type="math/tex; mode=display">\sum_{i=1}^\infty \sin (x)</script>
+<p>效果为</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">reference</span> <span class="n">input_match</span><span class="p">,</span> <span class="n">output_match</span>
-  <span class="k">if</span> <span class="n">output_match</span><span class="o">.</span><span class="n">pre_match</span> <span class="o">=~</span> <span class="sr">/&lt;[^&gt;]*\z/</span>
-    <span class="n">input_match</span><span class="o">.</span><span class="n">to_s</span>
-  <span class="k">else</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="n">reference_url</span><span class="p">(</span><span class="n">input_match</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">,</span> <span class="n">input_match</span><span class="o">[</span><span class="ss">:section</span><span class="o">]</span><span class="p">)</span>
-    <span class="sx">%{&lt;a class=&quot;md2man-xref&quot; href=&quot;</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="sx">&quot;&gt;</span><span class="si">#{</span><span class="n">input_match</span><span class="si">}</span><span class="sx">&lt;/a&gt;}</span>
-  <span class="k">end</span> <span class="o">+</span> <span class="n">output_match</span><span class="o">[</span><span class="ss">:addendum</span><span class="o">].</span><span class="n">to_s</span>
-<span class="k">end</span>
+<script type="math/tex; mode=display">\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}</script>
+
+<ul>
+  <li>代码块的高亮。参考<a href="http://jekyllrb.com/docs/templates/">Jekyll官网文档</a>里<em>Code snippet highlighting</em>一节。玩颜色魔法的大魔术师是<a href="http://pygments.org/">Pygments</a>。使用时的语法如下例：</li>
+</ul>
+
+<pre><code>
+{% highlight c++ %}
+for(int i = 0; i != 10; i++) {
+  do_something();
+}
+{% endhighlight %}
+
+</code></pre>
+
+<p>效果为</p>
+
+<div class="highlight"><pre><code class="c++"><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">do_something</span><span class="p">();</span>
+<span class="p">}</span>
 </code></pre></div>
 
+<p>怎么样，还算容易吧？（附注：为了展示给你看前面的那段用来高亮的代码，真是累死我了……由于它是liquid代码。详情请参考我的源代码，另外参考<a href="https://github.com/mojombo/jekyll/issues/814">这里的讨论</a>。）</p>
+
+<h2 id="rake">采用rake简化工作</h2>
+
+<p>每个你写博客的makedown之前，需要插入<a href="http://jekyllrb.com/docs/frontmatter/">Frone-matter部分</a>。</p>
+
+<p>但是每次输入这几行挺麻烦的，有没有偷懒的方法呢？</p>
+
+<p>请不要低估前人的创造力，我们有rake！安装方法：</p>
+
+<pre><code>sudo apt-get install rake
+</code></pre>
+
+<p>使用方法详见<a href="http://www.xutaopb.com/blog/2013/04/18/jekyll_blog_stepbystep/">这里</a>。</p>
+
+<p>建立题为<code>Hello World</code>的新文章：</p>
+
+<pre><code>rake post title="Hello World"
+</code></pre>
+
+<p>开启本地预览：</p>
+
+<pre><code>rake preview
+</code></pre>
+
+<p>文中还有安装新主题的介绍，我觉得都不太好看，捣鼓了一阵子后使用</p>
+
+<pre><code>git checkout HEAD
+</code></pre>
+
+<p>从而回到上个commit。真是省心！</p>
+
+<p>其他的技巧还有待探索。重要的是，现在就开始行动吧！</p>
 
 
     <p class="meta"> -- EOF -- </p>

@@ -4,7 +4,7 @@
  <title>Trefoil</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-10-06T13:46:23+08:00</updated>
+ <updated>2013-10-06T22:36:03+08:00</updated>
  <id></id>
  <author>
    <name>trefoil</name>
@@ -55,9 +55,14 @@
 &lt;pre&gt;&lt;code&gt;sudo apt-get install rubygems ruby1.9.1-dev
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;添加&lt;a href=&quot;http://stackoverflow.com/questions/1664974/rake-command-not-found&quot;&gt;path&lt;/a&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export PATH=$PATH:$HOME/bin:/var/lib/gems/1.8/bin
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;假如不安装&lt;code&gt;ruby1.9.1-dev&lt;/code&gt;的话，一会儿会有神奇的错误发生，详见&lt;a href=&quot;http://stackoverflow.com/questions/10725767/error-installing-jekyll-native-extension-build&quot;&gt;Error Installing Jekyll - Native Extension Build&lt;/a&gt;。&lt;/p&gt;
 
-&lt;p&gt;再接再厉，安装jekyll。在此之前，建议国内用户换成&lt;a href=&quot;http://ruby-china.org/wiki/install-rails-on-ubuntu-12-04-server&quot;&gt;淘宝服务器&lt;/a&gt;：&lt;/p&gt;
+&lt;p&gt;再接再厉，安装jekyll。在此之前，建议国内用户换成&lt;a href=&quot;http://ruby-china.org/wiki/install-rails-on-ubuntu-12-04-server&quot;&gt;淘宝服务器&lt;/a&gt;，速度更快：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ sudo gem sources --remove http://rubygems.org/
 $ sudo gem sources -a http://ruby.taobao.org/
@@ -68,24 +73,138 @@ $ sudo gem sources -a http://ruby.taobao.org/
 &lt;pre&gt;&lt;code&gt;sudo gem install jekyll
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;该命令会安装一系列相关的包，安装好了之后，我们的任务就完成一大半啦！不用急，我们先学习一下其他优秀博客的经验吧。
-Showoff安装非常简单:&lt;/p&gt;
+&lt;p&gt;该命令会安装一系列相关的包，安装好了之后，我们的任务就完成一大半啦！不用急，我们先学习一下其他优秀博客的经验吧。&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;latex&quot;&gt;&lt;span class=&quot;k&quot;&gt;\include&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;{&lt;/span&gt;graphicx&lt;span class=&quot;nb&quot;&gt;}&lt;/span&gt;
+&lt;h2 id=&quot;section&quot;&gt;获取并修改别人的博客&lt;/h2&gt;
+
+&lt;p&gt;Jekyll官方建立了一个&lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/sites&quot;&gt;页面&lt;/a&gt;，里面有许多的模板可供参考。接下来我们就要奉行“拿来主义”了，将别人的模板为我们所用。&lt;/p&gt;
+
+&lt;p&gt;我自己用了&lt;a href=&quot;http://cyukang.com/&quot;&gt;Yukang’s Page&lt;/a&gt;，他采用了一个叫做&lt;a href=&quot;http://themes.jekyllbootstrap.com/preview/twitter/&quot;&gt;twitter&lt;/a&gt;的Jekyll Bootstrap的模板。下面假设你已经安装了git，我们把他人的网站代码clone下来，为了举例方便，还是选取了Yukang’s Page：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/chenyukang/chenyukang.github.com.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后删去别人的.git文件夹：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rm -rf .git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接着，我们参考&lt;a href=&quot;http://jekyllrb.com/docs/structure/&quot;&gt;jekyll的文件目录&lt;/a&gt;，可以把他人的博客删去，并且做一些小的调整。接下来，我们把改头换面的博客上传到自己的GitHub帐号中去。一般情况下，假设你的帐号名是USERNAME，你需要建一个名为USERNAME.github.io的帐号，分支为master。这样，在你将本地的网站push上去之后，不到10分钟，访问USERNAME.github.io，就可以看到你新鲜出炉的网站了：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+git add -A
+git commit -m &quot;first commit&quot;
+git remote set-url origin https://github.com/USERNAME/USERNAME.github.io.git
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Git博大精深，我还没有熟练掌握。具体的命令可以参考下面一些参考资料：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;入门：&lt;a href=&quot;http://rogerdudler.github.io/git-guide/index.zh.html&quot;&gt;git - 简易指南&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;进阶：&lt;a href=&quot;http://think-like-a-git.net/epic.html&quot;&gt;Think Like (a) Git&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;参考图解：&lt;a href=&quot;http://marklodato.github.io/visual-git-guide/index-en.html&quot;&gt;A Visual Git Reference&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果你想要在push之前就在本地预览一下网站，可以使用
+&lt;code&gt;jekyll serve --watch&lt;/code&gt;
+命令。默认设置下，可以在浏览器中访问localhost:4000预览。详细情况请&lt;a href=&quot;http://jekyllrb.com/docs/usage/&quot;&gt;点击这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;那么，我们如何撰写新的博客呢？下面，我们隆重推出Markdown。&lt;/p&gt;
+
+&lt;h2 id=&quot;markdown&quot;&gt;Markdown语法&lt;/h2&gt;
+
+&lt;p&gt;根据&lt;a href=&quot;http://zh.wikipedia.org/zh-cn/Markdown&quot;&gt;维基百科上的介绍&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）和亚伦·斯沃茨（Aaron Swartz）。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;想到&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E4%BA%9A%E4%BC%A6%C2%B7%E6%96%AF%E6%B2%83%E8%8C%A8&quot;&gt;Aaron Swartz&lt;/a&gt;已经故去，不禁一阵伤感。&lt;/p&gt;
+
+&lt;p&gt;Markdown的介绍有许多，个人推荐：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;入门：&lt;a href=&quot;http://jianshu.io/p/q81RER&quot;&gt;献给写作者的 Markdown 新手指南&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;进阶：&lt;a href=&quot;http://wowubuntu.com/markdown/&quot;&gt;Markdown 语法说明 (简体中文版) &lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;当然，细心的同学可能会发现，最原始的Markdown缺乏以下常用功能：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;\mathrm{\LaTeX}&lt;/script&gt;支持。参考&lt;a href=&quot;http://cyukang.com/2013/03/03/try-mathjax.html&quot;&gt;Jekyll使用MathJax来显示数学式&lt;/a&gt;。注意，_config.yml中要用Kramdown作为解释器。使用时的语法如下例：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;latex&quot;&gt;&lt;span class=&quot;sb&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\sum&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;_{n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;}^&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\infty&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\frac&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;}{n^&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;} &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\frac&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\pi&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;}{&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$$&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_{i=1}^\infty \sin (x)&lt;/script&gt;
+&lt;p&gt;效果为&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reference&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_match&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_match&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pre_match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=~&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&amp;lt;[^&amp;gt;]*\z/&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;input_match&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_s&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reference_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_match&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:page&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_match&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:section&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;sx&quot;&gt;%{&amp;lt;a class=&amp;quot;md2man-xref&amp;quot; href=&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;&amp;quot;&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_match&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;&amp;lt;/a&amp;gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_match&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:addendum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_s&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;代码块的高亮。参考&lt;a href=&quot;http://jekyllrb.com/docs/templates/&quot;&gt;Jekyll官网文档&lt;/a&gt;里&lt;em&gt;Code snippet highlighting&lt;/em&gt;一节。玩颜色魔法的大魔术师是&lt;a href=&quot;http://pygments.org/&quot;&gt;Pygments&lt;/a&gt;。使用时的语法如下例：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;
+{% highlight c++ %}
+for(int i = 0; i != 10; i++) {
+  do_something();
+}
+{% endhighlight %}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果为&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;c++&quot;&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;do_something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;怎么样，还算容易吧？（附注：为了展示给你看前面的那段用来高亮的代码，真是累死我了……由于它是liquid代码。详情请参考我的源代码，另外参考&lt;a href=&quot;https://github.com/mojombo/jekyll/issues/814&quot;&gt;这里的讨论&lt;/a&gt;。）&lt;/p&gt;
+
+&lt;h2 id=&quot;rake&quot;&gt;采用rake简化工作&lt;/h2&gt;
+
+&lt;p&gt;每个你写博客的makedown之前，需要插入&lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;Frone-matter部分&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;但是每次输入这几行挺麻烦的，有没有偷懒的方法呢？&lt;/p&gt;
+
+&lt;p&gt;请不要低估前人的创造力，我们有rake！安装方法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install rake
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用方法详见&lt;a href=&quot;http://www.xutaopb.com/blog/2013/04/18/jekyll_blog_stepbystep/&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;建立题为&lt;code&gt;Hello World&lt;/code&gt;的新文章：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rake post title=&quot;Hello World&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;开启本地预览：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rake preview
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;文中还有安装新主题的介绍，我觉得都不太好看，捣鼓了一阵子后使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout HEAD
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;从而回到上个commit。真是省心！&lt;/p&gt;
+
+&lt;p&gt;其他的技巧还有待探索。重要的是，现在就开始行动吧！&lt;/p&gt;
 </content>
  </entry>
  
