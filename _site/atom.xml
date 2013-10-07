@@ -4,13 +4,34 @@
  <title>Trefoil</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-10-07T22:47:15+08:00</updated>
+ <updated>2013-10-07T23:26:58+08:00</updated>
  <id></id>
  <author>
    <name>trefoil</name>
    <email>world1tim@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>使用StatCounter记录博客访问情况</title>
+   <link href="/2013/10/07/statcounter.html"/>
+   <updated>2013-10-07T00:00:00+08:00</updated>
+   <id>/2013/10/07/statcounter</id>
+   <content type="html">
+&lt;p&gt;刚刚建立了博客，很辛苦也很开心，想要知道爱潜水的访问者们来自何方，怎么办呢？&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.kevinandamanda.com/whatsnew/tutorials/how-to-see-who-visits-your-blog.html&quot;&gt;这个个人网站&lt;/a&gt;推荐了&lt;a href=&quot;http://statcounter.com/&quot;&gt;StatCounter&lt;/a&gt;。这是我目前使用的方案。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/15957976/how-count-the-page-views-of-my-octopress-blog&quot;&gt;statoverflow上的讨论&lt;/a&gt;推荐了&lt;a href=&quot;http://www.google.com/analytics/&quot;&gt;Google Analytics&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;只需把网站上的代码插入&lt;code&gt;_layouts/default.html&lt;/code&gt;中，就可以了。&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>CVtree构建进化树算法简介</title>
@@ -74,6 +95,21 @@ c^i(a_1 a_2 \cdots a_K) =\begin{cases} \frac{p(a_1 a_2 \cdots a_K)-p^0(a_1 a_2 \
 &lt;p&gt;Zhao Xu, Bailin Hao, “CVTree update: a newly designed phylogenetic study
 platform using composition vectors and whole genomes”, &lt;em&gt;Nucleic Acids Res&lt;/em&gt;.
 published online on April 26, 2009. doi:10.1093/nar/gkp278.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ubuntu设置开机启动项</title>
+   <link href="/2013/10/06/ubuntu.html"/>
+   <updated>2013-10-06T00:00:00+08:00</updated>
+   <id>/2013/10/06/ubuntu</id>
+   <content type="html">
+&lt;p&gt;在控制台打开：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gnome-session-properties
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So easy!&lt;/p&gt;
 </content>
  </entry>
  

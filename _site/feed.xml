@@ -6,6 +6,26 @@
 		<link></link>
 		
 			<item>
+				<title>使用StatCounter记录博客访问情况</title>
+				<description>
+&lt;p&gt;刚刚建立了博客，很辛苦也很开心，想要知道爱潜水的访问者们来自何方，怎么办呢？&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.kevinandamanda.com/whatsnew/tutorials/how-to-see-who-visits-your-blog.html&quot;&gt;这个个人网站&lt;/a&gt;推荐了&lt;a href=&quot;http://statcounter.com/&quot;&gt;StatCounter&lt;/a&gt;。这是我目前使用的方案。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/15957976/how-count-the-page-views-of-my-octopress-blog&quot;&gt;statoverflow上的讨论&lt;/a&gt;推荐了&lt;a href=&quot;http://www.google.com/analytics/&quot;&gt;Google Analytics&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;只需把网站上的代码插入&lt;code&gt;_layouts/default.html&lt;/code&gt;中，就可以了。&lt;/p&gt;
+</description>
+				<published>2013-10-07 00:00:00 +0800</published>
+				<link>/2013/10/07/statcounter.html</link>
+			</item>
+		
+			<item>
 				<title>CVtree构建进化树算法简介</title>
 				<description>
 &lt;h2 id=&quot;frequency&quot;&gt;频数(frequency)的定义&lt;/h2&gt;
@@ -67,6 +87,20 @@ published online on April 26, 2009. doi:10.1093/nar/gkp278.&lt;/p&gt;
 </description>
 				<published>2013-10-07 00:00:00 +0800</published>
 				<link>/2013/10/07/cvtree.html</link>
+			</item>
+		
+			<item>
+				<title>Ubuntu设置开机启动项</title>
+				<description>
+&lt;p&gt;在控制台打开：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gnome-session-properties
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So easy!&lt;/p&gt;
+</description>
+				<published>2013-10-06 00:00:00 +0800</published>
+				<link>/2013/10/06/ubuntu.html</link>
 			</item>
 		
 			<item>
