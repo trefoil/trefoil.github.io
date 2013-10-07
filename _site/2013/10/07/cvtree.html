@@ -7,7 +7,7 @@
   <header>
     <meta charset="utf-8">
     
-    <title>Ubuntu 13.04下解决Rhythmbox乱码问题 | Trefoil</title>
+    <title>CVtree构建进化树算法简介 | Trefoil</title>
     
     <meta name="description" content="">
     <meta name="author" content="trefoil">
@@ -157,24 +157,65 @@
 
 <div class="row post">
   <div class="span8">
-    <h1 class="title">Ubuntu 13.04下解决Rhythmbox乱码问题</h1>
+    <h1 class="title">CVtree构建进化树算法简介</h1>
 
     
-<p>虽然非常想念Windows下的foobar2000，但是正在尝试着迁移到Linux环境下的我，听歌也想试试原生的音乐播放器，于是尝试着从文件夹中导入歌曲。导入之后，就可以整个Playlist播放了。</p>
+<h2 id="frequency">频数(frequency)的定义</h2>
 
-<p>老问题出现了：导入的歌曲的标签，由于有中文，出现了乱码。作为条件反射，我默默打开google搜索对策。很不错，很快搜索到了解决方案：<a href="http://www.softbunny.net/post/rhythmbox_encoding.shtml">好心情Blog-Rhythmbox乱码快速解决</a>.</p>
+<p>我们可以使用的序列包括DNA序列和氨基酸序列，下文以氨基酸序列为例。</p>
 
-<p>按照该文中的解决方案，只需建一个链接为</p>
+<p>将<script type="math/tex">K</script>-string记为<script type="math/tex">a_1 a_2 \cdots a_K</script>。一段总长为<script type="math/tex">L</script>的序列一共可以得到<script type="math/tex">(L-K+1)</script>个<script type="math/tex">K</script>-string。对于某一个<script type="math/tex">K</script>-string <script type="math/tex">a_1 a_2 \cdots a_K</script>而言，它的总数（或称频数，frequency）记为<script type="math/tex">f(a_1 a_2 \cdots a_K)</script>。于是某一个<script type="math/tex">K</script>-string出现的概率为</p>
 
-<pre><code>env GST_ID3_TAG_ENCODING=GBK rhythmbox %U
-</code></pre>
+<p><script type="math/tex">f(a_1 a_2 \cdots a_K) = \frac{f(a_1 a_2 \cdots a_K)}{(L-K+1)}</script>.</p>
 
-<p>的Application launcher就可以了。</p>
+<h2 id="random-background">减去随机背景(random background)</h2>
 
-<p>至于如何建立launcher，请参考<a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/">How to create Application launcher and add icon to Unity in Ubuntu 13.04 / 12.10 / 12.04</a>。</p>
+<p>这一步处理的目的是为了消除对进化不起作用(neutral)的随机变异的影响。</p>
 
-<p>Good luck!</p>
+<p>我们在计算取值为<script type="math/tex">K</script>的情况的这一步时，先计算出string长度为<script type="math/tex">(K-1)</script>和<script type="math/tex">(K-2)</script>时的概率。在马氏性假设下，序列第<script type="math/tex">K</script>位出现某个<script type="math/tex">a_K</script>和<script type="math/tex">a_1</script>无关，可以得到：</p>
 
+<p><script type="math/tex">p(a_2 a_3 \cdots a_K \vert a_2 a_3 a_{K-1}) = p(a_1 a_2 \cdots a_K \vert a_1 a_2 a_{K-1})</script>.</p>
+
+<p>上式展开整理后，我们可以估计<script type="math/tex">K</script>这一步时的概率：</p>
+
+<p><script type="math/tex">p^0 (a_1 a_2 \cdots a_K) = \frac{p(a_1 a_2 a_{K-1}) p(a_2 a_3 a_{K-1})}{p(a_1 a_2 \cdots a_K)}</script>.</p>
+
+<p>这里的数学处理的背景详见原文中所列的参考文献。</p>
+
+<p>减去随机背景的这一步如下：</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+c^i(a_1 a_2 \cdots a_K) =\begin{cases} \frac{p(a_1 a_2 \cdots a_K)-p^0(a_1 a_2 \cdots a_K)}{p^0(a_1 a_2 \cdots a_K)}, & p^0 \neq 0, \\ 0, & p^0 = 0. \end{cases} %]]></script>
+
+<p>这里<script type="math/tex">i</script>的取值从<script type="math/tex">1</script>到<script type="math/tex">N=20^K</script>，遍历了所有可能的<script type="math/tex">K</script>-string。</p>
+
+<p>对于物种<script type="math/tex">A</script>，我们可以组合上面一步遍历<script type="math/tex">i</script>后的计算结果，得到一个<script type="math/tex">20^K</script>维向量</p>
+
+<p><script type="math/tex">A = (a^1,a^2,\cdots,a^N)</script>,</p>
+
+<p>对于物种<script type="math/tex">B</script>，同样可以得到向量</p>
+
+<p><script type="math/tex">B = (b^1,b^2,\cdots,b^N)</script>.</p>
+
+<h2 id="section">计算两物种间的距离</h2>
+
+<p>这一步的处理是相当常规的。</p>
+
+<p>首先我们计算两个向量之间的夹角的余弦值：</p>
+
+<p><script type="math/tex">C(A,B)=\frac{A \cdot B}{\vert\vert A \vert\vert\, \vert\vert B \vert\vert}</script>.</p>
+
+<p>然后做一个线性变换，将距离映入<script type="math/tex">[0,1]</script>：</p>
+
+<p><script type="math/tex">D(A,B)=\frac{1-C(A,B)}{2}</script>.</p>
+
+<p>最后我们用<a href="http://blog.163.com/zzhong1984@126/blog/static/167105372201112391242279/">邻接法</a>(neighbor-joining method)构建进化树。</p>
+
+<h2 id="section-1">参考文献</h2>
+
+<p>Zhao Xu, Bailin Hao, “CVTree update: a newly designed phylogenetic study
+platform using composition vectors and whole genomes”, <em>Nucleic Acids Res</em>.
+published online on April 26, 2009. doi:10.1093/nar/gkp278.</p>
 
 
     <p class="meta"> -- EOF -- </p>
@@ -182,18 +223,16 @@
     <ul class="pager">
 
       
-      <li class="next"><a href="/2013/10/05/jekyll.html" title="用GitHub + Jekyll搭建博客 -- 以Ubuntu为例">用GitHub + Jekyll搭建博客 -- 以Ubuntu为例&rarr;</a></li>
+      <li class="next"><a href="/2013/10/05/ubuntu-1304rhythmbox.html" title="Ubuntu 13.04下解决Rhythmbox乱码问题">Ubuntu 13.04下解决Rhythmbox乱码问题&rarr;</a></li>
       
 
-      
-      <li class="previous"><a href="/2013/10/07/cvtree.html" title="CVtree构建进化树算法简介">&larr; CVtree构建进化树算法简介</a></li>
       
 
 
     </ul>
 
     <div class="span8">
-      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/05/ubuntu-1304rhythmbox.html" title="Ubuntu 13.04下解决Rhythmbox乱码问题" rel="nofollow">Ubuntu 13.04下解决Rhythmbox乱码问题</a></p>
+      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/07/cvtree.html" title="CVtree构建进化树算法简介" rel="nofollow">CVtree构建进化树算法简介</a></p>
     </div>
 
 
@@ -218,7 +257,7 @@
   
 
   <div class="span4 sidebar">
-    <h4 class="date">发布日期：<span>05 October 2013</span></h4>
+    <h4 class="date">发布日期：<span>07 October 2013</span></h4>
     <!-- <p class="meta">By <a href="/about.html" class="author" title="author">Trefoil</a><g:plusone size="small"></g:plusone></p> -->
 
 
@@ -231,7 +270,9 @@
 
   
      
-    	<li><a href="/tags.html#ubuntu-ref">ubuntu <span>1</span></a></li>
+    	<li><a href="/tags.html#CVTree-ref">CVTree <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#bioinformatics-ref">bioinformatics <span>1</span></a></li>
     
   
 

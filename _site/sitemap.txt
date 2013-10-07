@@ -10,5 +10,6 @@
 /sitemap.txt
 /tags.html
 
+/2013/10/07/cvtree.html
 /2013/10/05/ubuntu-1304rhythmbox.html
 /2013/10/05/jekyll.html
