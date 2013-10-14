@@ -4,13 +4,26 @@
  <title>Trefoil</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-10-07T23:26:58+08:00</updated>
+ <updated>2013-10-14T14:47:07+08:00</updated>
  <id></id>
  <author>
    <name>trefoil</name>
    <email>world1tim@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>解决安装GSEABase时“cannot find xml2-config”的问题</title>
+   <link href="/2013/10/14/xml2-config.html"/>
+   <updated>2013-10-14T00:00:00+08:00</updated>
+   <id>/2013/10/14/xml2-config</id>
+   <content type="html">
+&lt;pre&gt;&lt;code&gt;sudo apt-get install libxml2-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://code.hammerpig.com/solving-find-xml2config-ubuntu-910.html&quot;&gt;解决方法来源&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>使用StatCounter记录博客访问情况</title>
@@ -53,11 +66,11 @@
 
 &lt;p&gt;我们在计算取值为&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;的情况的这一步时，先计算出string长度为&lt;script type=&quot;math/tex&quot;&gt;(K-1)&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;(K-2)&lt;/script&gt;时的概率。在马氏性假设下，序列第&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;位出现某个&lt;script type=&quot;math/tex&quot;&gt;a_K&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;a_1&lt;/script&gt;无关，可以得到：&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;p(a_2 a_3 \cdots a_K \vert a_2 a_3 a_{K-1}) = p(a_1 a_2 \cdots a_K \vert a_1 a_2 a_{K-1})&lt;/script&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;p(a_2 a_3 \cdots a_K \vert a_2 a_3 \cdots a_{K-1}) = p(a_1 a_2 \cdots a_K \vert a_1 a_2 \cdots a_{K-1})&lt;/script&gt;.&lt;/p&gt;
 
 &lt;p&gt;上式展开整理后，我们可以估计&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;这一步时的概率：&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;p^0 (a_1 a_2 \cdots a_K) = \frac{p(a_1 a_2 a_{K-1}) p(a_2 a_3 a_{K-1})}{p(a_1 a_2 \cdots a_K)}&lt;/script&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;p^0 (a_1 a_2 \cdots a_K) = \frac{p(a_1 a_2 \cdots a_{K-1}) p(a_2 a_3 \cdots a_{K-1})}{p(a_1 a_2 \cdots a_K)}&lt;/script&gt;.&lt;/p&gt;
 
 &lt;p&gt;这里的数学处理的背景详见原文中所列的参考文献。&lt;/p&gt;
 
