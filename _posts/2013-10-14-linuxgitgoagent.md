@@ -8,7 +8,7 @@ tags: [git]
 {% include JB/setup %}
 ## 设置git使用代理
 
-[StatOverflow上的讨论](http://stackoverflow.com/questions/783811/getting-git-to-work-with-a-proxy-server)
+[statoverflow上的讨论](http://stackoverflow.com/questions/783811/getting-git-to-work-with-a-proxy-server)
 
     git config --global http.proxy http://localhost:8087
 
@@ -22,4 +22,4 @@ tags: [git]
 
 其中第一行的CA.crt的路径视你goagent的安装地址而定。
 
-最后一个命令会打开图形界面，使用空格键勾选goagent就可以了。
+最后一个命令会打开图形界面，使用**空格键**勾选goagent就可以了。
