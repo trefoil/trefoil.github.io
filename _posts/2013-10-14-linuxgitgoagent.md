@@ -8,7 +8,7 @@ tags: [git]
 {% include JB/setup %}
 ## 设置git使用代理
 
-[http://stackoverflow.com/questions/783811/getting-git-to-work-with-a-proxy-server][]
+[StatOverflow上的讨论](http://stackoverflow.com/questions/783811/getting-git-to-work-with-a-proxy-server)
 
     git config --global http.proxy http://localhost:8087
 
