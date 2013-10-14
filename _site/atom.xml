@@ -4,7 +4,7 @@
  <title>Trefoil</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-10-14T14:47:07+08:00</updated>
+ <updated>2013-10-14T20:18:02+08:00</updated>
  <id></id>
  <author>
    <name>trefoil</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>解决安装GSEABase时“cannot find xml2-config”的问题</title>
+   <title>解决ubuntu下安装GSEABase时“cannot find xml2-config”的问题</title>
    <link href="/2013/10/14/xml2-config.html"/>
    <updated>2013-10-14T00:00:00+08:00</updated>
    <id>/2013/10/14/xml2-config</id>
@@ -22,6 +22,34 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://code.hammerpig.com/solving-find-xml2config-ubuntu-910.html&quot;&gt;解决方法来源&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>linux下设置git使用goagent代理</title>
+   <link href="/2013/10/14/linuxgitgoagent.html"/>
+   <updated>2013-10-14T00:00:00+08:00</updated>
+   <id>/2013/10/14/linuxgitgoagent</id>
+   <content type="html">
+&lt;h2 id=&quot;git&quot;&gt;设置git使用代理&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/783811/getting-git-to-work-with-a-proxy-server&quot;&gt;statoverflow上的讨论&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global http.proxy http://localhost:8087
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;ca-certificates&quot;&gt;配置ca-certificates&lt;/h2&gt;
+
+&lt;p&gt;由于github现在使用https方式，我们还需要做一步：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo cp ~/Goagent/local/CA.crt /usr/share/ca-certificates/goagent.crt
+sudo chmod a+r /usr/share/ca-certificates/goagent.crt
+sudo dpkg-reconfigure ca-certificates
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中第一行的CA.crt的路径视你goagent的安装地址而定。&lt;/p&gt;
+
+&lt;p&gt;最后一个命令会打开图形界面，使用&lt;strong&gt;空格键&lt;/strong&gt;勾选goagent就可以了。&lt;/p&gt;
 </content>
  </entry>
  

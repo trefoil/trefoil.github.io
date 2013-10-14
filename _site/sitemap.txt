@@ -11,6 +11,7 @@
 /tags.html
 
 /2013/10/14/xml2-config.html
+/2013/10/14/linuxgitgoagent.html
 /2013/10/07/statcounter.html
 /2013/10/07/cvtree.html
 /2013/10/06/ubuntu.html

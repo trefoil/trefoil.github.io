@@ -7,7 +7,7 @@
   <header>
     <meta charset="utf-8">
     
-    <title>Ubuntu 13.04下解决Rhythmbox乱码问题 | Trefoil</title>
+    <title>linux下设置git使用goagent代理 | Trefoil</title>
     
     <meta name="description" content="">
     <meta name="author" content="trefoil">
@@ -157,24 +157,28 @@
 
 <div class="row post">
   <div class="span8">
-    <h1 class="title">Ubuntu 13.04下解决Rhythmbox乱码问题</h1>
+    <h1 class="title">linux下设置git使用goagent代理</h1>
 
     
-<p>虽然非常想念Windows下的foobar2000，但是正在尝试着迁移到Linux环境下的我，听歌也想试试原生的音乐播放器，于是尝试着从文件夹中导入歌曲。导入之后，就可以整个Playlist播放了。</p>
+<h2 id="git">设置git使用代理</h2>
 
-<p>老问题出现了：导入的歌曲的标签，由于有中文，出现了乱码。作为条件反射，我默默打开google搜索对策。很不错，很快搜索到了解决方案：<a href="http://www.softbunny.net/post/rhythmbox_encoding.shtml">好心情Blog-Rhythmbox乱码快速解决</a>.</p>
+<p><a href="http://stackoverflow.com/questions/783811/getting-git-to-work-with-a-proxy-server">statoverflow上的讨论</a></p>
 
-<p>按照该文中的解决方案，只需建一个链接为</p>
-
-<pre><code>env GST_ID3_TAG_ENCODING=GBK rhythmbox %U
+<pre><code>git config --global http.proxy http://localhost:8087
 </code></pre>
 
-<p>的Application launcher就可以了。</p>
+<h2 id="ca-certificates">配置ca-certificates</h2>
 
-<p>至于如何建立launcher，请参考<a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/">How to create Application launcher and add icon to Unity in Ubuntu 13.04 / 12.10 / 12.04</a>。</p>
+<p>由于github现在使用https方式，我们还需要做一步：</p>
 
-<p>Good luck!</p>
+<pre><code>sudo cp ~/Goagent/local/CA.crt /usr/share/ca-certificates/goagent.crt
+sudo chmod a+r /usr/share/ca-certificates/goagent.crt
+sudo dpkg-reconfigure ca-certificates
+</code></pre>
 
+<p>其中第一行的CA.crt的路径视你goagent的安装地址而定。</p>
+
+<p>最后一个命令会打开图形界面，使用<strong>空格键</strong>勾选goagent就可以了。</p>
 
 
     <p class="meta"> -- EOF -- </p>
@@ -182,18 +186,18 @@
     <ul class="pager">
 
       
-      <li class="next"><a href="/2013/10/05/jekyll.html" title="用GitHub + Jekyll搭建博客 -- 以Ubuntu为例">用GitHub + Jekyll搭建博客 -- 以Ubuntu为例&rarr;</a></li>
+      <li class="next"><a href="/2013/10/07/statcounter.html" title="使用StatCounter记录博客访问情况">使用StatCounter记录博客访问情况&rarr;</a></li>
       
 
       
-      <li class="previous"><a href="/2013/10/06/ubuntu.html" title="Ubuntu设置开机启动项">&larr; Ubuntu设置开机启动项</a></li>
+      <li class="previous"><a href="/2013/10/14/xml2-config.html" title="解决ubuntu下安装GSEABase时“cannot find xml2-config”的问题">&larr; 解决ubuntu下安装GSEABase时“cannot find xml2-config”的问题</a></li>
       
 
 
     </ul>
 
     <div class="span8">
-      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/05/ubuntu-1304rhythmbox.html" title="Ubuntu 13.04下解决Rhythmbox乱码问题" rel="nofollow">Ubuntu 13.04下解决Rhythmbox乱码问题</a></p>
+      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/14/linuxgitgoagent.html" title="linux下设置git使用goagent代理" rel="nofollow">linux下设置git使用goagent代理</a></p>
     </div>
 
 
@@ -218,7 +222,7 @@
   
 
   <div class="span4 sidebar">
-    <h4 class="date">发布日期：<span>05 October 2013</span></h4>
+    <h4 class="date">发布日期：<span>14 October 2013</span></h4>
     <!-- <p class="meta">By <a href="/about.html" class="author" title="author">Trefoil</a><g:plusone size="small"></g:plusone></p> -->
 
 
@@ -231,7 +235,7 @@
 
   
      
-    	<li><a href="/tags.html#ubuntu-ref">ubuntu <span>2</span></a></li>
+    	<li><a href="/tags.html#git-ref">git <span>1</span></a></li>
     
   
 
