@@ -7,7 +7,7 @@
   <header>
     <meta charset="utf-8">
     
-    <title>Ubuntu设置开机启动项 | Trefoil</title>
+    <title>介绍几个新发掘的vim插件 | Trefoil</title>
     
     <meta name="description" content="">
     <meta name="author" content="trefoil">
@@ -157,15 +157,37 @@
 
 <div class="row post">
   <div class="span8">
-    <h1 class="title">Ubuntu设置开机启动项</h1>
+    <h1 class="title">介绍几个新发掘的vim插件</h1>
 
     
-<p>在控制台打开：</p>
+<h2 id="nerd-commenter-vim">NERD Commenter: vim中注释代码</h2>
 
-<pre><code>gnome-session-properties
+<p>我一直觉得，注释代码这样像空气一样基本的必需功能，vim居然没有提供。</p>
+
+<p>现在有了<a href="https://github.com/scrooloose/nerdcommenter">NERD Commenter</a>。</p>
+
+<p>首先，为了把默认的、敲击不方便的<code>&lt;leader&gt;</code>键从<code>\</code>改成<code>,</code>，在vimrc中，加入一行：</p>
+
+<pre><code>:let mapleader = ","
 </code></pre>
 
-<p>So easy!</p>
+<p>这样，我们注释时，使用</p>
+
+<pre><code>,cc
+</code></pre>
+
+<p>而反注释时，使用</p>
+
+<pre><code>,cu
+</code></pre>
+
+<h2 id="markdown-vim-mode-vimmarkdown">Markdown Vim Mode: 给vim一双看Markdown的彩色眼镜</h2>
+
+<p>提供Markdown代码高亮，请<a href="https://github.com/plasticboy/vim-markdown">点击这里</a>。</p>
+
+<h2 id="pathogenvim">pathogen：安装与管理vim插件</h2>
+
+<p>适应git时代的全新vim插件安装方式，请<a href="https://github.com/tpope/vim-pathogen">点击这里</a>。</p>
 
 
     <p class="meta"> -- EOF -- </p>
@@ -173,18 +195,16 @@
     <ul class="pager">
 
       
-      <li class="next"><a href="/2013/10/05/ubuntu-1304rhythmbox.html" title="Ubuntu 13.04下解决Rhythmbox乱码问题">Ubuntu 13.04下解决Rhythmbox乱码问题&rarr;</a></li>
+      <li class="next"><a href="/2013/10/15/rwithby.html" title="在R中使用with()和by()">在R中使用with()和by()&rarr;</a></li>
       
 
-      
-      <li class="previous"><a href="/2013/10/07/cvtree.html" title="CVtree构建进化树算法简介">&larr; CVtree构建进化树算法简介</a></li>
       
 
 
     </ul>
 
     <div class="span8">
-      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/06/ubuntu.html" title="Ubuntu设置开机启动项" rel="nofollow">Ubuntu设置开机启动项</a></p>
+      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/19/vim.html" title="介绍几个新发掘的vim插件" rel="nofollow">介绍几个新发掘的vim插件</a></p>
     </div>
 
 
@@ -209,7 +229,7 @@
   
 
   <div class="span4 sidebar">
-    <h4 class="date">发布日期：<span>06 October 2013</span></h4>
+    <h4 class="date">发布日期：<span>19 October 2013</span></h4>
     <!-- <p class="meta">By <a href="/about.html" class="author" title="author">Trefoil</a><g:plusone size="small"></g:plusone></p> -->
 
 
@@ -222,7 +242,9 @@
 
   
      
-    	<li><a href="/tags.html#ubuntu-ref">ubuntu <span>2</span></a></li>
+    	<li><a href="/tags.html#vim-ref">vim <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#markdown-ref">markdown <span>1</span></a></li>
     
   
 

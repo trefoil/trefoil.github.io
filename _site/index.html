@@ -158,13 +158,37 @@
 
   <div class="row post">
     <div class="span8">
-      <h1 class="title"><a href="/2013/10/14/xml2-config.html" title="解决ubuntu下安装GSEABase时“cannot find xml2-config”的问题">解决ubuntu下安装GSEABase时“cannot find xml2-config”的问题</a> </h1>
+      <h1 class="title"><a href="/2013/10/19/vim.html" title="介绍几个新发掘的vim插件">介绍几个新发掘的vim插件</a> </h1>
 
       
-<pre><code>sudo apt-get install libxml2-dev
+<h2 id="nerd-commenter-vim">NERD Commenter: vim中注释代码</h2>
+
+<p>我一直觉得，注释代码这样像空气一样基本的必需功能，vim居然没有提供。</p>
+
+<p>现在有了<a href="https://github.com/scrooloose/nerdcommenter">NERD Commenter</a>。</p>
+
+<p>首先，为了把默认的、敲击不方便的<code>&lt;leader&gt;</code>键从<code>\</code>改成<code>,</code>，在vimrc中，加入一行：</p>
+
+<pre><code>:let mapleader = ","
 </code></pre>
 
-<p><a href="http://code.hammerpig.com/solving-find-xml2config-ubuntu-910.html">解决方法来源</a></p>
+<p>这样，我们注释时，使用</p>
+
+<pre><code>,cc
+</code></pre>
+
+<p>而反注释时，使用</p>
+
+<pre><code>,cu
+</code></pre>
+
+<h2 id="markdown-vim-mode-vimmarkdown">Markdown Vim Mode: 给vim一双看Markdown的彩色眼镜</h2>
+
+<p>提供Markdown代码高亮，请<a href="https://github.com/plasticboy/vim-markdown">点击这里</a>。</p>
+
+<h2 id="pathogenvim">pathogen：安装与管理vim插件</h2>
+
+<p>适应git时代的全新vim插件安装方式，请<a href="https://github.com/tpope/vim-pathogen">点击这里</a>。</p>
 
       
       <ul class="pager">
@@ -198,7 +222,7 @@
 
   <div class="span4 sidebar">
 
-    <h4 class="date">发布日期：<span>14 October 2013</span></h4>
+    <h4 class="date">发布日期：<span>19 October 2013</span></h4>
 
     
     <h4>标签</h4>
@@ -209,9 +233,9 @@
 
   
      
-    	<li><a href="/tags.html#R-ref">R <span>1</span></a></li>
+    	<li><a href="/tags.html#vim-ref">vim <span>1</span></a></li>
      
-    	<li><a href="/tags.html#GSEABase-ref">GSEABase <span>1</span></a></li>
+    	<li><a href="/tags.html#markdown-ref">markdown <span>1</span></a></li>
     
   
 
@@ -236,6 +260,14 @@
       <ul>
            
         <li class="v-aside-li">
+          <a href="/2013/10/19/vim.html" title="介绍几个新发掘的vim插件" rel="bookmark">介绍几个新发掘的vim插件</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/15/rwithby.html" title="在R中使用with()和by()" rel="bookmark">在R中使用with()和by()</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
           <a href="/2013/10/14/xml2-config.html" title="解决ubuntu下安装GSEABase时“cannot find xml2-config”的问题" rel="bookmark">解决ubuntu下安装GSEABase时“cannot find xml2-config”的问题</a>
         </li>              	      	            
            
@@ -257,10 +289,6 @@
            
         <li class="v-aside-li">
           <a href="/2013/10/05/ubuntu-1304rhythmbox.html" title="Ubuntu 13.04下解决Rhythmbox乱码问题" rel="bookmark">Ubuntu 13.04下解决Rhythmbox乱码问题</a>
-        </li>              	      	            
-           
-        <li class="v-aside-li">
-          <a href="/2013/10/05/jekyll.html" title="用GitHub + Jekyll搭建博客 -- 以Ubuntu为例" rel="bookmark">用GitHub + Jekyll搭建博客 -- 以Ubuntu为例</a>
         </li>              	      	            
         
       </ul>  

@@ -4,13 +4,225 @@
  <title>Trefoil</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-10-14T20:18:02+08:00</updated>
+ <updated>2013-10-20T00:09:16+08:00</updated>
  <id></id>
  <author>
    <name>trefoil</name>
    <email>world1tim@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>介绍几个新发掘的vim插件</title>
+   <link href="/2013/10/19/vim.html"/>
+   <updated>2013-10-19T00:00:00+08:00</updated>
+   <id>/2013/10/19/vim</id>
+   <content type="html">
+&lt;h2 id=&quot;nerd-commenter-vim&quot;&gt;NERD Commenter: vim中注释代码&lt;/h2&gt;
+
+&lt;p&gt;我一直觉得，注释代码这样像空气一样基本的必需功能，vim居然没有提供。&lt;/p&gt;
+
+&lt;p&gt;现在有了&lt;a href=&quot;https://github.com/scrooloose/nerdcommenter&quot;&gt;NERD Commenter&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;首先，为了把默认的、敲击不方便的&lt;code&gt;&amp;lt;leader&amp;gt;&lt;/code&gt;键从&lt;code&gt;\&lt;/code&gt;改成&lt;code&gt;,&lt;/code&gt;，在vimrc中，加入一行：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:let mapleader = &quot;,&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样，我们注释时，使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;,cc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;而反注释时，使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;,cu
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;markdown-vim-mode-vimmarkdown&quot;&gt;Markdown Vim Mode: 给vim一双看Markdown的彩色眼镜&lt;/h2&gt;
+
+&lt;p&gt;提供Markdown代码高亮，请&lt;a href=&quot;https://github.com/plasticboy/vim-markdown&quot;&gt;点击这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;pathogenvim&quot;&gt;pathogen：安装与管理vim插件&lt;/h2&gt;
+
+&lt;p&gt;适应git时代的全新vim插件安装方式，请&lt;a href=&quot;https://github.com/tpope/vim-pathogen&quot;&gt;点击这里&lt;/a&gt;。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>在R中使用with()和by()</title>
+   <link href="/2013/10/15/rwithby.html"/>
+   <updated>2013-10-15T00:00:00+08:00</updated>
+   <id>/2013/10/15/rwithby</id>
+   <content type="html">
+&lt;p&gt;刚刚上手R的同学，写R代码时，很难割舍速度很慢的for循环。&lt;a href=&quot;http://stat.ethz.ch/R-manual/R-devel/library/base/html/with.html&quot;&gt;with()&lt;/a&gt;和&lt;a href=&quot;http://stat.ethz.ch/R-manual/R-devel/library/base/html/by.html&quot;&gt;by()&lt;/a&gt;命令，提供了一些情况下更加高效的解决办法。&lt;/p&gt;
+
+&lt;p&gt;本文的思路主要来源于Quick-R网站上的&lt;a href=&quot;http://www.statmethods.net/stats/withby.html&quot;&gt;Using with( ) and by( )&lt;/a&gt;。Quick-R网站上的内容我觉得归类得很好，可以提供许多思路，美中不足的是代码无法直接运行。R的帮助文件里倒是有可运行的代码，但是知识密度实在太大了，需要反复咀嚼才能弄懂，而许多时候我们只需要搞清楚一个函数最基本的用法就够了。这一点真的远远不如MATLAB知识点层层递进的帮助文档。不过对于自由软件来说，真的不能奢求太多咯。&lt;/p&gt;
+
+&lt;p&gt;下面是我阅读上述资料后的笔记。&lt;/p&gt;
+
+&lt;h2 id=&quot;with&quot;&gt;With&lt;/h2&gt;
+
+&lt;p&gt;R的帮助文件Description里的介绍：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Evaluate an R expression in an environment constructed from data, possibly modifying the original data.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这就是说，我们在一个从data构建出的环境中运行R表达式（这样，在表达式里我们就不需要再注明用到的变量来自于data了）。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;注意：&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note that assignments within &lt;em&gt;expr&lt;/em&gt; take place in
+the constructed environment and not in the user’s workspace.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;语法：&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;with(data, expr, …)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Quick-R上提到，With的功能和SAS中的&lt;code&gt;DATA=&lt;/code&gt;相似。&lt;/p&gt;
+
+&lt;p&gt;提供两个可以运行的例子，其意自见。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;例一：&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;with&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;warpbreaks&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; table&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;wool&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; tension&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;这个例子的输出：(为了让大家熟悉这个数据集，这里提供了head()和tail()的输出)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-r&quot;&gt;&amp;gt; head(warpbreaks)
+  breaks wool tension
+1     26    A       L
+2     30    A       L
+3     54    A       L
+4     25    A       L
+5     70    A       L
+6     52    A       L
+&amp;gt; tail(warpbreaks)
+   breaks wool tension
+49     17    B       H
+50     13    B       H
+51     15    B       H
+52     15    B       H
+53     16    B       H
+54     28    B       H
+&amp;gt; with(warpbreaks, table(wool, tension))
+    tension
+wool L M H
+   A 9 9 9
+   B 9 9 9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;例二：&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;with&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;data.frame&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;u &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                lot1 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;118&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;58&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;35&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                lot2 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;69&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;35&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
+    list&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;summary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;glm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;lot1 &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; log&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;u&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; family &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Gamma&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
+         summary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;glm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;lot2 &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; log&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;u&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; family &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Gamma&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;输出这里就略去了。&lt;/p&gt;
+
+&lt;h2 id=&quot;by&quot;&gt;By&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;用法：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;by(data, INDICES, FUN, ..., simplify = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;至于By的效果，还是R帮助的Details里面写得清楚：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A data frame is split by row into data frames subsetted by the values of one or more factors, and function FUN is applied to each subset in turn.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这就是说，我们把&lt;em&gt;data&lt;/em&gt;这个data frame按照&lt;em&gt;INDICES&lt;/em&gt;的factor拆分成若干块小的data frames，在每块小的data frame上运行函数&lt;em&gt;FUN&lt;/em&gt;。&lt;/p&gt;
+
+&lt;p&gt;在后面的两个例子中，由于作为&lt;em&gt;INDICES&lt;/em&gt;的&lt;code&gt;warpbreaks[,&quot;tension&quot;]&lt;/code&gt;有三个水平，因此拆分出了三块进行后面&lt;em&gt;FUN&lt;/em&gt;的分析。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;例一：&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;by&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;warpbreaks&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; warpbreaks&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tension&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; summary&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;输出：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-r&quot;&gt;&amp;gt; by(warpbreaks[, 1:2], warpbreaks[,&quot;tension&quot;], summary)
+warpbreaks[, &quot;tension&quot;]: L
+     breaks      wool 
+ Min.   :14.00   A:9  
+ 1st Qu.:26.00   B:9  
+ Median :29.50        
+ Mean   :36.39        
+ 3rd Qu.:49.25        
+ Max.   :70.00        
+---------------------------------------------------- 
+warpbreaks[, &quot;tension&quot;]: M
+     breaks      wool 
+ Min.   :12.00   A:9  
+ 1st Qu.:18.25   B:9  
+ Median :27.00        
+ Mean   :26.39        
+ 3rd Qu.:33.75        
+ Max.   :42.00        
+---------------------------------------------------- 
+warpbreaks[, &quot;tension&quot;]: H
+     breaks      wool 
+ Min.   :10.00   A:9  
+ 1st Qu.:15.25   B:9  
+ Median :20.50        
+ Mean   :21.67        
+ 3rd Qu.:25.50        
+ Max.   :43.00        
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;例二：&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;by&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;warpbreaks&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; warpbreaks&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tension&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+   &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; lm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;breaks &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; wool&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; data &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; x&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;输出：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-r&quot;&gt;&amp;gt; by(warpbreaks, warpbreaks[,&quot;tension&quot;],
++    function(x) lm(breaks ~ wool, data = x))
+warpbreaks[, &quot;tension&quot;]: L
+
+Call:
+lm(formula = breaks ~ wool, data = x)
+
+Coefficients:
+(Intercept)        woolB  
+      44.56       -16.33  
+
+---------------------------------------------------- 
+warpbreaks[, &quot;tension&quot;]: M
+
+Call:
+lm(formula = breaks ~ wool, data = x)
+
+Coefficients:
+(Intercept)        woolB  
+     24.000        4.778  
+
+---------------------------------------------------- 
+warpbreaks[, &quot;tension&quot;]: H
+
+Call:
+lm(formula = breaks ~ wool, data = x)
+
+Coefficients:
+(Intercept)        woolB  
+     24.556       -5.778  
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+ </entry>
  
  <entry>
    <title>解决ubuntu下安装GSEABase时“cannot find xml2-config”的问题</title>
@@ -236,8 +448,8 @@ $ sudo gem sources -a http://ruby.taobao.org/
 &lt;pre&gt;&lt;code&gt;git init
 git add -A
 git commit -m &quot;first commit&quot;
-git remote set-url origin https://github.com/USERNAME/USERNAME.github.io.git
-git push origin master
+git remote add origin https://github.com/USERNAME/USERNAME.github.io.git
+git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Git博大精深，我还没有熟练掌握。具体的命令可以参考下面一些参考资料：&lt;/p&gt;
@@ -321,7 +533,6 @@ for(int i = 0; i != 10; i++) {
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;c++&quot;&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;do_something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nl&quot;&gt;https:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;怎么样，还算容易吧？（附注：为了展示给你看前面的那段用来高亮的代码，真是累死我了……由于它是liquid代码。详情请参考我的源代码，另外参考&lt;a href=&quot;https://github.com/mojombo/jekyll/issues/814&quot;&gt;这里的讨论&lt;/a&gt;。）&lt;/p&gt;
