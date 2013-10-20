@@ -10,6 +10,8 @@
 /sitemap.txt
 /tags.html
 
+/2013/10/20/tablextabs.html
+/2013/10/20/markdown.html
 /2013/10/19/vim.html
 /2013/10/15/rwithby.html
 /2013/10/14/xml2-config.html

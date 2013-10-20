@@ -67,6 +67,8 @@ task :post do
     post.puts "tags: []"
     post.puts "---"
     post.puts "{% include JB/setup %}"
+    post.puts ">* This will become a table of contents (this text will be scraped)."
+    post.puts ">{:toc}"
   end
   puts "Now opening #{filename} in vim..."
   system "vim #{filename}"

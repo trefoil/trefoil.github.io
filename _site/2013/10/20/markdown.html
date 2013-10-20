@@ -7,7 +7,7 @@
   <header>
     <meta charset="utf-8">
     
-    <title>Ubuntu 13.04下解决Rhythmbox乱码问题 | Trefoil</title>
+    <title>markdown里自动生成目录 | Trefoil</title>
     
     <meta name="description" content="">
     <meta name="author" content="trefoil">
@@ -157,24 +157,18 @@
 
 <div class="row post">
   <div class="span8">
-    <h1 class="title">Ubuntu 13.04下解决Rhythmbox乱码问题</h1>
+    <h1 class="title">markdown里自动生成目录</h1>
 
     
-<p>虽然非常想念Windows下的foobar2000，但是正在尝试着迁移到Linux环境下的我，听歌也想试试原生的音乐播放器，于是尝试着从文件夹中导入歌曲。导入之后，就可以整个Playlist播放了。</p>
+<p>来源：<a href="http://stackoverflow.com/questions/9602936/how-to-add-a-table-of-contents-to-jekyll-blog-post/9605238#9605238">How to add a table of contents to Jekyll blog post?</a>。</p>
 
-<p>老问题出现了：导入的歌曲的标签，由于有中文，出现了乱码。作为条件反射，我默默打开google搜索对策。很不错，很快搜索到了解决方案：<a href="http://www.softbunny.net/post/rhythmbox_encoding.shtml">好心情Blog-Rhythmbox乱码快速解决</a>.</p>
+<p>需要添加</p>
 
-<p>按照该文中的解决方案，只需建一个链接为</p>
-
-<pre><code>env GST_ID3_TAG_ENCODING=GBK rhythmbox %U
+<pre><code>* This will become a table of contents (this text will be scraped).
+{:toc}
 </code></pre>
 
-<p>的Application launcher就可以了。</p>
-
-<p>至于如何建立launcher，请参考<a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/">How to create Application launcher and add icon to Unity in Ubuntu 13.04 / 12.10 / 12.04</a>。</p>
-
-<p>Good luck!</p>
-
+<p>这种方法对Maruku和kramdown都适用。</p>
 
 
     <p class="meta"> -- EOF -- </p>
@@ -182,18 +176,18 @@
     <ul class="pager">
 
       
-      <li class="next"><a href="/2013/10/05/jekyll.html" title="用GitHub + Jekyll搭建博客 -- 以Ubuntu为例">用GitHub + Jekyll搭建博客 -- 以Ubuntu为例&rarr;</a></li>
+      <li class="next"><a href="/2013/10/19/vim.html" title="介绍几个新发掘的vim插件">介绍几个新发掘的vim插件&rarr;</a></li>
       
 
       
-      <li class="previous"><a href="/2013/10/06/ubuntu.html" title="Ubuntu设置开机启动项">&larr; Ubuntu设置开机启动项</a></li>
+      <li class="previous"><a href="/2013/10/20/tablextabs.html" title="如何从0-1数据得到列联表：R中table和xtabs函数的使用">&larr; 如何从0-1数据得到列联表：R中table和xtabs函数的使用</a></li>
       
 
 
     </ul>
 
     <div class="span8">
-      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/05/ubuntu-1304rhythmbox.html" title="Ubuntu 13.04下解决Rhythmbox乱码问题" rel="nofollow">Ubuntu 13.04下解决Rhythmbox乱码问题</a></p>
+      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/20/markdown.html" title="markdown里自动生成目录" rel="nofollow">markdown里自动生成目录</a></p>
     </div>
 
 
@@ -218,7 +212,7 @@
   
 
   <div class="span4 sidebar">
-    <h4 class="date">发布日期：<span>05 October 2013</span></h4>
+    <h4 class="date">发布日期：<span>20 October 2013</span></h4>
     <!-- <p class="meta">By <a href="/about.html" class="author" title="author">Trefoil</a><g:plusone size="small"></g:plusone></p> -->
 
 
@@ -231,7 +225,7 @@
 
   
      
-    	<li><a href="/tags.html#ubuntu-ref">ubuntu <span>2</span></a></li>
+    	<li><a href="/tags.html#markdown-ref">markdown <span>2</span></a></li>
     
   
 
