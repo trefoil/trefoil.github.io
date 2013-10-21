@@ -81,8 +81,9 @@ header{
     font-size: 14px;
     line-height: 1.8;
     /* font-family: "微软雅黑", "Arial","Helvetica","sans-serif";*/
-    font-family: "Georgia", "Microsoft YaHei",sans-serif;
-    font-size: 15px;
+    /*font-family: "Arial", "Segoe UI", "Microsoft YaHei",sans-serif;*/
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 14px;
 }
 
 .post .sidebar {
@@ -271,8 +272,9 @@ pre {
 body {
     color: #102536;
     /*font-family: Tahoma, "Lucida Grande", Arial, sans-serif;*/
-    font-family: "Georgia", sans-serif, "Microsoft YaHei",sans-serif;
-    font-size: 14px;
+    /*font-family: "Verdana", sans-serif, "Microsoft YaHei",sans-serif;*/
+    font-family: "Palatino Linotype", "URW Palladio L",	"palladio l","Book Antiqua", Palatino, serif;
+    font-size: 15px;
 }
 
 h1 {

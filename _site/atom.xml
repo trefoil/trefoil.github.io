@@ -4,13 +4,43 @@
  <title>Trefoil</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-10-20T17:55:44+08:00</updated>
+ <updated>2013-10-21T22:18:50+08:00</updated>
  <id></id>
  <author>
    <name>trefoil</name>
    <email>world1tim@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>在css中调整段落首行缩进和字体</title>
+   <link href="/2013/10/21/css.html"/>
+   <updated>2013-10-21T00:00:00+08:00</updated>
+   <id>/2013/10/21/css</id>
+   <content type="html">
+&lt;blockquote&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot;&gt;段落首行缩进&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot;&gt;字体&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;段落首行缩进&lt;/h2&gt;
+
+&lt;p&gt;调整&lt;code&gt;text-indent&lt;/code&gt;即可。例如，对于中文版式而言，需要缩进两个字符，&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;p {
+text-indent: 2em;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;字体&lt;/h2&gt;
+
+&lt;p&gt;这里提供一个对英文字体适用的跨平台解决方案，对于中文字体需要再调整一下。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.onedesigns.com/tutorials/font-families-for-cross-compatible-typography&quot;&gt;Font Families for cross-compatible Typography&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>如何从0-1数据得到列联表：R中table和xtabs函数的使用</title>

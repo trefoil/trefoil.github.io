@@ -7,7 +7,7 @@
   <header>
     <meta charset="utf-8">
     
-    <title>使用StatCounter记录博客访问情况 | Trefoil</title>
+    <title>在css中调整段落首行缩进和字体 | Trefoil</title>
     
     <meta name="description" content="">
     <meta name="author" content="trefoil">
@@ -157,21 +157,30 @@
 
 <div class="row post">
   <div class="span8">
-    <h1 class="title">使用StatCounter记录博客访问情况</h1>
+    <h1 class="title">在css中调整段落首行缩进和字体</h1>
 
     
-<p>刚刚建立了博客，很辛苦也很开心，想要知道爱潜水的访问者们来自何方，怎么办呢？</p>
-
-<ul>
-  <li>
-    <p><a href="http://www.kevinandamanda.com/whatsnew/tutorials/how-to-see-who-visits-your-blog.html">这个个人网站</a>推荐了<a href="http://statcounter.com/">StatCounter</a>。这是我目前使用的方案。</p>
-  </li>
-  <li>
-    <p><a href="http://stackoverflow.com/questions/15957976/how-count-the-page-views-of-my-octopress-blog">statoverflow上的讨论</a>推荐了<a href="http://www.google.com/analytics/">Google Analytics</a>。</p>
-  </li>
+<blockquote>
+<ul id="markdown-toc">
+  <li><a href="#section">段落首行缩进</a></li>
+  <li><a href="#section-1">字体</a></li>
 </ul>
+</blockquote>
 
-<p>只需把网站上的代码插入<code>_layouts/default.html</code>中，就可以了。</p>
+<h2 id="section">段落首行缩进</h2>
+
+<p>调整<code>text-indent</code>即可。例如，对于中文版式而言，需要缩进两个字符，</p>
+
+<pre><code>p {
+text-indent: 2em;
+}
+</code></pre>
+
+<h2 id="section-1">字体</h2>
+
+<p>这里提供一个对英文字体适用的跨平台解决方案，对于中文字体需要再调整一下。</p>
+
+<p><a href="http://www.onedesigns.com/tutorials/font-families-for-cross-compatible-typography">Font Families for cross-compatible Typography</a></p>
 
 
     <p class="meta"> -- EOF -- </p>
@@ -179,18 +188,16 @@
     <ul class="pager">
 
       
-      <li class="next"><a href="/2013/10/07/cvtree.html" title="CVtree构建进化树算法简介">CVtree构建进化树算法简介&rarr;</a></li>
+      <li class="next"><a href="/2013/10/20/tablextabs.html" title="如何从0-1数据得到列联表：R中table和xtabs函数的使用">如何从0-1数据得到列联表：R中table和xtabs函数的使用&rarr;</a></li>
       
 
-      
-      <li class="previous"><a href="/2013/10/14/linuxgitgoagent.html" title="linux下设置git使用goagent代理">&larr; linux下设置git使用goagent代理</a></li>
       
 
 
     </ul>
 
     <div class="span8">
-      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/07/statcounter.html" title="使用StatCounter记录博客访问情况" rel="nofollow">使用StatCounter记录博客访问情况</a></p>
+      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/21/css.html" title="在css中调整段落首行缩进和字体" rel="nofollow">在css中调整段落首行缩进和字体</a></p>
     </div>
 
 
@@ -215,10 +222,26 @@
   
 
   <div class="span4 sidebar">
-    <h4 class="date">发布日期：<span>07 October 2013</span></h4>
+    <h4 class="date">发布日期：<span>21 October 2013</span></h4>
     <!-- <p class="meta">By <a href="/about.html" class="author" title="author">Trefoil</a><g:plusone size="small"></g:plusone></p> -->
 
 
+    
+    <h4>标签</h4>
+    <ul class="tag_box">
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#css-ref">css <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
       
 
     <nav class="nav">
