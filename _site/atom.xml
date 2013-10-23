@@ -4,7 +4,7 @@
  <title>Trefoil</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-10-23T12:25:40+08:00</updated>
+ <updated>2013-10-23T12:35:26+08:00</updated>
  <id></id>
  <author>
    <name>trefoil</name>
@@ -13,10 +13,10 @@
 
  
  <entry>
-   <title>使用rss让markdown生成的网页里图片居中</title>
-   <link href="/2013/10/23/rssmarkdown.html"/>
+   <title>使用css让markdown生成的网页里图片居中</title>
+   <link href="/2013/10/23/cssmarkdown.html"/>
    <updated>2013-10-23T00:00:00+08:00</updated>
-   <id>/2013/10/23/rssmarkdown</id>
+   <id>/2013/10/23/cssmarkdown</id>
    <content type="html">
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
@@ -733,6 +733,9 @@ git push -u origin master
   &lt;li&gt;
     &lt;p&gt;进阶：&lt;a href=&quot;http://wowubuntu.com/markdown/&quot;&gt;Markdown 语法说明 (简体中文版) &lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;kramdown使用心得：&lt;a href=&quot;http://mindspill.net/computing/web-development-notes/kramdown-notes/&quot;&gt;Kramdown notes&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;备注：如何在Markdown中写注释呢？&lt;a href=&quot;https://twitter.com/denialduan/status/180532937358454784&quot;&gt;这里&lt;/a&gt;提供了最原始的一种解决方法：&lt;/p&gt;
@@ -778,7 +781,7 @@ for(int i = 0; i != 10; i++) {
 
 &lt;h2 id=&quot;rake&quot;&gt;采用rake简化工作&lt;/h2&gt;
 
-&lt;p&gt;每个你写博客的makedown之前，需要插入&lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;Front-matter部分&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;每个你写博客的markdown之前，需要插入&lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;Front-matter部分&lt;/a&gt;。&lt;/p&gt;
 
 &lt;p&gt;但是每次输入这几行挺麻烦的，有没有偷懒的方法呢？&lt;/p&gt;
 

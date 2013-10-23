@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "使用rss让markdown生成的网页里图片居中"
+title: "使用css让markdown生成的网页里图片居中"
 description: ""
 category: 
-tags: [rss, markdown]
+tags: [css, markdown]
 ---
 {% include JB/setup %}
 >* This will become a table of contents (this text will be scraped).

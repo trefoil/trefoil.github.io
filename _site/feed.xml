@@ -6,7 +6,7 @@
 		<link></link>
 		
 			<item>
-				<title>使用rss让markdown生成的网页里图片居中</title>
+				<title>使用css让markdown生成的网页里图片居中</title>
 				<description>
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
@@ -44,7 +44,7 @@ Hi!
 &lt;p&gt;这样就搞定啦！&lt;/p&gt;
 </description>
 				<published>2013-10-23 00:00:00 +0800</published>
-				<link>/2013/10/23/rssmarkdown.html</link>
+				<link>/2013/10/23/cssmarkdown.html</link>
 			</item>
 		
 			<item>
