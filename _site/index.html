@@ -158,30 +158,43 @@
 
   <div class="row post">
     <div class="span8">
-      <h1 class="title"><a href="/2013/10/21/css.html" title="在css中调整段落首行缩进和字体">在css中调整段落首行缩进和字体</a> </h1>
+      <h1 class="title"><a href="/2013/10/23/rssmarkdown.html" title="使用rss让markdown生成的网页里图片居中">使用rss让markdown生成的网页里图片居中</a> </h1>
 
       
 <blockquote>
-<ul id="markdown-toc">
-  <li><a href="#section">段落首行缩进</a></li>
-  <li><a href="#section-1">字体</a></li>
-</ul>
 </blockquote>
 
-<h2 id="section">段落首行缩进</h2>
+<p>近日需要在个人网站上添加图片，位置需要居中。markdown语言没有原生的解决方法。<a href="http://www.denizoguz.com/2013/08/07/how-to-align-images-in-markdown/">How to Align Images in Markdown</a>中给出了一种解决方法：</p>
 
-<p>调整<code>text-indent</code>即可。例如，对于中文版式而言，需要缩进两个字符，</p>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;text-align:center&quot;</span> <span class="na">markdown=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+![Alt Text](/path/to/image &quot;Caption&quot;)
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
 
-<pre><code>p {
-text-indent: 2em;
-}
-</code></pre>
+<p>不过我觉得这种方法不够优雅，没有采用。</p>
 
-<h2 id="section-1">字体</h2>
+<p><a href="http://stackoverflow.com/questions/3912694/using-markdown-how-do-i-center-an-image-and-its-caption/15185481#15185481">Using Markdown, how do I center an image and its caption?</a>里讨论了这个问题。由于我自己使用的解释器是<a href="http://kramdown.rubyforge.org/syntax.html#block-ials">kramdown</a>，因此采纳了Steven Penny的如下的解决方案。</p>
 
-<p>这里提供一个对英文字体适用的跨平台解决方案，对于中文字体需要再调整一下。</p>
+<p>在当前撰写的markdown文件里，紧挨着在想要居中的元素之前添加<code>{:.center}</code>：</p>
 
-<p><a href="http://www.onedesigns.com/tutorials/font-families-for-cross-compatible-typography">Font Families for cross-compatible Typography</a></p>
+<div class="highlight"><pre><code class="html">Hello there!
+
+{:.center}
+![cardinal](/img/2012/cardinal.jpg)  
+This is an image
+
+Hi!
+</code></pre></div>
+
+<p>在css文件中（我这里的文件是<code>assets/themes/twitter/css/style.css</code>），需要添加<code>center</code>的定义：</p>
+
+<div class="highlight"><pre><code class="css"><span class="nc">.center</span> <span class="p">{</span>
+  <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+  <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="k">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>这样就搞定啦！</p>
 
       
       <ul class="pager">
@@ -215,7 +228,7 @@ text-indent: 2em;
 
   <div class="span4 sidebar">
 
-    <h4 class="date">发布日期：<span>21 October 2013</span></h4>
+    <h4 class="date">发布日期：<span>23 October 2013</span></h4>
 
     
     <h4>标签</h4>
@@ -226,7 +239,9 @@ text-indent: 2em;
 
   
      
-    	<li><a href="/tags.html#css-ref">css <span>1</span></a></li>
+    	<li><a href="/tags.html#rss-ref">rss <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#markdown-ref">markdown <span>3</span></a></li>
     
   
 
@@ -249,6 +264,10 @@ text-indent: 2em;
     <div class="violet-aside-post">
       <h4 class="v-section-tit">最近</h4>
       <ul>
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/23/rssmarkdown.html" title="使用rss让markdown生成的网页里图片居中" rel="bookmark">使用rss让markdown生成的网页里图片居中</a>
+        </li>              	      	            
            
         <li class="v-aside-li">
           <a href="/2013/10/21/css.html" title="在css中调整段落首行缩进和字体" rel="bookmark">在css中调整段落首行缩进和字体</a>
@@ -276,10 +295,6 @@ text-indent: 2em;
            
         <li class="v-aside-li">
           <a href="/2013/10/14/linuxgitgoagent.html" title="linux下设置git使用goagent代理" rel="bookmark">linux下设置git使用goagent代理</a>
-        </li>              	      	            
-           
-        <li class="v-aside-li">
-          <a href="/2013/10/07/statcounter.html" title="使用StatCounter记录博客访问情况" rel="bookmark">使用StatCounter记录博客访问情况</a>
         </li>              	      	            
         
       </ul>  

@@ -7,7 +7,7 @@
   <header>
     <meta charset="utf-8">
     
-    <title>Ubuntu 13.04下解决Rhythmbox乱码问题 | Trefoil</title>
+    <title>使用rss让markdown生成的网页里图片居中 | Trefoil</title>
     
     <meta name="description" content="">
     <meta name="author" content="trefoil">
@@ -157,24 +157,43 @@
 
 <div class="row post">
   <div class="span8">
-    <h1 class="title">Ubuntu 13.04下解决Rhythmbox乱码问题</h1>
+    <h1 class="title">使用rss让markdown生成的网页里图片居中</h1>
 
     
-<p>虽然非常想念Windows下的foobar2000，但是正在尝试着迁移到Linux环境下的我，听歌也想试试原生的音乐播放器，于是尝试着从文件夹中导入歌曲。导入之后，就可以整个Playlist播放了。</p>
+<blockquote>
+</blockquote>
 
-<p>老问题出现了：导入的歌曲的标签，由于有中文，出现了乱码。作为条件反射，我默默打开google搜索对策。很不错，很快搜索到了解决方案：<a href="http://www.softbunny.net/post/rhythmbox_encoding.shtml">好心情Blog-Rhythmbox乱码快速解决</a>.</p>
+<p>近日需要在个人网站上添加图片，位置需要居中。markdown语言没有原生的解决方法。<a href="http://www.denizoguz.com/2013/08/07/how-to-align-images-in-markdown/">How to Align Images in Markdown</a>中给出了一种解决方法：</p>
 
-<p>按照该文中的解决方案，只需建一个链接为</p>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;text-align:center&quot;</span> <span class="na">markdown=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+![Alt Text](/path/to/image &quot;Caption&quot;)
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
 
-<pre><code>env GST_ID3_TAG_ENCODING=GBK rhythmbox %U
-</code></pre>
+<p>不过我觉得这种方法不够优雅，没有采用。</p>
 
-<p>的Application launcher就可以了。</p>
+<p><a href="http://stackoverflow.com/questions/3912694/using-markdown-how-do-i-center-an-image-and-its-caption/15185481#15185481">Using Markdown, how do I center an image and its caption?</a>里讨论了这个问题。由于我自己使用的解释器是<a href="http://kramdown.rubyforge.org/syntax.html#block-ials">kramdown</a>，因此采纳了Steven Penny的如下的解决方案。</p>
 
-<p>至于如何建立launcher，请参考<a href="http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/">How to create Application launcher and add icon to Unity in Ubuntu 13.04 / 12.10 / 12.04</a>。</p>
+<p>在当前撰写的markdown文件里，紧挨着在想要居中的元素之前添加<code>{:.center}</code>：</p>
 
-<p>Good luck!</p>
+<div class="highlight"><pre><code class="html">Hello there!
 
+{:.center}
+![cardinal](/img/2012/cardinal.jpg)  
+This is an image
+
+Hi!
+</code></pre></div>
+
+<p>在css文件中（我这里的文件是<code>assets/themes/twitter/css/style.css</code>），需要添加<code>center</code>的定义：</p>
+
+<div class="highlight"><pre><code class="css"><span class="nc">.center</span> <span class="p">{</span>
+  <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+  <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="k">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>这样就搞定啦！</p>
 
 
     <p class="meta"> -- EOF -- </p>
@@ -182,18 +201,16 @@
     <ul class="pager">
 
       
-      <li class="next"><a href="/2013/10/05/jekyll.html" title="用GitHub + Jekyll搭建博客 -- 以Ubuntu为例">用GitHub + Jekyll搭建博客 -- 以Ubuntu为例&rarr;</a></li>
+      <li class="next"><a href="/2013/10/21/css.html" title="在css中调整段落首行缩进和字体">在css中调整段落首行缩进和字体&rarr;</a></li>
       
 
-      
-      <li class="previous"><a href="/2013/10/06/ubuntu.html" title="Ubuntu设置开机启动项">&larr; Ubuntu设置开机启动项</a></li>
       
 
 
     </ul>
 
     <div class="span8">
-      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/05/ubuntu-1304rhythmbox.html" title="Ubuntu 13.04下解决Rhythmbox乱码问题" rel="nofollow">Ubuntu 13.04下解决Rhythmbox乱码问题</a></p>
+      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/23/rssmarkdown.html" title="使用rss让markdown生成的网页里图片居中" rel="nofollow">使用rss让markdown生成的网页里图片居中</a></p>
     </div>
 
 
@@ -218,7 +235,7 @@
   
 
   <div class="span4 sidebar">
-    <h4 class="date">发布日期：<span>05 October 2013</span></h4>
+    <h4 class="date">发布日期：<span>23 October 2013</span></h4>
     <!-- <p class="meta">By <a href="/about.html" class="author" title="author">Trefoil</a><g:plusone size="small"></g:plusone></p> -->
 
 
@@ -231,7 +248,9 @@
 
   
      
-    	<li><a href="/tags.html#ubuntu-ref">ubuntu <span>2</span></a></li>
+    	<li><a href="/tags.html#rss-ref">rss <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#markdown-ref">markdown <span>3</span></a></li>
     
   
 

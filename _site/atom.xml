@@ -4,13 +4,56 @@
  <title>Trefoil</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-10-22T22:32:04+08:00</updated>
+ <updated>2013-10-23T12:25:40+08:00</updated>
  <id></id>
  <author>
    <name>trefoil</name>
    <email>world1tim@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>使用rss让markdown生成的网页里图片居中</title>
+   <link href="/2013/10/23/rssmarkdown.html"/>
+   <updated>2013-10-23T00:00:00+08:00</updated>
+   <id>/2013/10/23/rssmarkdown</id>
+   <content type="html">
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;近日需要在个人网站上添加图片，位置需要居中。markdown语言没有原生的解决方法。&lt;a href=&quot;http://www.denizoguz.com/2013/08/07/how-to-align-images-in-markdown/&quot;&gt;How to Align Images in Markdown&lt;/a&gt;中给出了一种解决方法：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text-align:center&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;markdown=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+![Alt Text](/path/to/image &amp;quot;Caption&amp;quot;)
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;不过我觉得这种方法不够优雅，没有采用。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/3912694/using-markdown-how-do-i-center-an-image-and-its-caption/15185481#15185481&quot;&gt;Using Markdown, how do I center an image and its caption?&lt;/a&gt;里讨论了这个问题。由于我自己使用的解释器是&lt;a href=&quot;http://kramdown.rubyforge.org/syntax.html#block-ials&quot;&gt;kramdown&lt;/a&gt;，因此采纳了Steven Penny的如下的解决方案。&lt;/p&gt;
+
+&lt;p&gt;在当前撰写的markdown文件里，紧挨着在想要居中的元素之前添加&lt;code&gt;{:.center}&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;Hello there!
+
+{:.center}
+![cardinal](/img/2012/cardinal.jpg)  
+This is an image
+
+Hi!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;在css文件中（我这里的文件是&lt;code&gt;assets/themes/twitter/css/style.css&lt;/code&gt;），需要添加&lt;code&gt;center&lt;/code&gt;的定义：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.center&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;这样就搞定啦！&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>在css中调整段落首行缩进和字体</title>
