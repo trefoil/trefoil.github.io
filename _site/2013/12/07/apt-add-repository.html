@@ -7,7 +7,7 @@
   <header>
     <meta charset="utf-8">
     
-    <title>markdown里自动生成目录 | Trefoil</title>
+    <title>如何设置代理使用apt-add-repository | Trefoil</title>
     
     <meta name="description" content="">
     <meta name="author" content="trefoil">
@@ -157,18 +157,50 @@
 
 <div class="row post">
   <div class="span8">
-    <h1 class="title">markdown里自动生成目录</h1>
+    <h1 class="title">如何设置代理使用apt-add-repository</h1>
 
     
-<p>来源：<a href="http://stackoverflow.com/questions/9602936/how-to-add-a-table-of-contents-to-jekyll-blog-post/9605238#9605238">How to add a table of contents to Jekyll blog post?</a>。</p>
+<blockquote>
+<ul id="markdown-toc">
+  <li><a href="#section">问题的起源</a></li>
+  <li><a href="#section-1">问题的解决</a></li>
+</ul>
+</blockquote>
 
-<p>需要添加</p>
+<h2 id="section">问题的起源</h2>
 
-<pre><code>* This will become a table of contents (this text will be scraped).
-{:toc}
+<p>我目前上国际网时，需要使用代理服务器。<code>git</code>我已经调教好代理服务器的设置了，用chrome上网时用SwitchySharp插件也很方便。老大难就是<code>apt-add-repository</code>了。</p>
+
+<p>碰巧我现在想要解决两个问题：</p>
+
+<ol>
+  <li>
+    <p>给Ubuntu 13.04装一个在状态栏里能显示skype图标的补丁。详情见<a href="http://www.webupd8.org/2013/05/how-to-get-systray-whitelist-back-in.html">这里</a>。</p>
+  </li>
+  <li>
+    <p>安装zotero-standalone。有一个很方便的ppa，见<a href="http://askubuntu.com/questions/332109/how-to-install-zotero-in-ubuntu">这里</a>。</p>
+  </li>
+</ol>
+
+<p>所以狠下心，想把这个问题解决掉。</p>
+
+<h2 id="section-1">问题的解决</h2>
+
+<p>查到<a href="http://askubuntu.com/questions/53146/how-do-i-get-add-apt-repository-to-work-through-a-proxy">这个帖子</a>的王牌答案后，才发现非常简单：</p>
+
+<pre><code>export http_proxy=http://proxy:port
+export https_proxy=http://proxy:port
+sudo -E apt-add-repository ppa:linaro-maintainers/toolchain
 </code></pre>
 
-<p>这种方法对Maruku和kramdown都适用。</p>
+<p>其中，<code>sudo -E</code>是让sudo使用环境变量，具体可以见<a href="https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29#.E7.8E.AF.E5.A2.83.E5.8F.98.E9.87.8F">这里</a>。</p>
+
+<p>如果你的代理服务器需要身份验证的话，可以参考<a href="http://askubuntu.com/questions/60217/apt-get-update-with-an-in-password-error">这里</a>的例子：</p>
+
+<pre><code>export http_proxy=http://deepak:Deepak\@123@12.1.1.1:3128
+</code></pre>
+
+<p>这里使用了转义符<code>\@</code>来表示密码中实际出现的<code>@</code>。</p>
 
 
     <p class="meta"> -- EOF -- </p>
@@ -176,18 +208,18 @@
     <ul class="pager">
 
       
-      <li class="next"><a href="/2013/10/19/vim.html" title="介绍几个新发掘的vim插件">介绍几个新发掘的vim插件&rarr;</a></li>
+      <li class="next"><a href="/2013/10/23/cssmarkdown.html" title="使用css让markdown生成的网页里图片居中">使用css让markdown生成的网页里图片居中&rarr;</a></li>
       
 
       
-      <li class="previous"><a href="/2013/10/20/tablextabs.html" title="如何从0-1数据得到列联表：R中table和xtabs函数的使用">&larr; 如何从0-1数据得到列联表：R中table和xtabs函数的使用</a></li>
+      <li class="previous"><a href="/2013/12/07/compose-keycurly-opening-quotation-mark.html" title="如何使用Compose Key输入Curly Opening Quotation Mark">&larr; 如何使用Compose Key输入Curly Opening Quotation Mark</a></li>
       
 
 
     </ul>
 
     <div class="span8">
-      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/20/markdown.html" title="markdown里自动生成目录" rel="nofollow">markdown里自动生成目录</a></p>
+      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/12/07/apt-add-repository.html" title="如何设置代理使用apt-add-repository" rel="nofollow">如何设置代理使用apt-add-repository</a></p>
     </div>
 
 
@@ -212,7 +244,7 @@
   
 
   <div class="span4 sidebar">
-    <h4 class="date">发布日期：<span>20 October 2013</span></h4>
+    <h4 class="date">发布日期：<span>07 December 2013</span></h4>
     <!-- <p class="meta">By <a href="/about.html" class="author" title="author">Trefoil</a><g:plusone size="small"></g:plusone></p> -->
 
 
@@ -225,7 +257,11 @@
 
   
      
-    	<li><a href="/tags.html#markdown-ref">markdown <span>3</span></a></li>
+    	<li><a href="/tags.html#ubuntu-ref">ubuntu <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#skype-ref">skype <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#zotero-ref">zotero <span>1</span></a></li>
     
   
 

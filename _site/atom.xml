@@ -4,13 +4,86 @@
  <title>Trefoil</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-10-30T15:26:40+08:00</updated>
+ <updated>2013-12-07T23:02:14+08:00</updated>
  <id></id>
  <author>
    <name>trefoil</name>
    <email>world1tim@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>如何使用Compose Key输入Curly Opening Quotation Mark</title>
+   <link href="/2013/12/07/compose-keycurly-opening-quotation-mark.html"/>
+   <updated>2013-12-07T00:00:00+08:00</updated>
+   <id>/2013/12/07/compose-keycurly-opening-quotation-mark</id>
+   <content type="html">
+&lt;p&gt;在我的Ubuntu系统上，&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;AltGr&lt;/code&gt;(Right Alt Key)是Compose key。&lt;/p&gt;
+
+&lt;p&gt;按下Compose key之后，举例说，想要输入&lt;code&gt;“&lt;/code&gt;，只需先按&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;AltGr&lt;/code&gt;，再按&lt;code&gt;&amp;lt;&lt;/code&gt;+&lt;code&gt;&quot;&lt;/code&gt;就可以了。其他的三种可以如法炮制。&lt;/p&gt;
+
+&lt;p&gt;参考文献：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Quotation_mark#Typing_quotation_marks_on_a_computer_keyboard&quot;&gt;Typing quotation marks on a computer keyboard&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://help.ubuntu.com/community/ComposeKey&quot;&gt;ComposeKey - Community Ubuntu Documentation&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>如何设置代理使用apt-add-repository</title>
+   <link href="/2013/12/07/apt-add-repository.html"/>
+   <updated>2013-12-07T00:00:00+08:00</updated>
+   <id>/2013/12/07/apt-add-repository</id>
+   <content type="html">
+&lt;blockquote&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot;&gt;问题的起源&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot;&gt;问题的解决&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;问题的起源&lt;/h2&gt;
+
+&lt;p&gt;我目前上国际网时，需要使用代理服务器。&lt;code&gt;git&lt;/code&gt;我已经调教好代理服务器的设置了，用chrome上网时用SwitchySharp插件也很方便。老大难就是&lt;code&gt;apt-add-repository&lt;/code&gt;了。&lt;/p&gt;
+
+&lt;p&gt;碰巧我现在想要解决两个问题：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;给Ubuntu 13.04装一个在状态栏里能显示skype图标的补丁。详情见&lt;a href=&quot;http://www.webupd8.org/2013/05/how-to-get-systray-whitelist-back-in.html&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装zotero-standalone。有一个很方便的ppa，见&lt;a href=&quot;http://askubuntu.com/questions/332109/how-to-install-zotero-in-ubuntu&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;所以狠下心，想把这个问题解决掉。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;问题的解决&lt;/h2&gt;
+
+&lt;p&gt;查到&lt;a href=&quot;http://askubuntu.com/questions/53146/how-do-i-get-add-apt-repository-to-work-through-a-proxy&quot;&gt;这个帖子&lt;/a&gt;的王牌答案后，才发现非常简单：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export http_proxy=http://proxy:port
+export https_proxy=http://proxy:port
+sudo -E apt-add-repository ppa:linaro-maintainers/toolchain
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，&lt;code&gt;sudo -E&lt;/code&gt;是让sudo使用环境变量，具体可以见&lt;a href=&quot;https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29#.E7.8E.AF.E5.A2.83.E5.8F.98.E9.87.8F&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;如果你的代理服务器需要身份验证的话，可以参考&lt;a href=&quot;http://askubuntu.com/questions/60217/apt-get-update-with-an-in-password-error&quot;&gt;这里&lt;/a&gt;的例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export http_proxy=http://deepak:Deepak\@123@12.1.1.1:3128
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里使用了转义符&lt;code&gt;\@&lt;/code&gt;来表示密码中实际出现的&lt;code&gt;@&lt;/code&gt;。&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>使用css让markdown生成的网页里图片居中</title>
@@ -522,6 +595,71 @@ sudo dpkg-reconfigure ca-certificates
 &lt;/ul&gt;
 
 &lt;p&gt;只需把网站上的代码插入&lt;code&gt;_layouts/default.html&lt;/code&gt;中，就可以了。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>CVtree构建进化树算法简介</title>
+   <link href="/2013/10/07/cvtree.html"/>
+   <updated>2013-10-07T00:00:00+08:00</updated>
+   <id>/2013/10/07/cvtree</id>
+   <content type="html">
+&lt;h2 id=&quot;frequency&quot;&gt;频数(frequency)的定义&lt;/h2&gt;
+
+&lt;p&gt;我们可以使用的序列包括DNA序列和氨基酸序列，下文以氨基酸序列为例。&lt;/p&gt;
+
+&lt;p&gt;将&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;-string记为&lt;script type=&quot;math/tex&quot;&gt;a_1 a_2 \cdots a_K&lt;/script&gt;。一段总长为&lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;的序列一共可以得到&lt;script type=&quot;math/tex&quot;&gt;(L-K+1)&lt;/script&gt;个&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;-string。对于某一个&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;-string &lt;script type=&quot;math/tex&quot;&gt;a_1 a_2 \cdots a_K&lt;/script&gt;而言，它的总数（或称频数，frequency）记为&lt;script type=&quot;math/tex&quot;&gt;f(a_1 a_2 \cdots a_K)&lt;/script&gt;。于是某一个&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;-string出现的概率为&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;f(a_1 a_2 \cdots a_K) = \frac{f(a_1 a_2 \cdots a_K)}{(L-K+1)}&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;random-background&quot;&gt;减去随机背景(random background)&lt;/h2&gt;
+
+&lt;p&gt;这一步处理的目的是为了消除对进化不起作用(neutral)的随机变异的影响。&lt;/p&gt;
+
+&lt;p&gt;我们在计算取值为&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;的情况的这一步时，先计算出string长度为&lt;script type=&quot;math/tex&quot;&gt;(K-1)&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;(K-2)&lt;/script&gt;时的概率。在马氏性假设下，序列第&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;位出现某个&lt;script type=&quot;math/tex&quot;&gt;a_K&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;a_1&lt;/script&gt;无关，可以得到：&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;p(a_2 a_3 \cdots a_K \vert a_2 a_3 \cdots a_{K-1}) = p(a_1 a_2 \cdots a_K \vert a_1 a_2 \cdots a_{K-1})&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;上式展开整理后，我们可以估计&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;这一步时的概率：&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;p^0 (a_1 a_2 \cdots a_K) = \frac{p(a_1 a_2 \cdots a_{K-1}) p(a_2 a_3 \cdots a_{K-1})}{p(a_1 a_2 \cdots a_K)}&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;这里的数学处理的背景详见原文中所列的参考文献。&lt;/p&gt;
+
+&lt;p&gt;减去随机背景的这一步如下：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+c^i(a_1 a_2 \cdots a_K) =\begin{cases} \frac{p(a_1 a_2 \cdots a_K)-p^0(a_1 a_2 \cdots a_K)}{p^0(a_1 a_2 \cdots a_K)}, &amp; p^0 \neq 0, \\ 0, &amp; p^0 = 0. \end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;这里&lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt;的取值从&lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt;到&lt;script type=&quot;math/tex&quot;&gt;N=20^K&lt;/script&gt;，遍历了所有可能的&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;-string。&lt;/p&gt;
+
+&lt;p&gt;对于物种&lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;，我们可以组合上面一步遍历&lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt;后的计算结果，得到一个&lt;script type=&quot;math/tex&quot;&gt;20^K&lt;/script&gt;维向量&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;A = (a^1,a^2,\cdots,a^N)&lt;/script&gt;,&lt;/p&gt;
+
+&lt;p&gt;对于物种&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;，同样可以得到向量&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;B = (b^1,b^2,\cdots,b^N)&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;计算两物种间的距离&lt;/h2&gt;
+
+&lt;p&gt;这一步的处理是相当常规的。&lt;/p&gt;
+
+&lt;p&gt;首先我们计算两个向量之间的夹角的余弦值：&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;C(A,B)=\frac{A \cdot B}{\vert\vert A \vert\vert\, \vert\vert B \vert\vert}&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;然后做一个线性变换，将距离映入&lt;script type=&quot;math/tex&quot;&gt;[0,1]&lt;/script&gt;：&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;D(A,B)=\frac{1-C(A,B)}{2}&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;最后我们用&lt;a href=&quot;http://blog.163.com/zzhong1984@126/blog/static/167105372201112391242279/&quot;&gt;邻接法&lt;/a&gt;(neighbor-joining method)构建进化树。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;参考文献&lt;/h2&gt;
+
+&lt;p&gt;Zhao Xu, Bailin Hao, “CVTree update: a newly designed phylogenetic study
+platform using composition vectors and whole genomes”, &lt;em&gt;Nucleic Acids Res&lt;/em&gt;.
+published online on April 26, 2009. doi:10.1093/nar/gkp278.&lt;/p&gt;
 </content>
  </entry>
  

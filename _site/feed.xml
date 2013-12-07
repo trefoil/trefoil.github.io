@@ -6,6 +6,77 @@
 		<link></link>
 		
 			<item>
+				<title>如何使用Compose Key输入Curly Opening Quotation Mark</title>
+				<description>
+&lt;p&gt;在我的Ubuntu系统上，&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;AltGr&lt;/code&gt;(Right Alt Key)是Compose key。&lt;/p&gt;
+
+&lt;p&gt;按下Compose key之后，举例说，想要输入&lt;code&gt;“&lt;/code&gt;，只需先按&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;AltGr&lt;/code&gt;，再按&lt;code&gt;&amp;lt;&lt;/code&gt;+&lt;code&gt;&quot;&lt;/code&gt;就可以了。其他的三种可以如法炮制。&lt;/p&gt;
+
+&lt;p&gt;参考文献：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Quotation_mark#Typing_quotation_marks_on_a_computer_keyboard&quot;&gt;Typing quotation marks on a computer keyboard&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://help.ubuntu.com/community/ComposeKey&quot;&gt;ComposeKey - Community Ubuntu Documentation&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<published>2013-12-07 00:00:00 +0800</published>
+				<link>/2013/12/07/compose-keycurly-opening-quotation-mark.html</link>
+			</item>
+		
+			<item>
+				<title>如何设置代理使用apt-add-repository</title>
+				<description>
+&lt;blockquote&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot;&gt;问题的起源&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot;&gt;问题的解决&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;问题的起源&lt;/h2&gt;
+
+&lt;p&gt;我目前上国际网时，需要使用代理服务器。&lt;code&gt;git&lt;/code&gt;我已经调教好代理服务器的设置了，用chrome上网时用SwitchySharp插件也很方便。老大难就是&lt;code&gt;apt-add-repository&lt;/code&gt;了。&lt;/p&gt;
+
+&lt;p&gt;碰巧我现在想要解决两个问题：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;给Ubuntu 13.04装一个在状态栏里能显示skype图标的补丁。详情见&lt;a href=&quot;http://www.webupd8.org/2013/05/how-to-get-systray-whitelist-back-in.html&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装zotero-standalone。有一个很方便的ppa，见&lt;a href=&quot;http://askubuntu.com/questions/332109/how-to-install-zotero-in-ubuntu&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;所以狠下心，想把这个问题解决掉。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;问题的解决&lt;/h2&gt;
+
+&lt;p&gt;查到&lt;a href=&quot;http://askubuntu.com/questions/53146/how-do-i-get-add-apt-repository-to-work-through-a-proxy&quot;&gt;这个帖子&lt;/a&gt;的王牌答案后，才发现非常简单：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export http_proxy=http://proxy:port
+export https_proxy=http://proxy:port
+sudo -E apt-add-repository ppa:linaro-maintainers/toolchain
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，&lt;code&gt;sudo -E&lt;/code&gt;是让sudo使用环境变量，具体可以见&lt;a href=&quot;https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29#.E7.8E.AF.E5.A2.83.E5.8F.98.E9.87.8F&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;如果你的代理服务器需要身份验证的话，可以参考&lt;a href=&quot;http://askubuntu.com/questions/60217/apt-get-update-with-an-in-password-error&quot;&gt;这里&lt;/a&gt;的例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export http_proxy=http://deepak:Deepak\@123@12.1.1.1:3128
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里使用了转义符&lt;code&gt;\@&lt;/code&gt;来表示密码中实际出现的&lt;code&gt;@&lt;/code&gt;。&lt;/p&gt;
+</description>
+				<published>2013-12-07 00:00:00 +0800</published>
+				<link>/2013/12/07/apt-add-repository.html</link>
+			</item>
+		
+			<item>
 				<title>使用css让markdown生成的网页里图片居中</title>
 				<description>
 &lt;blockquote&gt;
@@ -487,40 +558,6 @@ sudo dpkg-reconfigure ca-certificates
 </description>
 				<published>2013-10-14 00:00:00 +0800</published>
 				<link>/2013/10/14/linuxgitgoagent.html</link>
-			</item>
-		
-			<item>
-				<title>使用StatCounter记录博客访问情况</title>
-				<description>
-&lt;p&gt;刚刚建立了博客，很辛苦也很开心，想要知道爱潜水的访问者们来自何方，怎么办呢？&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://www.kevinandamanda.com/whatsnew/tutorials/how-to-see-who-visits-your-blog.html&quot;&gt;这个个人网站&lt;/a&gt;推荐了&lt;a href=&quot;http://statcounter.com/&quot;&gt;StatCounter&lt;/a&gt;。这是我目前使用的方案。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/15957976/how-count-the-page-views-of-my-octopress-blog&quot;&gt;statoverflow上的讨论&lt;/a&gt;推荐了&lt;a href=&quot;http://www.google.com/analytics/&quot;&gt;Google Analytics&lt;/a&gt;。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;只需把网站上的代码插入&lt;code&gt;_layouts/default.html&lt;/code&gt;中，就可以了。&lt;/p&gt;
-</description>
-				<published>2013-10-07 00:00:00 +0800</published>
-				<link>/2013/10/07/statcounter.html</link>
-			</item>
-		
-			<item>
-				<title>Ubuntu设置开机启动项</title>
-				<description>
-&lt;p&gt;在控制台打开：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;gnome-session-properties
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So easy!&lt;/p&gt;
-</description>
-				<published>2013-10-06 00:00:00 +0800</published>
-				<link>/2013/10/06/ubuntu.html</link>
 			</item>
 		
 	</channel>
