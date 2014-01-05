@@ -33,6 +33,6 @@ tags: [ubuntu, skype, zotero]
 
 如果你的代理服务器需要身份验证的话，可以参考[这里](http://askubuntu.com/questions/60217/apt-get-update-with-an-in-password-error)的例子：
 
-    export http_proxy=http://deepak:Deepak\@123@12.1.1.1:3128
+    export http_proxy=http://deepak:Deepak%40123@12.1.1.1:3128
 
-这里使用了转义符`\@`来表示密码中实际出现的`@`。
+这里使用了转义符`%40`来表示密码中实际出现的`@`。

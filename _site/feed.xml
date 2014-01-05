@@ -67,10 +67,10 @@ sudo -E apt-add-repository ppa:linaro-maintainers/toolchain
 
 &lt;p&gt;如果你的代理服务器需要身份验证的话，可以参考&lt;a href=&quot;http://askubuntu.com/questions/60217/apt-get-update-with-an-in-password-error&quot;&gt;这里&lt;/a&gt;的例子：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;export http_proxy=http://deepak:Deepak\@123@12.1.1.1:3128
+&lt;pre&gt;&lt;code&gt;export http_proxy=http://deepak:Deepak%40123@12.1.1.1:3128
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;这里使用了转义符&lt;code&gt;\@&lt;/code&gt;来表示密码中实际出现的&lt;code&gt;@&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;这里使用了转义符&lt;code&gt;%40&lt;/code&gt;来表示密码中实际出现的&lt;code&gt;@&lt;/code&gt;。&lt;/p&gt;
 </description>
 				<published>2013-12-07 00:00:00 +0800</published>
 				<link>/2013/12/07/apt-add-repository.html</link>
