@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title></title>
+		<description></description>
+		<link></link>
+		
+			<item>
+				<title>如何使用Compose Key输入Curly Opening Quotation Mark</title>
+				<description>
+&lt;p&gt;在我的Ubuntu系统上，&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;AltGr&lt;/code&gt;(Right Alt Key)是Compose key。&lt;/p&gt;
+
+&lt;p&gt;按下Compose key之后，举例说，想要输入&lt;code&gt;“&lt;/code&gt;，只需先按&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;AltGr&lt;/code&gt;，再按&lt;code&gt;&amp;lt;&lt;/code&gt;+&lt;code&gt;&quot;&lt;/code&gt;就可以了。其他的三种可以如法炮制。&lt;/p&gt;
+
+&lt;p&gt;参考文献：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Quotation_mark#Typing_quotation_marks_on_a_computer_keyboard&quot;&gt;Typing quotation marks on a computer keyboard&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://help.ubuntu.com/community/ComposeKey&quot;&gt;ComposeKey - Community Ubuntu Documentation&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<published>2013-12-07 00:00:00 +0800</published>
+				<link>/2013/12/07/compose-keycurly-opening-quotation-mark.html</link>
+			</item>
+		
+			<item>
+				<title>如何设置代理使用apt-add-repository</title>
+				<description>
+&lt;blockquote&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot;&gt;问题的起源&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot;&gt;问题的解决&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;问题的起源&lt;/h2&gt;
+
+&lt;p&gt;我目前上国际网时，需要使用代理服务器。&lt;code&gt;git&lt;/code&gt;我已经调教好代理服务器的设置了，用chrome上网时用SwitchySharp插件也很方便。老大难就是&lt;code&gt;apt-add-repository&lt;/code&gt;了。&lt;/p&gt;
+
+&lt;p&gt;碰巧我现在想要解决两个问题：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;给Ubuntu 13.04装一个在状态栏里能显示skype图标的补丁。详情见&lt;a href=&quot;http://www.webupd8.org/2013/05/how-to-get-systray-whitelist-back-in.html&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装zotero-standalone。有一个很方便的ppa，见&lt;a href=&quot;http://askubuntu.com/questions/332109/how-to-install-zotero-in-ubuntu&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;所以狠下心，想把这个问题解决掉。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;问题的解决&lt;/h2&gt;
+
+&lt;p&gt;查到&lt;a href=&quot;http://askubuntu.com/questions/53146/how-do-i-get-add-apt-repository-to-work-through-a-proxy&quot;&gt;这个帖子&lt;/a&gt;的王牌答案后，才发现非常简单：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export http_proxy=http://proxy:port
+export https_proxy=http://proxy:port
+sudo -E apt-add-repository ppa:linaro-maintainers/toolchain
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，&lt;code&gt;sudo -E&lt;/code&gt;是让sudo使用环境变量，具体可以见&lt;a href=&quot;https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29#.E7.8E.AF.E5.A2.83.E5.8F.98.E9.87.8F&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;如果你的代理服务器需要身份验证的话，可以参考&lt;a href=&quot;http://askubuntu.com/questions/60217/apt-get-update-with-an-in-password-error&quot;&gt;这里&lt;/a&gt;的例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export http_proxy=http://deepak:Deepak%40123@12.1.1.1:3128
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里使用了转义符&lt;code&gt;%40&lt;/code&gt;来表示密码中实际出现的&lt;code&gt;@&lt;/code&gt;。&lt;/p&gt;
+</description>
+				<published>2013-12-07 00:00:00 +0800</published>
+				<link>/2013/12/07/apt-add-repository.html</link>
+			</item>
+		
+			<item>
+				<title>使用css让markdown生成的网页里图片居中</title>
+				<description>
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;近日需要在个人网站上添加图片，位置需要居中。markdown语言没有原生的解决方法。&lt;a href=&quot;http://www.denizoguz.com/2013/08/07/how-to-align-images-in-markdown/&quot;&gt;How to Align Images in Markdown&lt;/a&gt;中给出了一种解决方法：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text-align:center&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;markdown=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+![Alt Text](/path/to/image &amp;quot;Caption&amp;quot;)
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;不过我觉得这种方法不够优雅，没有采用。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/3912694/using-markdown-how-do-i-center-an-image-and-its-caption/15185481#15185481&quot;&gt;Using Markdown, how do I center an image and its caption?&lt;/a&gt;里讨论了这个问题。由于我自己使用的解释器是&lt;a href=&quot;http://kramdown.rubyforge.org/syntax.html#block-ials&quot;&gt;kramdown&lt;/a&gt;，因此采纳了Steven Penny的如下的解决方案。&lt;/p&gt;
+
+&lt;p&gt;在当前撰写的markdown文件里，紧挨着在想要居中的元素之前添加&lt;code&gt;{:.center}&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;Hello there!
+
+{:.center}
+![cardinal](/img/2012/cardinal.jpg)  
+This is an image
+
+Hi!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;在css文件中（我这里的文件是&lt;code&gt;assets/themes/twitter/css/style.css&lt;/code&gt;），需要添加&lt;code&gt;center&lt;/code&gt;的定义：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.center&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;这样就搞定啦！&lt;/p&gt;
+</description>
+				<published>2013-10-23 00:00:00 +0800</published>
+				<link>/2013/10/23/cssmarkdown.html</link>
+			</item>
+		
+			<item>
+				<title>在css中调整段落首行缩进和字体</title>
+				<description>
+&lt;blockquote&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot;&gt;段落首行缩进&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot;&gt;字体&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;段落首行缩进&lt;/h2&gt;
+
+&lt;p&gt;调整&lt;code&gt;text-indent&lt;/code&gt;即可。例如，对于中文版式而言，需要缩进两个字符，&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;p {
+text-indent: 2em;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;字体&lt;/h2&gt;
+
+&lt;p&gt;这里提供一个对英文字体适用的跨平台解决方案，对于中文字体需要再调整一下。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.onedesigns.com/tutorials/font-families-for-cross-compatible-typography&quot;&gt;Font Families for cross-compatible Typography&lt;/a&gt;&lt;/p&gt;
+</description>
+				<published>2013-10-21 00:00:00 +0800</published>
+				<link>/2013/10/21/css.html</link>
+			</item>
+		
+			<item>
+				<title>如何从0-1数据得到列联表：R中table和xtabs函数的使用</title>
+				<description>
+&lt;blockquote&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot;&gt;生成测试数据&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#matrix&quot;&gt;matrix类型&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dataframe&quot;&gt;data.frame类型&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot;&gt;其他&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在处理0-1数据(binary data)中，我们经常需要将其转换为列联表(cross tabulation或称contingency table)。本次主角是&lt;code&gt;table&lt;/code&gt;和&lt;code&gt;xtabs&lt;/code&gt;函数。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;生成测试数据&lt;/h2&gt;
+
+&lt;p&gt;为了举例说明，我们首先生成0-1数据。&lt;code&gt;set.seed(1)&lt;/code&gt;是为了设置种子，每次得到完全一样的“随机”数据。后面采用设置&lt;code&gt;dim&lt;/code&gt;函数的方法建立matrix，可以避免使用&lt;code&gt;matrix&lt;/code&gt;函数带来的拷贝一次mydata的额外操作。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-R&quot;&gt;&amp;gt; mydata &amp;lt;- {set.seed(1); # set a constant seed so that
+&amp;gt;                         # we can get reproducible results
+&amp;gt;            sample.int(2, size = 200, replace = T) - 1L} # generate binary ints
+&amp;gt; dim(mydata) &amp;lt;- c(100,2) # convert a vector to a matrix
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行&lt;code&gt;head&lt;/code&gt;函数，得到结果的是这样的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-R&quot;&gt;&amp;gt; head(mydata)
+     [,1] [,2]
+[1,]    0    1
+[2,]    0    0
+[3,]    1    0
+[4,]    1    1
+[5,]    0    1
+[6,]    1    0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;matrix&quot;&gt;matrix类型&lt;/h2&gt;
+
+&lt;p&gt;分别对mydata使用&lt;code&gt;table&lt;/code&gt;函数和&lt;code&gt;xtabs&lt;/code&gt;函数，试图建立连列表，结果如下。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-R&quot;&gt;&amp;gt; table(mydata)
+mydata
+  0   1 
+ 98 102 
+&amp;gt; xtabs(~ V1 + V2, data = mydata)
+   V2
+V1   0  1
+  0 23 29
+  1 23 25
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可见，使用&lt;code&gt;table&lt;/code&gt;不能够对matrix类型建立连列表，而只是简单的对整个matrix中的0和1进行计数；&lt;code&gt;table&lt;/code&gt;能够对data.frame类型建立连列表。&lt;/p&gt;
+
+&lt;h2 id=&quot;dataframe&quot;&gt;data.frame类型&lt;/h2&gt;
+
+&lt;p&gt;首先利用前面的matrix类型的mydata建立data.frame类型的mydata.df。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-R&quot;&gt;mydata.df &amp;lt;- as.data.frame(mydata)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行&lt;code&gt;head&lt;/code&gt;函数，得到结果的是这样的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-R&quot;&gt;&amp;gt; head(mydata.df)
+  V1 V2
+1  0  1
+2  0  0
+3  1  0
+4  1  1
+5  0  1
+6  1  0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里和前面一样调用&lt;code&gt;table&lt;/code&gt;和&lt;code&gt;xtabs&lt;/code&gt;建立连列表。两个函数都能够得到我们想要的结果。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-R&quot;&gt;&amp;gt; table(mydata.df)
+   V2
+V1   0  1
+  0 23 29
+  1 23 25
+&amp;gt; xtabs(~ V1 + V2, data = mydata.df)
+   V2
+V1   0  1
+  0 23 29
+  1 23 25
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;总结如下：如果想要得到连列表的话，除了&lt;code&gt;table&lt;/code&gt;和matrix类型的数据这种组合不行，其他三种组合都是可以的。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;其他&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;在已经建立好的连列表的基础上，使用&lt;code&gt;ftable&lt;/code&gt;函数，可以在多变量的情况下，绘制出我们主要关注的变量处于列的位置，而其他变量处于行的位置的连列表。&lt;/p&gt;
+
+    &lt;p&gt;例如，对于结构如下的Titanic数据,&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt; &amp;gt; str(Titanic)
+  table [1:4, 1:2, 1:2, 1:2] 0 0 35 0 0 0 17 0 118 154 ...
+  - attr(*, &quot;dimnames&quot;)=List of 4
+   ..$ Class   : chr [1:4] &quot;1st&quot; &quot;2nd&quot; &quot;3rd&quot; &quot;Crew&quot;
+   ..$ Sex     : chr [1:2] &quot;Male&quot; &quot;Female&quot;
+   ..$ Age     : chr [1:2] &quot;Child&quot; &quot;Adult&quot;
+   ..$ Survived: chr [1:2] &quot;No&quot; &quot;Yes&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;我们举一个help文档中的范例：&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt; &amp;gt; ftable(Titanic, row.vars = 2:1, col.vars = &quot;Survived&quot;)
+              Survived  No Yes
+     Sex    Class                 
+     Male   1st            118  62
+            2nd            154  25
+            3rd            422  88
+            Crew           670 192
+     Female 1st              4 141
+            2nd             13  93
+            3rd            106  90
+            Crew             3  20
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;as.data.frame&lt;/code&gt;可以看作是&lt;code&gt;xtabs&lt;/code&gt;的逆函数，得到data.frame类型的表格。不过，最原始的0-1数据中，每一行的具体顺序的信息仍然丢失了，取而代之的，是新的记录频数的一列，称为Freq：&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt; &amp;gt; t &amp;lt;- xtabs(~ V1 + V2, data = mydata)
+ &amp;gt; df &amp;lt;- as.data.frame(t)
+ &amp;gt; df
+   V1 V2 Freq
+ 1  0  0   23
+ 2  1  0   23
+ 3  0  1   29
+ 4  1  1   25
+ &amp;gt; xtabs(Freq~V1+V2, data = t)
+    V2
+ V1   0  1
+   0 23 29
+   1 23 25
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;制作连列表的时候需要注意，使用的两列数据的对应的行应当具有相同的行名，否则就会得到没有意义的结果。如果两列数据对应的行顺序不同，需要使用&lt;code&gt;order&lt;/code&gt;函数对整个表格先进行排序。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+				<published>2013-10-20 00:00:00 +0800</published>
+				<link>/2013/10/20/tablextabs.html</link>
+			</item>
+		
+			<item>
+				<title>markdown里自动生成目录</title>
+				<description>
+&lt;p&gt;来源：&lt;a href=&quot;http://stackoverflow.com/questions/9602936/how-to-add-a-table-of-contents-to-jekyll-blog-post/9605238#9605238&quot;&gt;How to add a table of contents to Jekyll blog post?&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;需要添加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* This will become a table of contents (this text will be scraped).
+{:toc}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这种方法对Maruku和kramdown都适用。&lt;/p&gt;
+</description>
+				<published>2013-10-20 00:00:00 +0800</published>
+				<link>/2013/10/20/markdown.html</link>
+			</item>
+		
+			<item>
+				<title>介绍几个新发掘的vim插件</title>
+				<description>
+&lt;h2 id=&quot;nerd-commenter-vim&quot;&gt;NERD Commenter: vim中注释代码&lt;/h2&gt;
+
+&lt;p&gt;我一直觉得，注释代码这样像空气一样基本的必需功能，vim居然没有提供。&lt;/p&gt;
+
+&lt;p&gt;现在有了&lt;a href=&quot;https://github.com/scrooloose/nerdcommenter&quot;&gt;NERD Commenter&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;首先，为了把默认的、敲击不方便的&lt;code&gt;&amp;lt;leader&amp;gt;&lt;/code&gt;键从&lt;code&gt;\&lt;/code&gt;改成&lt;code&gt;,&lt;/code&gt;，在vimrc中，加入一行：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:let mapleader = &quot;,&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样，我们注释时，使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;,cc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;而反注释时，使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;,cu
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;markdown-vim-mode-vimmarkdown&quot;&gt;Markdown Vim Mode: 给vim一双看Markdown的彩色眼镜&lt;/h2&gt;
+
+&lt;p&gt;提供Markdown代码高亮，请&lt;a href=&quot;https://github.com/plasticboy/vim-markdown&quot;&gt;点击这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;pathogenvim&quot;&gt;pathogen：安装与管理vim插件&lt;/h2&gt;
+
+&lt;p&gt;适应git时代的全新vim插件安装方式，请&lt;a href=&quot;https://github.com/tpope/vim-pathogen&quot;&gt;点击这里&lt;/a&gt;。&lt;/p&gt;
+</description>
+				<published>2013-10-19 00:00:00 +0800</published>
+				<link>/2013/10/19/vim.html</link>
+			</item>
+		
+			<item>
+				<title>在R中使用with()和by()</title>
+				<description>
+&lt;p&gt;刚刚上手R的同学，写R代码时，很难割舍速度很慢的for循环。&lt;a href=&quot;http://stat.ethz.ch/R-manual/R-devel/library/base/html/with.html&quot;&gt;with()&lt;/a&gt;和&lt;a href=&quot;http://stat.ethz.ch/R-manual/R-devel/library/base/html/by.html&quot;&gt;by()&lt;/a&gt;命令，提供了一些情况下更加高效的解决办法。&lt;/p&gt;
+
+&lt;p&gt;本文的思路主要来源于Quick-R网站上的&lt;a href=&quot;http://www.statmethods.net/stats/withby.html&quot;&gt;Using with( ) and by( )&lt;/a&gt;。Quick-R网站上的内容我觉得归类得很好，可以提供许多思路，美中不足的是代码无法直接运行。R的帮助文件里倒是有可运行的代码，但是知识密度实在太大了，需要反复咀嚼才能弄懂，而许多时候我们只需要搞清楚一个函数最基本的用法就够了。这一点真的远远不如MATLAB知识点层层递进的帮助文档。不过对于自由软件来说，真的不能奢求太多咯。&lt;/p&gt;
+
+&lt;p&gt;下面是我阅读上述资料后的笔记。&lt;/p&gt;
+
+&lt;h2 id=&quot;with&quot;&gt;With&lt;/h2&gt;
+
+&lt;p&gt;R的帮助文件Description里的介绍：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Evaluate an R expression in an environment constructed from data, possibly modifying the original data.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这就是说，我们在一个从data构建出的环境中运行R表达式（这样，在表达式里我们就不需要再注明用到的变量来自于data了）。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;注意：&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note that assignments within &lt;em&gt;expr&lt;/em&gt; take place in
+the constructed environment and not in the user’s workspace.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;语法：&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;with(data, expr, …)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Quick-R上提到，With的功能和SAS中的&lt;code&gt;DATA=&lt;/code&gt;相似。&lt;/p&gt;
+
+&lt;p&gt;提供两个可以运行的例子，其意自见。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;例一：&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;with&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;warpbreaks&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; table&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;wool&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; tension&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;这个例子的输出：(为了让大家熟悉这个数据集，这里提供了head()和tail()的输出)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-r&quot;&gt;&amp;gt; head(warpbreaks)
+  breaks wool tension
+1     26    A       L
+2     30    A       L
+3     54    A       L
+4     25    A       L
+5     70    A       L
+6     52    A       L
+&amp;gt; tail(warpbreaks)
+   breaks wool tension
+49     17    B       H
+50     13    B       H
+51     15    B       H
+52     15    B       H
+53     16    B       H
+54     28    B       H
+&amp;gt; with(warpbreaks, table(wool, tension))
+    tension
+wool L M H
+   A 9 9 9
+   B 9 9 9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;例二：&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;with&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;data.frame&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;u &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                lot1 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;118&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;58&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;35&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                lot2 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;69&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;35&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
+    list&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;summary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;glm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;lot1 &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; log&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;u&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; family &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Gamma&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
+         summary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;glm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;lot2 &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; log&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;u&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; family &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Gamma&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;输出这里就略去了。&lt;/p&gt;
+
+&lt;h2 id=&quot;by&quot;&gt;By&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;用法：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;by(data, INDICES, FUN, ..., simplify = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;至于By的效果，还是R帮助的Details里面写得清楚：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A data frame is split by row into data frames subsetted by the values of one or more factors, and function FUN is applied to each subset in turn.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这就是说，我们把&lt;em&gt;data&lt;/em&gt;这个data frame按照&lt;em&gt;INDICES&lt;/em&gt;的factor拆分成若干块小的data frames，在每块小的data frame上运行函数&lt;em&gt;FUN&lt;/em&gt;。&lt;/p&gt;
+
+&lt;p&gt;在后面的两个例子中，由于作为&lt;em&gt;INDICES&lt;/em&gt;的&lt;code&gt;warpbreaks[,&quot;tension&quot;]&lt;/code&gt;有三个水平，因此拆分出了三块进行后面&lt;em&gt;FUN&lt;/em&gt;的分析。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;例一：&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;by&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;warpbreaks&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; warpbreaks&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tension&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; summary&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;输出：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-r&quot;&gt;&amp;gt; by(warpbreaks[, 1:2], warpbreaks[,&quot;tension&quot;], summary)
+warpbreaks[, &quot;tension&quot;]: L
+     breaks      wool 
+ Min.   :14.00   A:9  
+ 1st Qu.:26.00   B:9  
+ Median :29.50        
+ Mean   :36.39        
+ 3rd Qu.:49.25        
+ Max.   :70.00        
+---------------------------------------------------- 
+warpbreaks[, &quot;tension&quot;]: M
+     breaks      wool 
+ Min.   :12.00   A:9  
+ 1st Qu.:18.25   B:9  
+ Median :27.00        
+ Mean   :26.39        
+ 3rd Qu.:33.75        
+ Max.   :42.00        
+---------------------------------------------------- 
+warpbreaks[, &quot;tension&quot;]: H
+     breaks      wool 
+ Min.   :10.00   A:9  
+ 1st Qu.:15.25   B:9  
+ Median :20.50        
+ Mean   :21.67        
+ 3rd Qu.:25.50        
+ Max.   :43.00        
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;例二：&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;by&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;warpbreaks&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; warpbreaks&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tension&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+   &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; lm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;breaks &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; wool&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; data &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; x&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;输出：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-r&quot;&gt;&amp;gt; by(warpbreaks, warpbreaks[,&quot;tension&quot;],
++    function(x) lm(breaks ~ wool, data = x))
+warpbreaks[, &quot;tension&quot;]: L
+
+Call:
+lm(formula = breaks ~ wool, data = x)
+
+Coefficients:
+(Intercept)        woolB  
+      44.56       -16.33  
+
+---------------------------------------------------- 
+warpbreaks[, &quot;tension&quot;]: M
+
+Call:
+lm(formula = breaks ~ wool, data = x)
+
+Coefficients:
+(Intercept)        woolB  
+     24.000        4.778  
+
+---------------------------------------------------- 
+warpbreaks[, &quot;tension&quot;]: H
+
+Call:
+lm(formula = breaks ~ wool, data = x)
+
+Coefficients:
+(Intercept)        woolB  
+     24.556       -5.778  
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+				<published>2013-10-15 00:00:00 +0800</published>
+				<link>/2013/10/15/rwithby.html</link>
+			</item>
+		
+			<item>
+				<title>解决ubuntu下安装GSEABase时“cannot find xml2-config”的问题</title>
+				<description>
+&lt;pre&gt;&lt;code&gt;sudo apt-get install libxml2-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://code.hammerpig.com/solving-find-xml2config-ubuntu-910.html&quot;&gt;解决方法来源&lt;/a&gt;&lt;/p&gt;
+</description>
+				<published>2013-10-14 00:00:00 +0800</published>
+				<link>/2013/10/14/xml2-config.html</link>
+			</item>
+		
+			<item>
+				<title>linux下设置git使用goagent代理</title>
+				<description>
+&lt;h2 id=&quot;git&quot;&gt;设置git使用代理&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/783811/getting-git-to-work-with-a-proxy-server&quot;&gt;statoverflow上的讨论&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global http.proxy http://localhost:8087
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;ca-certificates&quot;&gt;配置ca-certificates&lt;/h2&gt;
+
+&lt;p&gt;由于github现在使用https方式，我们还需要做一步：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo cp ~/Goagent/local/CA.crt /usr/share/ca-certificates/goagent.crt
+sudo chmod a+r /usr/share/ca-certificates/goagent.crt
+sudo dpkg-reconfigure ca-certificates
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中第一行的CA.crt的路径视你goagent的安装地址而定。&lt;/p&gt;
+
+&lt;p&gt;最后一个命令会打开图形界面，使用&lt;strong&gt;空格键&lt;/strong&gt;勾选goagent就可以了。&lt;/p&gt;
+</description>
+				<published>2013-10-14 00:00:00 +0800</published>
+				<link>/2013/10/14/linuxgitgoagent.html</link>
+			</item>
+		
+	</channel>
+</rss>

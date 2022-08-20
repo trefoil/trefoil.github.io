@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Trefoil</title>
+ <link href="/atom.xml" rel="self"/>
+ <link href=""/>
+ <updated>2014-01-05T15:31:08+08:00</updated>
+ <id></id>
+ <author>
+   <name>trefoil</name>
+   <email>world1tim@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>如何使用Compose Key输入Curly Opening Quotation Mark</title>
+   <link href="/2013/12/07/compose-keycurly-opening-quotation-mark.html"/>
+   <updated>2013-12-07T00:00:00+08:00</updated>
+   <id>/2013/12/07/compose-keycurly-opening-quotation-mark</id>
+   <content type="html">
+&lt;p&gt;在我的Ubuntu系统上，&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;AltGr&lt;/code&gt;(Right Alt Key)是Compose key。&lt;/p&gt;
+
+&lt;p&gt;按下Compose key之后，举例说，想要输入&lt;code&gt;“&lt;/code&gt;，只需先按&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;AltGr&lt;/code&gt;，再按&lt;code&gt;&amp;lt;&lt;/code&gt;+&lt;code&gt;&quot;&lt;/code&gt;就可以了。其他的三种可以如法炮制。&lt;/p&gt;
+
+&lt;p&gt;参考文献：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Quotation_mark#Typing_quotation_marks_on_a_computer_keyboard&quot;&gt;Typing quotation marks on a computer keyboard&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://help.ubuntu.com/community/ComposeKey&quot;&gt;ComposeKey - Community Ubuntu Documentation&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>如何设置代理使用apt-add-repository</title>
+   <link href="/2013/12/07/apt-add-repository.html"/>
+   <updated>2013-12-07T00:00:00+08:00</updated>
+   <id>/2013/12/07/apt-add-repository</id>
+   <content type="html">
+&lt;blockquote&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot;&gt;问题的起源&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot;&gt;问题的解决&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;问题的起源&lt;/h2&gt;
+
+&lt;p&gt;我目前上国际网时，需要使用代理服务器。&lt;code&gt;git&lt;/code&gt;我已经调教好代理服务器的设置了，用chrome上网时用SwitchySharp插件也很方便。老大难就是&lt;code&gt;apt-add-repository&lt;/code&gt;了。&lt;/p&gt;
+
+&lt;p&gt;碰巧我现在想要解决两个问题：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;给Ubuntu 13.04装一个在状态栏里能显示skype图标的补丁。详情见&lt;a href=&quot;http://www.webupd8.org/2013/05/how-to-get-systray-whitelist-back-in.html&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装zotero-standalone。有一个很方便的ppa，见&lt;a href=&quot;http://askubuntu.com/questions/332109/how-to-install-zotero-in-ubuntu&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;所以狠下心，想把这个问题解决掉。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;问题的解决&lt;/h2&gt;
+
+&lt;p&gt;查到&lt;a href=&quot;http://askubuntu.com/questions/53146/how-do-i-get-add-apt-repository-to-work-through-a-proxy&quot;&gt;这个帖子&lt;/a&gt;的王牌答案后，才发现非常简单：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export http_proxy=http://proxy:port
+export https_proxy=http://proxy:port
+sudo -E apt-add-repository ppa:linaro-maintainers/toolchain
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，&lt;code&gt;sudo -E&lt;/code&gt;是让sudo使用环境变量，具体可以见&lt;a href=&quot;https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29#.E7.8E.AF.E5.A2.83.E5.8F.98.E9.87.8F&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;如果你的代理服务器需要身份验证的话，可以参考&lt;a href=&quot;http://askubuntu.com/questions/60217/apt-get-update-with-an-in-password-error&quot;&gt;这里&lt;/a&gt;的例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export http_proxy=http://deepak:Deepak%40123@12.1.1.1:3128
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里使用了转义符&lt;code&gt;%40&lt;/code&gt;来表示密码中实际出现的&lt;code&gt;@&lt;/code&gt;。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>使用css让markdown生成的网页里图片居中</title>
+   <link href="/2013/10/23/cssmarkdown.html"/>
+   <updated>2013-10-23T00:00:00+08:00</updated>
+   <id>/2013/10/23/cssmarkdown</id>
+   <content type="html">
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;近日需要在个人网站上添加图片，位置需要居中。markdown语言没有原生的解决方法。&lt;a href=&quot;http://www.denizoguz.com/2013/08/07/how-to-align-images-in-markdown/&quot;&gt;How to Align Images in Markdown&lt;/a&gt;中给出了一种解决方法：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text-align:center&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;markdown=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+![Alt Text](/path/to/image &amp;quot;Caption&amp;quot;)
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;不过我觉得这种方法不够优雅，没有采用。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/3912694/using-markdown-how-do-i-center-an-image-and-its-caption/15185481#15185481&quot;&gt;Using Markdown, how do I center an image and its caption?&lt;/a&gt;里讨论了这个问题。由于我自己使用的解释器是&lt;a href=&quot;http://kramdown.rubyforge.org/syntax.html#block-ials&quot;&gt;kramdown&lt;/a&gt;，因此采纳了Steven Penny的如下的解决方案。&lt;/p&gt;
+
+&lt;p&gt;在当前撰写的markdown文件里，紧挨着在想要居中的元素之前添加&lt;code&gt;{:.center}&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;Hello there!
+
+{:.center}
+![cardinal](/img/2012/cardinal.jpg)  
+This is an image
+
+Hi!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;在css文件中（我这里的文件是&lt;code&gt;assets/themes/twitter/css/style.css&lt;/code&gt;），需要添加&lt;code&gt;center&lt;/code&gt;的定义：&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.center&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;这样就搞定啦！&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>在css中调整段落首行缩进和字体</title>
+   <link href="/2013/10/21/css.html"/>
+   <updated>2013-10-21T00:00:00+08:00</updated>
+   <id>/2013/10/21/css</id>
+   <content type="html">
+&lt;blockquote&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot;&gt;段落首行缩进&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot;&gt;字体&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;段落首行缩进&lt;/h2&gt;
+
+&lt;p&gt;调整&lt;code&gt;text-indent&lt;/code&gt;即可。例如，对于中文版式而言，需要缩进两个字符，&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;p {
+text-indent: 2em;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;字体&lt;/h2&gt;
+
+&lt;p&gt;这里提供一个对英文字体适用的跨平台解决方案，对于中文字体需要再调整一下。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.onedesigns.com/tutorials/font-families-for-cross-compatible-typography&quot;&gt;Font Families for cross-compatible Typography&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>如何从0-1数据得到列联表：R中table和xtabs函数的使用</title>
+   <link href="/2013/10/20/tablextabs.html"/>
+   <updated>2013-10-20T00:00:00+08:00</updated>
+   <id>/2013/10/20/tablextabs</id>
+   <content type="html">
+&lt;blockquote&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot;&gt;生成测试数据&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#matrix&quot;&gt;matrix类型&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dataframe&quot;&gt;data.frame类型&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot;&gt;其他&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在处理0-1数据(binary data)中，我们经常需要将其转换为列联表(cross tabulation或称contingency table)。本次主角是&lt;code&gt;table&lt;/code&gt;和&lt;code&gt;xtabs&lt;/code&gt;函数。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;生成测试数据&lt;/h2&gt;
+
+&lt;p&gt;为了举例说明，我们首先生成0-1数据。&lt;code&gt;set.seed(1)&lt;/code&gt;是为了设置种子，每次得到完全一样的“随机”数据。后面采用设置&lt;code&gt;dim&lt;/code&gt;函数的方法建立matrix，可以避免使用&lt;code&gt;matrix&lt;/code&gt;函数带来的拷贝一次mydata的额外操作。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-R&quot;&gt;&amp;gt; mydata &amp;lt;- {set.seed(1); # set a constant seed so that
+&amp;gt;                         # we can get reproducible results
+&amp;gt;            sample.int(2, size = 200, replace = T) - 1L} # generate binary ints
+&amp;gt; dim(mydata) &amp;lt;- c(100,2) # convert a vector to a matrix
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行&lt;code&gt;head&lt;/code&gt;函数，得到结果的是这样的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-R&quot;&gt;&amp;gt; head(mydata)
+     [,1] [,2]
+[1,]    0    1
+[2,]    0    0
+[3,]    1    0
+[4,]    1    1
+[5,]    0    1
+[6,]    1    0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;matrix&quot;&gt;matrix类型&lt;/h2&gt;
+
+&lt;p&gt;分别对mydata使用&lt;code&gt;table&lt;/code&gt;函数和&lt;code&gt;xtabs&lt;/code&gt;函数，试图建立连列表，结果如下。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-R&quot;&gt;&amp;gt; table(mydata)
+mydata
+  0   1 
+ 98 102 
+&amp;gt; xtabs(~ V1 + V2, data = mydata)
+   V2
+V1   0  1
+  0 23 29
+  1 23 25
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可见，使用&lt;code&gt;table&lt;/code&gt;不能够对matrix类型建立连列表，而只是简单的对整个matrix中的0和1进行计数；&lt;code&gt;table&lt;/code&gt;能够对data.frame类型建立连列表。&lt;/p&gt;
+
+&lt;h2 id=&quot;dataframe&quot;&gt;data.frame类型&lt;/h2&gt;
+
+&lt;p&gt;首先利用前面的matrix类型的mydata建立data.frame类型的mydata.df。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-R&quot;&gt;mydata.df &amp;lt;- as.data.frame(mydata)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行&lt;code&gt;head&lt;/code&gt;函数，得到结果的是这样的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-R&quot;&gt;&amp;gt; head(mydata.df)
+  V1 V2
+1  0  1
+2  0  0
+3  1  0
+4  1  1
+5  0  1
+6  1  0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里和前面一样调用&lt;code&gt;table&lt;/code&gt;和&lt;code&gt;xtabs&lt;/code&gt;建立连列表。两个函数都能够得到我们想要的结果。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-R&quot;&gt;&amp;gt; table(mydata.df)
+   V2
+V1   0  1
+  0 23 29
+  1 23 25
+&amp;gt; xtabs(~ V1 + V2, data = mydata.df)
+   V2
+V1   0  1
+  0 23 29
+  1 23 25
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;总结如下：如果想要得到连列表的话，除了&lt;code&gt;table&lt;/code&gt;和matrix类型的数据这种组合不行，其他三种组合都是可以的。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;其他&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;在已经建立好的连列表的基础上，使用&lt;code&gt;ftable&lt;/code&gt;函数，可以在多变量的情况下，绘制出我们主要关注的变量处于列的位置，而其他变量处于行的位置的连列表。&lt;/p&gt;
+
+    &lt;p&gt;例如，对于结构如下的Titanic数据,&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt; &amp;gt; str(Titanic)
+  table [1:4, 1:2, 1:2, 1:2] 0 0 35 0 0 0 17 0 118 154 ...
+  - attr(*, &quot;dimnames&quot;)=List of 4
+   ..$ Class   : chr [1:4] &quot;1st&quot; &quot;2nd&quot; &quot;3rd&quot; &quot;Crew&quot;
+   ..$ Sex     : chr [1:2] &quot;Male&quot; &quot;Female&quot;
+   ..$ Age     : chr [1:2] &quot;Child&quot; &quot;Adult&quot;
+   ..$ Survived: chr [1:2] &quot;No&quot; &quot;Yes&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;我们举一个help文档中的范例：&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt; &amp;gt; ftable(Titanic, row.vars = 2:1, col.vars = &quot;Survived&quot;)
+              Survived  No Yes
+     Sex    Class                 
+     Male   1st            118  62
+            2nd            154  25
+            3rd            422  88
+            Crew           670 192
+     Female 1st              4 141
+            2nd             13  93
+            3rd            106  90
+            Crew             3  20
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;as.data.frame&lt;/code&gt;可以看作是&lt;code&gt;xtabs&lt;/code&gt;的逆函数，得到data.frame类型的表格。不过，最原始的0-1数据中，每一行的具体顺序的信息仍然丢失了，取而代之的，是新的记录频数的一列，称为Freq：&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt; &amp;gt; t &amp;lt;- xtabs(~ V1 + V2, data = mydata)
+ &amp;gt; df &amp;lt;- as.data.frame(t)
+ &amp;gt; df
+   V1 V2 Freq
+ 1  0  0   23
+ 2  1  0   23
+ 3  0  1   29
+ 4  1  1   25
+ &amp;gt; xtabs(Freq~V1+V2, data = t)
+    V2
+ V1   0  1
+   0 23 29
+   1 23 25
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;制作连列表的时候需要注意，使用的两列数据的对应的行应当具有相同的行名，否则就会得到没有意义的结果。如果两列数据对应的行顺序不同，需要使用&lt;code&gt;order&lt;/code&gt;函数对整个表格先进行排序。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>markdown里自动生成目录</title>
+   <link href="/2013/10/20/markdown.html"/>
+   <updated>2013-10-20T00:00:00+08:00</updated>
+   <id>/2013/10/20/markdown</id>
+   <content type="html">
+&lt;p&gt;来源：&lt;a href=&quot;http://stackoverflow.com/questions/9602936/how-to-add-a-table-of-contents-to-jekyll-blog-post/9605238#9605238&quot;&gt;How to add a table of contents to Jekyll blog post?&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;需要添加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* This will become a table of contents (this text will be scraped).
+{:toc}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这种方法对Maruku和kramdown都适用。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>介绍几个新发掘的vim插件</title>
+   <link href="/2013/10/19/vim.html"/>
+   <updated>2013-10-19T00:00:00+08:00</updated>
+   <id>/2013/10/19/vim</id>
+   <content type="html">
+&lt;h2 id=&quot;nerd-commenter-vim&quot;&gt;NERD Commenter: vim中注释代码&lt;/h2&gt;
+
+&lt;p&gt;我一直觉得，注释代码这样像空气一样基本的必需功能，vim居然没有提供。&lt;/p&gt;
+
+&lt;p&gt;现在有了&lt;a href=&quot;https://github.com/scrooloose/nerdcommenter&quot;&gt;NERD Commenter&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;首先，为了把默认的、敲击不方便的&lt;code&gt;&amp;lt;leader&amp;gt;&lt;/code&gt;键从&lt;code&gt;\&lt;/code&gt;改成&lt;code&gt;,&lt;/code&gt;，在vimrc中，加入一行：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:let mapleader = &quot;,&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样，我们注释时，使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;,cc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;而反注释时，使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;,cu
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;markdown-vim-mode-vimmarkdown&quot;&gt;Markdown Vim Mode: 给vim一双看Markdown的彩色眼镜&lt;/h2&gt;
+
+&lt;p&gt;提供Markdown代码高亮，请&lt;a href=&quot;https://github.com/plasticboy/vim-markdown&quot;&gt;点击这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;pathogenvim&quot;&gt;pathogen：安装与管理vim插件&lt;/h2&gt;
+
+&lt;p&gt;适应git时代的全新vim插件安装方式，请&lt;a href=&quot;https://github.com/tpope/vim-pathogen&quot;&gt;点击这里&lt;/a&gt;。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>在R中使用with()和by()</title>
+   <link href="/2013/10/15/rwithby.html"/>
+   <updated>2013-10-15T00:00:00+08:00</updated>
+   <id>/2013/10/15/rwithby</id>
+   <content type="html">
+&lt;p&gt;刚刚上手R的同学，写R代码时，很难割舍速度很慢的for循环。&lt;a href=&quot;http://stat.ethz.ch/R-manual/R-devel/library/base/html/with.html&quot;&gt;with()&lt;/a&gt;和&lt;a href=&quot;http://stat.ethz.ch/R-manual/R-devel/library/base/html/by.html&quot;&gt;by()&lt;/a&gt;命令，提供了一些情况下更加高效的解决办法。&lt;/p&gt;
+
+&lt;p&gt;本文的思路主要来源于Quick-R网站上的&lt;a href=&quot;http://www.statmethods.net/stats/withby.html&quot;&gt;Using with( ) and by( )&lt;/a&gt;。Quick-R网站上的内容我觉得归类得很好，可以提供许多思路，美中不足的是代码无法直接运行。R的帮助文件里倒是有可运行的代码，但是知识密度实在太大了，需要反复咀嚼才能弄懂，而许多时候我们只需要搞清楚一个函数最基本的用法就够了。这一点真的远远不如MATLAB知识点层层递进的帮助文档。不过对于自由软件来说，真的不能奢求太多咯。&lt;/p&gt;
+
+&lt;p&gt;下面是我阅读上述资料后的笔记。&lt;/p&gt;
+
+&lt;h2 id=&quot;with&quot;&gt;With&lt;/h2&gt;
+
+&lt;p&gt;R的帮助文件Description里的介绍：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Evaluate an R expression in an environment constructed from data, possibly modifying the original data.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这就是说，我们在一个从data构建出的环境中运行R表达式（这样，在表达式里我们就不需要再注明用到的变量来自于data了）。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;注意：&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note that assignments within &lt;em&gt;expr&lt;/em&gt; take place in
+the constructed environment and not in the user’s workspace.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;语法：&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;with(data, expr, …)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Quick-R上提到，With的功能和SAS中的&lt;code&gt;DATA=&lt;/code&gt;相似。&lt;/p&gt;
+
+&lt;p&gt;提供两个可以运行的例子，其意自见。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;例一：&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;with&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;warpbreaks&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; table&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;wool&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; tension&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;这个例子的输出：(为了让大家熟悉这个数据集，这里提供了head()和tail()的输出)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-r&quot;&gt;&amp;gt; head(warpbreaks)
+  breaks wool tension
+1     26    A       L
+2     30    A       L
+3     54    A       L
+4     25    A       L
+5     70    A       L
+6     52    A       L
+&amp;gt; tail(warpbreaks)
+   breaks wool tension
+49     17    B       H
+50     13    B       H
+51     15    B       H
+52     15    B       H
+53     16    B       H
+54     28    B       H
+&amp;gt; with(warpbreaks, table(wool, tension))
+    tension
+wool L M H
+   A 9 9 9
+   B 9 9 9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;例二：&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;with&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;data.frame&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;u &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                lot1 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;118&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;58&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;35&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                lot2 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;69&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;35&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
+    list&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;summary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;glm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;lot1 &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; log&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;u&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; family &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Gamma&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
+         summary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;glm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;lot2 &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; log&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;u&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; family &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Gamma&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;输出这里就略去了。&lt;/p&gt;
+
+&lt;h2 id=&quot;by&quot;&gt;By&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;用法：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;by(data, INDICES, FUN, ..., simplify = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;至于By的效果，还是R帮助的Details里面写得清楚：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A data frame is split by row into data frames subsetted by the values of one or more factors, and function FUN is applied to each subset in turn.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这就是说，我们把&lt;em&gt;data&lt;/em&gt;这个data frame按照&lt;em&gt;INDICES&lt;/em&gt;的factor拆分成若干块小的data frames，在每块小的data frame上运行函数&lt;em&gt;FUN&lt;/em&gt;。&lt;/p&gt;
+
+&lt;p&gt;在后面的两个例子中，由于作为&lt;em&gt;INDICES&lt;/em&gt;的&lt;code&gt;warpbreaks[,&quot;tension&quot;]&lt;/code&gt;有三个水平，因此拆分出了三块进行后面&lt;em&gt;FUN&lt;/em&gt;的分析。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;例一：&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;by&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;warpbreaks&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; warpbreaks&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tension&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; summary&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;输出：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-r&quot;&gt;&amp;gt; by(warpbreaks[, 1:2], warpbreaks[,&quot;tension&quot;], summary)
+warpbreaks[, &quot;tension&quot;]: L
+     breaks      wool 
+ Min.   :14.00   A:9  
+ 1st Qu.:26.00   B:9  
+ Median :29.50        
+ Mean   :36.39        
+ 3rd Qu.:49.25        
+ Max.   :70.00        
+---------------------------------------------------- 
+warpbreaks[, &quot;tension&quot;]: M
+     breaks      wool 
+ Min.   :12.00   A:9  
+ 1st Qu.:18.25   B:9  
+ Median :27.00        
+ Mean   :26.39        
+ 3rd Qu.:33.75        
+ Max.   :42.00        
+---------------------------------------------------- 
+warpbreaks[, &quot;tension&quot;]: H
+     breaks      wool 
+ Min.   :10.00   A:9  
+ 1st Qu.:15.25   B:9  
+ Median :20.50        
+ Mean   :21.67        
+ 3rd Qu.:25.50        
+ Max.   :43.00        
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;例二：&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;by&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;warpbreaks&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; warpbreaks&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;tension&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+   &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; lm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;breaks &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; wool&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; data &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; x&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;输出：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-r&quot;&gt;&amp;gt; by(warpbreaks, warpbreaks[,&quot;tension&quot;],
++    function(x) lm(breaks ~ wool, data = x))
+warpbreaks[, &quot;tension&quot;]: L
+
+Call:
+lm(formula = breaks ~ wool, data = x)
+
+Coefficients:
+(Intercept)        woolB  
+      44.56       -16.33  
+
+---------------------------------------------------- 
+warpbreaks[, &quot;tension&quot;]: M
+
+Call:
+lm(formula = breaks ~ wool, data = x)
+
+Coefficients:
+(Intercept)        woolB  
+     24.000        4.778  
+
+---------------------------------------------------- 
+warpbreaks[, &quot;tension&quot;]: H
+
+Call:
+lm(formula = breaks ~ wool, data = x)
+
+Coefficients:
+(Intercept)        woolB  
+     24.556       -5.778  
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>解决ubuntu下安装GSEABase时“cannot find xml2-config”的问题</title>
+   <link href="/2013/10/14/xml2-config.html"/>
+   <updated>2013-10-14T00:00:00+08:00</updated>
+   <id>/2013/10/14/xml2-config</id>
+   <content type="html">
+&lt;pre&gt;&lt;code&gt;sudo apt-get install libxml2-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://code.hammerpig.com/solving-find-xml2config-ubuntu-910.html&quot;&gt;解决方法来源&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>linux下设置git使用goagent代理</title>
+   <link href="/2013/10/14/linuxgitgoagent.html"/>
+   <updated>2013-10-14T00:00:00+08:00</updated>
+   <id>/2013/10/14/linuxgitgoagent</id>
+   <content type="html">
+&lt;h2 id=&quot;git&quot;&gt;设置git使用代理&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/783811/getting-git-to-work-with-a-proxy-server&quot;&gt;statoverflow上的讨论&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global http.proxy http://localhost:8087
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;ca-certificates&quot;&gt;配置ca-certificates&lt;/h2&gt;
+
+&lt;p&gt;由于github现在使用https方式，我们还需要做一步：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo cp ~/Goagent/local/CA.crt /usr/share/ca-certificates/goagent.crt
+sudo chmod a+r /usr/share/ca-certificates/goagent.crt
+sudo dpkg-reconfigure ca-certificates
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中第一行的CA.crt的路径视你goagent的安装地址而定。&lt;/p&gt;
+
+&lt;p&gt;最后一个命令会打开图形界面，使用&lt;strong&gt;空格键&lt;/strong&gt;勾选goagent就可以了。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>使用StatCounter记录博客访问情况</title>
+   <link href="/2013/10/07/statcounter.html"/>
+   <updated>2013-10-07T00:00:00+08:00</updated>
+   <id>/2013/10/07/statcounter</id>
+   <content type="html">
+&lt;p&gt;刚刚建立了博客，很辛苦也很开心，想要知道爱潜水的访问者们来自何方，怎么办呢？&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.kevinandamanda.com/whatsnew/tutorials/how-to-see-who-visits-your-blog.html&quot;&gt;这个个人网站&lt;/a&gt;推荐了&lt;a href=&quot;http://statcounter.com/&quot;&gt;StatCounter&lt;/a&gt;。这是我目前使用的方案。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/15957976/how-count-the-page-views-of-my-octopress-blog&quot;&gt;statoverflow上的讨论&lt;/a&gt;推荐了&lt;a href=&quot;http://www.google.com/analytics/&quot;&gt;Google Analytics&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;只需把网站上的代码插入&lt;code&gt;_layouts/default.html&lt;/code&gt;中，就可以了。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>CVtree构建进化树算法简介</title>
+   <link href="/2013/10/07/cvtree.html"/>
+   <updated>2013-10-07T00:00:00+08:00</updated>
+   <id>/2013/10/07/cvtree</id>
+   <content type="html">
+&lt;h2 id=&quot;frequency&quot;&gt;频数(frequency)的定义&lt;/h2&gt;
+
+&lt;p&gt;我们可以使用的序列包括DNA序列和氨基酸序列，下文以氨基酸序列为例。&lt;/p&gt;
+
+&lt;p&gt;将&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;-string记为&lt;script type=&quot;math/tex&quot;&gt;a_1 a_2 \cdots a_K&lt;/script&gt;。一段总长为&lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;的序列一共可以得到&lt;script type=&quot;math/tex&quot;&gt;(L-K+1)&lt;/script&gt;个&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;-string。对于某一个&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;-string &lt;script type=&quot;math/tex&quot;&gt;a_1 a_2 \cdots a_K&lt;/script&gt;而言，它的总数（或称频数，frequency）记为&lt;script type=&quot;math/tex&quot;&gt;f(a_1 a_2 \cdots a_K)&lt;/script&gt;。于是某一个&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;-string出现的概率为&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;f(a_1 a_2 \cdots a_K) = \frac{f(a_1 a_2 \cdots a_K)}{(L-K+1)}&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;random-background&quot;&gt;减去随机背景(random background)&lt;/h2&gt;
+
+&lt;p&gt;这一步处理的目的是为了消除对进化不起作用(neutral)的随机变异的影响。&lt;/p&gt;
+
+&lt;p&gt;我们在计算取值为&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;的情况的这一步时，先计算出string长度为&lt;script type=&quot;math/tex&quot;&gt;(K-1)&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;(K-2)&lt;/script&gt;时的概率。在马氏性假设下，序列第&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;位出现某个&lt;script type=&quot;math/tex&quot;&gt;a_K&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;a_1&lt;/script&gt;无关，可以得到：&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;p(a_2 a_3 \cdots a_K \vert a_2 a_3 \cdots a_{K-1}) = p(a_1 a_2 \cdots a_K \vert a_1 a_2 \cdots a_{K-1})&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;上式展开整理后，我们可以估计&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;这一步时的概率：&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;p^0 (a_1 a_2 \cdots a_K) = \frac{p(a_1 a_2 \cdots a_{K-1}) p(a_2 a_3 \cdots a_{K-1})}{p(a_1 a_2 \cdots a_K)}&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;这里的数学处理的背景详见原文中所列的参考文献。&lt;/p&gt;
+
+&lt;p&gt;减去随机背景的这一步如下：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+c^i(a_1 a_2 \cdots a_K) =\begin{cases} \frac{p(a_1 a_2 \cdots a_K)-p^0(a_1 a_2 \cdots a_K)}{p^0(a_1 a_2 \cdots a_K)}, &amp; p^0 \neq 0, \\ 0, &amp; p^0 = 0. \end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;这里&lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt;的取值从&lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt;到&lt;script type=&quot;math/tex&quot;&gt;N=20^K&lt;/script&gt;，遍历了所有可能的&lt;script type=&quot;math/tex&quot;&gt;K&lt;/script&gt;-string。&lt;/p&gt;
+
+&lt;p&gt;对于物种&lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;，我们可以组合上面一步遍历&lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt;后的计算结果，得到一个&lt;script type=&quot;math/tex&quot;&gt;20^K&lt;/script&gt;维向量&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;A = (a^1,a^2,\cdots,a^N)&lt;/script&gt;,&lt;/p&gt;
+
+&lt;p&gt;对于物种&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;，同样可以得到向量&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;B = (b^1,b^2,\cdots,b^N)&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;计算两物种间的距离&lt;/h2&gt;
+
+&lt;p&gt;这一步的处理是相当常规的。&lt;/p&gt;
+
+&lt;p&gt;首先我们计算两个向量之间的夹角的余弦值：&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;C(A,B)=\frac{A \cdot B}{\vert\vert A \vert\vert\, \vert\vert B \vert\vert}&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;然后做一个线性变换，将距离映入&lt;script type=&quot;math/tex&quot;&gt;[0,1]&lt;/script&gt;：&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;D(A,B)=\frac{1-C(A,B)}{2}&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;最后我们用&lt;a href=&quot;http://blog.163.com/zzhong1984@126/blog/static/167105372201112391242279/&quot;&gt;邻接法&lt;/a&gt;(neighbor-joining method)构建进化树。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;参考文献&lt;/h2&gt;
+
+&lt;p&gt;Zhao Xu, Bailin Hao, “CVTree update: a newly designed phylogenetic study
+platform using composition vectors and whole genomes”, &lt;em&gt;Nucleic Acids Res&lt;/em&gt;.
+published online on April 26, 2009. doi:10.1093/nar/gkp278.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ubuntu设置开机启动项</title>
+   <link href="/2013/10/06/ubuntu.html"/>
+   <updated>2013-10-06T00:00:00+08:00</updated>
+   <id>/2013/10/06/ubuntu</id>
+   <content type="html">
+&lt;p&gt;在控制台打开：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gnome-session-properties
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So easy!&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ubuntu 13.04下解决Rhythmbox乱码问题</title>
+   <link href="/2013/10/05/ubuntu-1304rhythmbox.html"/>
+   <updated>2013-10-05T00:00:00+08:00</updated>
+   <id>/2013/10/05/ubuntu-1304rhythmbox</id>
+   <content type="html">
+&lt;p&gt;虽然非常想念Windows下的foobar2000，但是正在尝试着迁移到Linux环境下的我，听歌也想试试原生的音乐播放器，于是尝试着从文件夹中导入歌曲。导入之后，就可以整个Playlist播放了。&lt;/p&gt;
+
+&lt;p&gt;老问题出现了：导入的歌曲的标签，由于有中文，出现了乱码。作为条件反射，我默默打开google搜索对策。很不错，很快搜索到了解决方案：&lt;a href=&quot;http://www.softbunny.net/post/rhythmbox_encoding.shtml&quot;&gt;好心情Blog-Rhythmbox乱码快速解决&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;按照该文中的解决方案，只需建一个链接为&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;env GST_ID3_TAG_ENCODING=GBK rhythmbox %U
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;的Application launcher就可以了。&lt;/p&gt;
+
+&lt;p&gt;至于如何建立launcher，请参考&lt;a href=&quot;http://www.howopensource.com/2012/10/create-application-launcher-add-icon-to-unity-ubuntu-12-10/&quot;&gt;How to create Application launcher and add icon to Unity in Ubuntu 13.04 / 12.10 / 12.04&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;Good luck!&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>用GitHub + Jekyll搭建博客 -- 以Ubuntu为例</title>
+   <link href="/2013/10/05/jekyll.html"/>
+   <updated>2013-10-05T00:00:00+08:00</updated>
+   <id>/2013/10/05/jekyll</id>
+   <content type="html">
+&lt;p&gt;很久便有了用GitHub搭设个人网站的想法了，正值国庆，赶紧将这个想法付诸实施吧。&lt;/p&gt;
+
+&lt;h2 id=&quot;github&quot;&gt;注册GitHub帐号&lt;/h2&gt;
+
+&lt;p&gt;赶快登陆&lt;a href=&quot;https://github.com&quot;&gt;github.com&lt;/a&gt;注册一个，也许你心仪的帐号还没有被人注册呢。&lt;/p&gt;
+
+&lt;h2 id=&quot;jekyll&quot;&gt;安装Jekyll&lt;/h2&gt;
+
+&lt;p&gt;在命令行下，需要先安装ruby和rubygems:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install rubygems ruby1.9.1-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;添加&lt;a href=&quot;http://stackoverflow.com/questions/1664974/rake-command-not-found&quot;&gt;path&lt;/a&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export PATH=$PATH:$HOME/bin:/var/lib/gems/1.8/bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;假如不安装&lt;code&gt;ruby1.9.1-dev&lt;/code&gt;的话，一会儿会有神奇的错误发生，详见&lt;a href=&quot;http://stackoverflow.com/questions/10725767/error-installing-jekyll-native-extension-build&quot;&gt;Error Installing Jekyll - Native Extension Build&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;再接再厉，安装jekyll。在此之前，建议国内用户换成&lt;a href=&quot;http://ruby-china.org/wiki/install-rails-on-ubuntu-12-04-server&quot;&gt;淘宝服务器&lt;/a&gt;，速度更快：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo gem sources --remove http://rubygems.org/
+$ sudo gem sources -a http://ruby.taobao.org/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以使用&lt;code&gt;sudo gem sources -l&lt;/code&gt;查看当前设置的服务器。接下来我们切入正题：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo gem install jekyll
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;该命令会安装一系列相关的包，安装好了之后，我们的任务就完成一大半啦！不用急，我们先学习一下其他优秀博客的经验吧。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;获取并修改别人的博客&lt;/h2&gt;
+
+&lt;p&gt;Jekyll官方建立了一个&lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/sites&quot;&gt;页面&lt;/a&gt;，里面有许多的模板可供参考。接下来我们就要奉行“拿来主义”了，将别人的模板为我们所用。&lt;/p&gt;
+
+&lt;p&gt;我自己用了&lt;a href=&quot;http://cyukang.com/&quot;&gt;Yukang’s Page&lt;/a&gt;，他采用了一个叫做&lt;a href=&quot;http://themes.jekyllbootstrap.com/preview/twitter/&quot;&gt;twitter&lt;/a&gt;的Jekyll Bootstrap的模板。下面假设你已经安装了git，我们把他人的网站代码clone下来，为了举例方便，还是选取了Yukang’s Page：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/chenyukang/chenyukang.github.com.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后删去别人的.git文件夹：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rm -rf .git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接着，我们参考&lt;a href=&quot;http://jekyllrb.com/docs/structure/&quot;&gt;jekyll的文件目录&lt;/a&gt;，可以把他人的博客删去，并且做一些小的调整。接下来，我们把改头换面的博客上传到自己的GitHub帐号中去。一般情况下，假设你的帐号名是USERNAME，你需要建一个名为USERNAME.github.io的帐号，分支为master。这样，在你将本地的网站push上去之后，不到10分钟，访问USERNAME.github.io，就可以看到你新鲜出炉的网站了：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+git add -A
+git commit -m &quot;first commit&quot;
+git remote add origin https://github.com/USERNAME/USERNAME.github.io.git
+git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Git博大精深，我还没有熟练掌握。具体的命令可以参考下面一些参考资料：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;入门：&lt;a href=&quot;http://rogerdudler.github.io/git-guide/index.zh.html&quot;&gt;git - 简易指南&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;进阶：&lt;a href=&quot;http://think-like-a-git.net/epic.html&quot;&gt;Think Like (a) Git&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;参考图解：&lt;a href=&quot;http://marklodato.github.io/visual-git-guide/index-en.html&quot;&gt;A Visual Git Reference&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果你想要在push之前就在本地预览一下网站，可以使用
+&lt;code&gt;jekyll serve --watch&lt;/code&gt;
+命令。默认设置下，可以在浏览器中访问localhost:4000预览。详细情况请&lt;a href=&quot;http://jekyllrb.com/docs/usage/&quot;&gt;点击这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;那么，我们如何撰写新的博客呢？下面，我们隆重推出Markdown。&lt;/p&gt;
+
+&lt;h2 id=&quot;markdown&quot;&gt;Markdown语法&lt;/h2&gt;
+
+&lt;p&gt;根据&lt;a href=&quot;http://zh.wikipedia.org/zh-cn/Markdown&quot;&gt;维基百科上的介绍&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）和亚伦·斯沃茨（Aaron Swartz）。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;想到&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E4%BA%9A%E4%BC%A6%C2%B7%E6%96%AF%E6%B2%83%E8%8C%A8&quot;&gt;Aaron Swartz&lt;/a&gt;已经故去，不禁一阵伤感。&lt;/p&gt;
+
+&lt;p&gt;Markdown的介绍有许多，个人推荐：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;入门：&lt;a href=&quot;http://jianshu.io/p/q81RER&quot;&gt;献给写作者的 Markdown 新手指南&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;另一份入门文档：&lt;a href=&quot;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&quot;&gt;Markdown Cheatsheet&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;进阶：&lt;a href=&quot;http://wowubuntu.com/markdown/&quot;&gt;Markdown 语法说明 (简体中文版) &lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;kramdown使用心得：&lt;a href=&quot;http://mindspill.net/computing/web-development-notes/kramdown-notes/&quot;&gt;Kramdown notes&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;备注：如何在Markdown中写注释呢？&lt;a href=&quot;https://twitter.com/denialduan/status/180532937358454784&quot;&gt;这里&lt;/a&gt;提供了最原始的一种解决方法：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;看来在Markdown文件里写注释的唯一方法就是用&amp;lt;!– –&amp;gt;了，好吧。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;细心的同学可能会发现，最原始的Markdown缺乏以下常用功能：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;\mathrm{\LaTeX}&lt;/script&gt;支持。参考&lt;a href=&quot;http://cyukang.com/2013/03/03/try-mathjax.html&quot;&gt;Jekyll使用MathJax来显示数学式&lt;/a&gt;。注意，_config.yml中要用Kramdown作为解释器。使用时的语法如下例：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;latex&quot;&gt;&lt;span class=&quot;sb&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\sum&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;_{n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;}^&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\infty&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\frac&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;}{n^&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;} &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\frac&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\pi&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;}{&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$$&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;效果为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;代码块的高亮。参考&lt;a href=&quot;http://jekyllrb.com/docs/templates/&quot;&gt;Jekyll官网文档&lt;/a&gt;里&lt;em&gt;Code snippet highlighting&lt;/em&gt;一节。玩颜色魔法的大魔术师是&lt;a href=&quot;http://pygments.org/&quot;&gt;Pygments&lt;/a&gt;。使用时的语法如下例：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;
+{% highlight c++ %}
+for(int i = 0; i != 10; i++) {
+  do_something();
+}
+{% endhighlight %}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果为&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;c++&quot;&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;do_something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;怎么样，还算容易吧？（附注：为了展示给你看前面的那段用来高亮的代码，真是累死我了……由于它是liquid代码。详情请参考我的源代码，另外参考&lt;a href=&quot;https://github.com/mojombo/jekyll/issues/814&quot;&gt;这里的讨论&lt;/a&gt;。）&lt;/p&gt;
+
+&lt;h2 id=&quot;rake&quot;&gt;采用rake简化工作&lt;/h2&gt;
+
+&lt;p&gt;每个你写博客的markdown之前，需要插入&lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;Front-matter部分&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;但是每次输入这几行挺麻烦的，有没有偷懒的方法呢？&lt;/p&gt;
+
+&lt;p&gt;请不要低估前人的创造力，我们有rake！安装方法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install rake
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用方法详见&lt;a href=&quot;http://www.xutaopb.com/blog/2013/04/18/jekyll_blog_stepbystep/&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;建立题为&lt;code&gt;Hello World&lt;/code&gt;的新文章：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rake post title=&quot;Hello World&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;开启本地预览：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rake preview
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;文中还有安装新主题的介绍，我觉得都不太好看，捣鼓了一阵子后使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout HEAD
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;从而回到上个commit。真是省心！&lt;/p&gt;
+
+&lt;p&gt;其他的技巧还有待探索。重要的是，现在就开始行动吧！&lt;/p&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>

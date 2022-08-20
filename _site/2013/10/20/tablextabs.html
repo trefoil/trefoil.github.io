@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html>
+   <link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/assets/themes/twitter/css/style.css" />
+
+  <header>
+    <meta charset="utf-8">
+    
+    <title>如何从0-1数据得到列联表：R中table和xtabs函数的使用 | Trefoil</title>
+    
+    <meta name="description" content="">
+    <meta name="author" content="trefoil">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+    <script type="text/javascript"
+	src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" sizes="128x128" href="/images/Blue_Trefoil_Knot.png">
+    <!-- Update these with your own images
+	 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	 <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	 <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	 -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Trefoil</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">归档</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">标签</a></li>
+      	
+      
+    
+  
+
+
+
+
+            <li class="divider-vertical"></li>
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/about.html">关于</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+
+
+            <!--<li><a href="http://feed.feedsky.com/moorekang">订阅</a></li>-->
+          </ul>
+
+          <span class="pull-right slogan"> 三叶结的博客 </span>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+
+  <body>
+    <div class="container">
+      <div class="content">
+        
+
+<div class="row post">
+  <div class="span8">
+    <h1 class="title">如何从0-1数据得到列联表：R中table和xtabs函数的使用</h1>
+
+    
+<blockquote>
+<ul id="markdown-toc">
+  <li><a href="#section">生成测试数据</a></li>
+  <li><a href="#matrix">matrix类型</a></li>
+  <li><a href="#dataframe">data.frame类型</a></li>
+  <li><a href="#section-1">其他</a></li>
+</ul>
+</blockquote>
+
+<p>在处理0-1数据(binary data)中，我们经常需要将其转换为列联表(cross tabulation或称contingency table)。本次主角是<code>table</code>和<code>xtabs</code>函数。</p>
+
+<h2 id="section">生成测试数据</h2>
+
+<p>为了举例说明，我们首先生成0-1数据。<code>set.seed(1)</code>是为了设置种子，每次得到完全一样的“随机”数据。后面采用设置<code>dim</code>函数的方法建立matrix，可以避免使用<code>matrix</code>函数带来的拷贝一次mydata的额外操作。</p>
+
+<pre><code class="language-R">&gt; mydata &lt;- {set.seed(1); # set a constant seed so that
+&gt;                         # we can get reproducible results
+&gt;            sample.int(2, size = 200, replace = T) - 1L} # generate binary ints
+&gt; dim(mydata) &lt;- c(100,2) # convert a vector to a matrix
+</code></pre>
+
+<p>执行<code>head</code>函数，得到结果的是这样的。</p>
+
+<pre><code class="language-R">&gt; head(mydata)
+     [,1] [,2]
+[1,]    0    1
+[2,]    0    0
+[3,]    1    0
+[4,]    1    1
+[5,]    0    1
+[6,]    1    0
+</code></pre>
+
+<h2 id="matrix">matrix类型</h2>
+
+<p>分别对mydata使用<code>table</code>函数和<code>xtabs</code>函数，试图建立连列表，结果如下。</p>
+
+<pre><code class="language-R">&gt; table(mydata)
+mydata
+  0   1 
+ 98 102 
+&gt; xtabs(~ V1 + V2, data = mydata)
+   V2
+V1   0  1
+  0 23 29
+  1 23 25
+</code></pre>
+
+<p>可见，使用<code>table</code>不能够对matrix类型建立连列表，而只是简单的对整个matrix中的0和1进行计数；<code>table</code>能够对data.frame类型建立连列表。</p>
+
+<h2 id="dataframe">data.frame类型</h2>
+
+<p>首先利用前面的matrix类型的mydata建立data.frame类型的mydata.df。</p>
+
+<pre><code class="language-R">mydata.df &lt;- as.data.frame(mydata)
+</code></pre>
+
+<p>执行<code>head</code>函数，得到结果的是这样的。</p>
+
+<pre><code class="language-R">&gt; head(mydata.df)
+  V1 V2
+1  0  1
+2  0  0
+3  1  0
+4  1  1
+5  0  1
+6  1  0
+</code></pre>
+
+<p>这里和前面一样调用<code>table</code>和<code>xtabs</code>建立连列表。两个函数都能够得到我们想要的结果。</p>
+
+<pre><code class="language-R">&gt; table(mydata.df)
+   V2
+V1   0  1
+  0 23 29
+  1 23 25
+&gt; xtabs(~ V1 + V2, data = mydata.df)
+   V2
+V1   0  1
+  0 23 29
+  1 23 25
+</code></pre>
+
+<p>总结如下：如果想要得到连列表的话，除了<code>table</code>和matrix类型的数据这种组合不行，其他三种组合都是可以的。</p>
+
+<h2 id="section-1">其他</h2>
+
+<ol>
+  <li>
+    <p>在已经建立好的连列表的基础上，使用<code>ftable</code>函数，可以在多变量的情况下，绘制出我们主要关注的变量处于列的位置，而其他变量处于行的位置的连列表。</p>
+
+    <p>例如，对于结构如下的Titanic数据,</p>
+
+    <pre><code> &gt; str(Titanic)
+  table [1:4, 1:2, 1:2, 1:2] 0 0 35 0 0 0 17 0 118 154 ...
+  - attr(*, "dimnames")=List of 4
+   ..$ Class   : chr [1:4] "1st" "2nd" "3rd" "Crew"
+   ..$ Sex     : chr [1:2] "Male" "Female"
+   ..$ Age     : chr [1:2] "Child" "Adult"
+   ..$ Survived: chr [1:2] "No" "Yes"
+</code></pre>
+
+    <p>我们举一个help文档中的范例：</p>
+
+    <pre><code> &gt; ftable(Titanic, row.vars = 2:1, col.vars = "Survived")
+              Survived  No Yes
+     Sex    Class                 
+     Male   1st            118  62
+            2nd            154  25
+            3rd            422  88
+            Crew           670 192
+     Female 1st              4 141
+            2nd             13  93
+            3rd            106  90
+            Crew             3  20
+</code></pre>
+  </li>
+  <li>
+    <p><code>as.data.frame</code>可以看作是<code>xtabs</code>的逆函数，得到data.frame类型的表格。不过，最原始的0-1数据中，每一行的具体顺序的信息仍然丢失了，取而代之的，是新的记录频数的一列，称为Freq：</p>
+
+    <pre><code> &gt; t &lt;- xtabs(~ V1 + V2, data = mydata)
+ &gt; df &lt;- as.data.frame(t)
+ &gt; df
+   V1 V2 Freq
+ 1  0  0   23
+ 2  1  0   23
+ 3  0  1   29
+ 4  1  1   25
+ &gt; xtabs(Freq~V1+V2, data = t)
+    V2
+ V1   0  1
+   0 23 29
+   1 23 25
+</code></pre>
+  </li>
+  <li>
+    <p>制作连列表的时候需要注意，使用的两列数据的对应的行应当具有相同的行名，否则就会得到没有意义的结果。如果两列数据对应的行顺序不同，需要使用<code>order</code>函数对整个表格先进行排序。</p>
+  </li>
+</ol>
+
+
+    <p class="meta"> -- EOF -- </p>
+
+    <ul class="pager">
+
+      
+      <li class="next"><a href="/2013/10/20/markdown.html" title="markdown里自动生成目录">markdown里自动生成目录&rarr;</a></li>
+      
+
+      
+      <li class="previous"><a href="/2013/10/21/css.html" title="在css中调整段落首行缩进和字体">&larr; 在css中调整段落首行缩进和字体</a></li>
+      
+
+
+    </ul>
+
+    <div class="span8">
+      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/20/tablextabs.html" title="如何从0-1数据得到列联表：R中table和xtabs函数的使用" rel="nofollow">如何从0-1数据得到列联表：R中table和xtabs函数的使用</a></p>
+    </div>
+
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_developer = 1;
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'trefoil'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+      BYB.includeScript('/assets/themes/twitter/prettify/prettify.js',function(){prettyPrint()});
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+  </div>
+  
+
+  <div class="span4 sidebar">
+    <h4 class="date">发布日期：<span>20 October 2013</span></h4>
+    <!-- <p class="meta">By <a href="/about.html" class="author" title="author">Trefoil</a><g:plusone size="small"></g:plusone></p> -->
+
+
+    
+    <h4>标签</h4>
+    <ul class="tag_box">
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#R-ref">R <span>3</span></a></li>
+    
+  
+
+
+
+    </ul>
+      
+
+    <nav class="nav">
+      <ul>
+	<li><a href="/" >首页</a></li>
+	<li><a href="/archive.html" >归档</a></li>
+	<li><a href="/tags.html" >标签</a></li>
+	<li><a href="/about.html" >关于</a></li>
+	<li><a href="/atom.xml" target="_blank" >RSS</a></li>
+      </ul>
+    </nav> 
+
+
+    <div class="violet-aside-post">
+      <h4 class="v-section-tit">最近</h4>
+      <ul>
+           
+        <li class="v-aside-li">
+          <a href="/2013/12/07/compose-keycurly-opening-quotation-mark.html" title="如何使用Compose Key输入Curly Opening Quotation Mark" rel="bookmark">如何使用Compose Key输入Curly Opening Quotation Mark</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/12/07/apt-add-repository.html" title="如何设置代理使用apt-add-repository" rel="bookmark">如何设置代理使用apt-add-repository</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/23/cssmarkdown.html" title="使用css让markdown生成的网页里图片居中" rel="bookmark">使用css让markdown生成的网页里图片居中</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/21/css.html" title="在css中调整段落首行缩进和字体" rel="bookmark">在css中调整段落首行缩进和字体</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/20/tablextabs.html" title="如何从0-1数据得到列联表：R中table和xtabs函数的使用" rel="bookmark">如何从0-1数据得到列联表：R中table和xtabs函数的使用</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/20/markdown.html" title="markdown里自动生成目录" rel="bookmark">markdown里自动生成目录</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/19/vim.html" title="介绍几个新发掘的vim插件" rel="bookmark">介绍几个新发掘的vim插件</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/15/rwithby.html" title="在R中使用with()和by()" rel="bookmark">在R中使用with()和by()</a>
+        </li>              	      	            
+        
+      </ul>  
+    </div>
+
+
+    <nav class="nav">
+      <h4 class="v-section-tit">链接</h4>
+      <ul>
+	<!--<li><a href="http://www.wutianqi.com/" target="_blank" rel="nofollow">Tanky Woo</a></li>
+	<li><a href="http://beiyuu.com/"  target="_blank" rel="nofollow">Beiyuu</a></li>
+	<li><a href="http://wangcong.org/blog/" target="_blank" rel="nofollow">王聪</a></li>
+	<li><a href="http://helloworld.tk/" target="_blank" rel="nofollow">邓甜</a></li>
+	<li><a href="http://www.cguage.com/" target="_blank" rel="nofollow">C瓜</a></li>
+	<li><a href="http://www.crazyshell.org/blog/" target="_blank" rel="nofollow">狂Shell</a></li>-->
+      </ul>
+    </nav> 
+
+
+  </div>
+</div>
+
+
+
+
+      </div>
+
+      <footer>
+      <p>&copy;
+      <a href="mailto:world1tim@gmail.com">Trefoil</a> 2013. 
+          Proudly powered by <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+      <!-- Start of StatCounter Code for Default Guide -->
+      <script type="text/javascript">
+      var sc_project=9302261; 
+      var sc_invisible=0; 
+      var sc_security="9d85d0ee"; 
+      var scJsHost = (("https:" == document.location.protocol) ?
+      "https://secure." : "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" +
+      scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+      </script>
+      <noscript><div class="statcounter"><a title="web counter"
+      href="http://statcounter.com/" target="_blank"><img
+      class="statcounter"
+      src="http://c.statcounter.com/9302261/0/9d85d0ee/0/"
+      alt="web counter"></a></div></noscript>
+      <!-- End of StatCounter Code for Default Guide -->
+
+        </p>
+
+      </footer>
+    </div> <!-- /container -->
+
+    
+
+
+  </body>
+</html>
+

@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html>
+   <link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/assets/themes/twitter/css/style.css" />
+
+  <header>
+    <meta charset="utf-8">
+    
+    <title>CVtree构建进化树算法简介 | Trefoil</title>
+    
+    <meta name="description" content="">
+    <meta name="author" content="trefoil">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+    <script type="text/javascript"
+	src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" sizes="128x128" href="/images/Blue_Trefoil_Knot.png">
+    <!-- Update these with your own images
+	 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	 <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	 <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	 -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Trefoil</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">归档</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">标签</a></li>
+      	
+      
+    
+  
+
+
+
+
+            <li class="divider-vertical"></li>
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/about.html">关于</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+
+
+            <!--<li><a href="http://feed.feedsky.com/moorekang">订阅</a></li>-->
+          </ul>
+
+          <span class="pull-right slogan"> 三叶结的博客 </span>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+
+  <body>
+    <div class="container">
+      <div class="content">
+        
+
+<div class="row post">
+  <div class="span8">
+    <h1 class="title">CVtree构建进化树算法简介</h1>
+
+    
+<h2 id="frequency">频数(frequency)的定义</h2>
+
+<p>我们可以使用的序列包括DNA序列和氨基酸序列，下文以氨基酸序列为例。</p>
+
+<p>将<script type="math/tex">K</script>-string记为<script type="math/tex">a_1 a_2 \cdots a_K</script>。一段总长为<script type="math/tex">L</script>的序列一共可以得到<script type="math/tex">(L-K+1)</script>个<script type="math/tex">K</script>-string。对于某一个<script type="math/tex">K</script>-string <script type="math/tex">a_1 a_2 \cdots a_K</script>而言，它的总数（或称频数，frequency）记为<script type="math/tex">f(a_1 a_2 \cdots a_K)</script>。于是某一个<script type="math/tex">K</script>-string出现的概率为</p>
+
+<p><script type="math/tex">f(a_1 a_2 \cdots a_K) = \frac{f(a_1 a_2 \cdots a_K)}{(L-K+1)}</script>.</p>
+
+<h2 id="random-background">减去随机背景(random background)</h2>
+
+<p>这一步处理的目的是为了消除对进化不起作用(neutral)的随机变异的影响。</p>
+
+<p>我们在计算取值为<script type="math/tex">K</script>的情况的这一步时，先计算出string长度为<script type="math/tex">(K-1)</script>和<script type="math/tex">(K-2)</script>时的概率。在马氏性假设下，序列第<script type="math/tex">K</script>位出现某个<script type="math/tex">a_K</script>和<script type="math/tex">a_1</script>无关，可以得到：</p>
+
+<p><script type="math/tex">p(a_2 a_3 \cdots a_K \vert a_2 a_3 \cdots a_{K-1}) = p(a_1 a_2 \cdots a_K \vert a_1 a_2 \cdots a_{K-1})</script>.</p>
+
+<p>上式展开整理后，我们可以估计<script type="math/tex">K</script>这一步时的概率：</p>
+
+<p><script type="math/tex">p^0 (a_1 a_2 \cdots a_K) = \frac{p(a_1 a_2 \cdots a_{K-1}) p(a_2 a_3 \cdots a_{K-1})}{p(a_1 a_2 \cdots a_K)}</script>.</p>
+
+<p>这里的数学处理的背景详见原文中所列的参考文献。</p>
+
+<p>减去随机背景的这一步如下：</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+c^i(a_1 a_2 \cdots a_K) =\begin{cases} \frac{p(a_1 a_2 \cdots a_K)-p^0(a_1 a_2 \cdots a_K)}{p^0(a_1 a_2 \cdots a_K)}, & p^0 \neq 0, \\ 0, & p^0 = 0. \end{cases} %]]></script>
+
+<p>这里<script type="math/tex">i</script>的取值从<script type="math/tex">1</script>到<script type="math/tex">N=20^K</script>，遍历了所有可能的<script type="math/tex">K</script>-string。</p>
+
+<p>对于物种<script type="math/tex">A</script>，我们可以组合上面一步遍历<script type="math/tex">i</script>后的计算结果，得到一个<script type="math/tex">20^K</script>维向量</p>
+
+<p><script type="math/tex">A = (a^1,a^2,\cdots,a^N)</script>,</p>
+
+<p>对于物种<script type="math/tex">B</script>，同样可以得到向量</p>
+
+<p><script type="math/tex">B = (b^1,b^2,\cdots,b^N)</script>.</p>
+
+<h2 id="section">计算两物种间的距离</h2>
+
+<p>这一步的处理是相当常规的。</p>
+
+<p>首先我们计算两个向量之间的夹角的余弦值：</p>
+
+<p><script type="math/tex">C(A,B)=\frac{A \cdot B}{\vert\vert A \vert\vert\, \vert\vert B \vert\vert}</script>.</p>
+
+<p>然后做一个线性变换，将距离映入<script type="math/tex">[0,1]</script>：</p>
+
+<p><script type="math/tex">D(A,B)=\frac{1-C(A,B)}{2}</script>.</p>
+
+<p>最后我们用<a href="http://blog.163.com/zzhong1984@126/blog/static/167105372201112391242279/">邻接法</a>(neighbor-joining method)构建进化树。</p>
+
+<h2 id="section-1">参考文献</h2>
+
+<p>Zhao Xu, Bailin Hao, “CVTree update: a newly designed phylogenetic study
+platform using composition vectors and whole genomes”, <em>Nucleic Acids Res</em>.
+published online on April 26, 2009. doi:10.1093/nar/gkp278.</p>
+
+
+    <p class="meta"> -- EOF -- </p>
+
+    <ul class="pager">
+
+      
+      <li class="next"><a href="/2013/10/06/ubuntu.html" title="Ubuntu设置开机启动项">Ubuntu设置开机启动项&rarr;</a></li>
+      
+
+      
+      <li class="previous"><a href="/2013/10/07/statcounter.html" title="使用StatCounter记录博客访问情况">&larr; 使用StatCounter记录博客访问情况</a></li>
+      
+
+
+    </ul>
+
+    <div class="span8">
+      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/07/cvtree.html" title="CVtree构建进化树算法简介" rel="nofollow">CVtree构建进化树算法简介</a></p>
+    </div>
+
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_developer = 1;
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'trefoil'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+      BYB.includeScript('/assets/themes/twitter/prettify/prettify.js',function(){prettyPrint()});
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+  </div>
+  
+
+  <div class="span4 sidebar">
+    <h4 class="date">发布日期：<span>07 October 2013</span></h4>
+    <!-- <p class="meta">By <a href="/about.html" class="author" title="author">Trefoil</a><g:plusone size="small"></g:plusone></p> -->
+
+
+    
+    <h4>标签</h4>
+    <ul class="tag_box">
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#CVTree-ref">CVTree <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#bioinformatics-ref">bioinformatics <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+      
+
+    <nav class="nav">
+      <ul>
+	<li><a href="/" >首页</a></li>
+	<li><a href="/archive.html" >归档</a></li>
+	<li><a href="/tags.html" >标签</a></li>
+	<li><a href="/about.html" >关于</a></li>
+	<li><a href="/atom.xml" target="_blank" >RSS</a></li>
+      </ul>
+    </nav> 
+
+
+    <div class="violet-aside-post">
+      <h4 class="v-section-tit">最近</h4>
+      <ul>
+           
+        <li class="v-aside-li">
+          <a href="/2013/12/07/compose-keycurly-opening-quotation-mark.html" title="如何使用Compose Key输入Curly Opening Quotation Mark" rel="bookmark">如何使用Compose Key输入Curly Opening Quotation Mark</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/12/07/apt-add-repository.html" title="如何设置代理使用apt-add-repository" rel="bookmark">如何设置代理使用apt-add-repository</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/23/cssmarkdown.html" title="使用css让markdown生成的网页里图片居中" rel="bookmark">使用css让markdown生成的网页里图片居中</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/21/css.html" title="在css中调整段落首行缩进和字体" rel="bookmark">在css中调整段落首行缩进和字体</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/20/tablextabs.html" title="如何从0-1数据得到列联表：R中table和xtabs函数的使用" rel="bookmark">如何从0-1数据得到列联表：R中table和xtabs函数的使用</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/20/markdown.html" title="markdown里自动生成目录" rel="bookmark">markdown里自动生成目录</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/19/vim.html" title="介绍几个新发掘的vim插件" rel="bookmark">介绍几个新发掘的vim插件</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/15/rwithby.html" title="在R中使用with()和by()" rel="bookmark">在R中使用with()和by()</a>
+        </li>              	      	            
+        
+      </ul>  
+    </div>
+
+
+    <nav class="nav">
+      <h4 class="v-section-tit">链接</h4>
+      <ul>
+	<!--<li><a href="http://www.wutianqi.com/" target="_blank" rel="nofollow">Tanky Woo</a></li>
+	<li><a href="http://beiyuu.com/"  target="_blank" rel="nofollow">Beiyuu</a></li>
+	<li><a href="http://wangcong.org/blog/" target="_blank" rel="nofollow">王聪</a></li>
+	<li><a href="http://helloworld.tk/" target="_blank" rel="nofollow">邓甜</a></li>
+	<li><a href="http://www.cguage.com/" target="_blank" rel="nofollow">C瓜</a></li>
+	<li><a href="http://www.crazyshell.org/blog/" target="_blank" rel="nofollow">狂Shell</a></li>-->
+      </ul>
+    </nav> 
+
+
+  </div>
+</div>
+
+
+
+
+      </div>
+
+      <footer>
+      <p>&copy;
+      <a href="mailto:world1tim@gmail.com">Trefoil</a> 2013. 
+          Proudly powered by <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+      <!-- Start of StatCounter Code for Default Guide -->
+      <script type="text/javascript">
+      var sc_project=9302261; 
+      var sc_invisible=0; 
+      var sc_security="9d85d0ee"; 
+      var scJsHost = (("https:" == document.location.protocol) ?
+      "https://secure." : "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" +
+      scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+      </script>
+      <noscript><div class="statcounter"><a title="web counter"
+      href="http://statcounter.com/" target="_blank"><img
+      class="statcounter"
+      src="http://c.statcounter.com/9302261/0/9d85d0ee/0/"
+      alt="web counter"></a></div></noscript>
+      <!-- End of StatCounter Code for Default Guide -->
+
+        </p>
+
+      </footer>
+    </div> <!-- /container -->
+
+    
+
+
+  </body>
+</html>
+

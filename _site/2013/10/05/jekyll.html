@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+<html>
+   <link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/assets/themes/twitter/css/style.css" />
+
+  <header>
+    <meta charset="utf-8">
+    
+    <title>用GitHub + Jekyll搭建博客 -- 以Ubuntu为例 | Trefoil</title>
+    
+    <meta name="description" content="">
+    <meta name="author" content="trefoil">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+    <script type="text/javascript"
+	src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" sizes="128x128" href="/images/Blue_Trefoil_Knot.png">
+    <!-- Update these with your own images
+	 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	 <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	 <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	 -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Trefoil</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">归档</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">标签</a></li>
+      	
+      
+    
+  
+
+
+
+
+            <li class="divider-vertical"></li>
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/about.html">关于</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+
+
+
+            <!--<li><a href="http://feed.feedsky.com/moorekang">订阅</a></li>-->
+          </ul>
+
+          <span class="pull-right slogan"> 三叶结的博客 </span>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+
+  <body>
+    <div class="container">
+      <div class="content">
+        
+
+<div class="row post">
+  <div class="span8">
+    <h1 class="title">用GitHub + Jekyll搭建博客 -- 以Ubuntu为例</h1>
+
+    
+<p>很久便有了用GitHub搭设个人网站的想法了，正值国庆，赶紧将这个想法付诸实施吧。</p>
+
+<h2 id="github">注册GitHub帐号</h2>
+
+<p>赶快登陆<a href="https://github.com">github.com</a>注册一个，也许你心仪的帐号还没有被人注册呢。</p>
+
+<h2 id="jekyll">安装Jekyll</h2>
+
+<p>在命令行下，需要先安装ruby和rubygems:</p>
+
+<pre><code>sudo apt-get install rubygems ruby1.9.1-dev
+</code></pre>
+
+<p>添加<a href="http://stackoverflow.com/questions/1664974/rake-command-not-found">path</a>：</p>
+
+<pre><code>export PATH=$PATH:$HOME/bin:/var/lib/gems/1.8/bin
+</code></pre>
+
+<p>假如不安装<code>ruby1.9.1-dev</code>的话，一会儿会有神奇的错误发生，详见<a href="http://stackoverflow.com/questions/10725767/error-installing-jekyll-native-extension-build">Error Installing Jekyll - Native Extension Build</a>。</p>
+
+<p>再接再厉，安装jekyll。在此之前，建议国内用户换成<a href="http://ruby-china.org/wiki/install-rails-on-ubuntu-12-04-server">淘宝服务器</a>，速度更快：</p>
+
+<pre><code>$ sudo gem sources --remove http://rubygems.org/
+$ sudo gem sources -a http://ruby.taobao.org/
+</code></pre>
+
+<p>可以使用<code>sudo gem sources -l</code>查看当前设置的服务器。接下来我们切入正题：</p>
+
+<pre><code>sudo gem install jekyll
+</code></pre>
+
+<p>该命令会安装一系列相关的包，安装好了之后，我们的任务就完成一大半啦！不用急，我们先学习一下其他优秀博客的经验吧。</p>
+
+<h2 id="section">获取并修改别人的博客</h2>
+
+<p>Jekyll官方建立了一个<a href="https://github.com/mojombo/jekyll/wiki/sites">页面</a>，里面有许多的模板可供参考。接下来我们就要奉行“拿来主义”了，将别人的模板为我们所用。</p>
+
+<p>我自己用了<a href="http://cyukang.com/">Yukang’s Page</a>，他采用了一个叫做<a href="http://themes.jekyllbootstrap.com/preview/twitter/">twitter</a>的Jekyll Bootstrap的模板。下面假设你已经安装了git，我们把他人的网站代码clone下来，为了举例方便，还是选取了Yukang’s Page：</p>
+
+<pre><code>git clone https://github.com/chenyukang/chenyukang.github.com.git
+</code></pre>
+
+<p>然后删去别人的.git文件夹：</p>
+
+<pre><code>rm -rf .git
+</code></pre>
+
+<p>接着，我们参考<a href="http://jekyllrb.com/docs/structure/">jekyll的文件目录</a>，可以把他人的博客删去，并且做一些小的调整。接下来，我们把改头换面的博客上传到自己的GitHub帐号中去。一般情况下，假设你的帐号名是USERNAME，你需要建一个名为USERNAME.github.io的帐号，分支为master。这样，在你将本地的网站push上去之后，不到10分钟，访问USERNAME.github.io，就可以看到你新鲜出炉的网站了：</p>
+
+<pre><code>git init
+git add -A
+git commit -m "first commit"
+git remote add origin https://github.com/USERNAME/USERNAME.github.io.git
+git push -u origin master
+</code></pre>
+
+<p>Git博大精深，我还没有熟练掌握。具体的命令可以参考下面一些参考资料：</p>
+
+<ul>
+  <li>
+    <p>入门：<a href="http://rogerdudler.github.io/git-guide/index.zh.html">git - 简易指南</a></p>
+  </li>
+  <li>
+    <p>进阶：<a href="http://think-like-a-git.net/epic.html">Think Like (a) Git</a></p>
+  </li>
+  <li>
+    <p>参考图解：<a href="http://marklodato.github.io/visual-git-guide/index-en.html">A Visual Git Reference</a></p>
+  </li>
+</ul>
+
+<p>如果你想要在push之前就在本地预览一下网站，可以使用
+<code>jekyll serve --watch</code>
+命令。默认设置下，可以在浏览器中访问localhost:4000预览。详细情况请<a href="http://jekyllrb.com/docs/usage/">点击这里</a>。</p>
+
+<p>那么，我们如何撰写新的博客呢？下面，我们隆重推出Markdown。</p>
+
+<h2 id="markdown">Markdown语法</h2>
+
+<p>根据<a href="http://zh.wikipedia.org/zh-cn/Markdown">维基百科上的介绍</a></p>
+
+<blockquote>
+  <p>Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）和亚伦·斯沃茨（Aaron Swartz）。</p>
+</blockquote>
+
+<p>想到<a href="http://zh.wikipedia.org/wiki/%E4%BA%9A%E4%BC%A6%C2%B7%E6%96%AF%E6%B2%83%E8%8C%A8">Aaron Swartz</a>已经故去，不禁一阵伤感。</p>
+
+<p>Markdown的介绍有许多，个人推荐：</p>
+
+<ul>
+  <li>
+    <p>入门：<a href="http://jianshu.io/p/q81RER">献给写作者的 Markdown 新手指南</a></p>
+  </li>
+  <li>
+    <p>另一份入门文档：<a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a></p>
+  </li>
+  <li>
+    <p>进阶：<a href="http://wowubuntu.com/markdown/">Markdown 语法说明 (简体中文版) </a></p>
+  </li>
+  <li>
+    <p>kramdown使用心得：<a href="http://mindspill.net/computing/web-development-notes/kramdown-notes/">Kramdown notes</a></p>
+  </li>
+</ul>
+
+<p>备注：如何在Markdown中写注释呢？<a href="https://twitter.com/denialduan/status/180532937358454784">这里</a>提供了最原始的一种解决方法：</p>
+
+<blockquote>
+  <p>看来在Markdown文件里写注释的唯一方法就是用&lt;!– –&gt;了，好吧。</p>
+</blockquote>
+
+<p>细心的同学可能会发现，最原始的Markdown缺乏以下常用功能：</p>
+
+<ul>
+  <li><script type="math/tex">\mathrm{\LaTeX}</script>支持。参考<a href="http://cyukang.com/2013/03/03/try-mathjax.html">Jekyll使用MathJax来显示数学式</a>。注意，_config.yml中要用Kramdown作为解释器。使用时的语法如下例：</li>
+</ul>
+
+<div class="highlight"><pre><code class="latex"><span class="sb">$$</span><span class="nv">\sum</span><span class="nb">_{n</span><span class="o">=</span><span class="m">1</span><span class="nb">}^</span><span class="nv">\infty</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{n^</span><span class="m">2</span><span class="nb">} </span><span class="o">=</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="nv">\pi</span><span class="nb">^</span><span class="m">2</span><span class="nb">}{</span><span class="m">6</span><span class="nb">}</span><span class="s">$$</span>
+</code></pre></div>
+
+<p>效果为</p>
+
+<script type="math/tex; mode=display">\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}</script>
+
+<ul>
+  <li>代码块的高亮。参考<a href="http://jekyllrb.com/docs/templates/">Jekyll官网文档</a>里<em>Code snippet highlighting</em>一节。玩颜色魔法的大魔术师是<a href="http://pygments.org/">Pygments</a>。使用时的语法如下例：</li>
+</ul>
+
+<pre><code>
+{% highlight c++ %}
+for(int i = 0; i != 10; i++) {
+  do_something();
+}
+{% endhighlight %}
+
+</code></pre>
+
+<p>效果为</p>
+
+<div class="highlight"><pre><code class="c++"><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">do_something</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>怎么样，还算容易吧？（附注：为了展示给你看前面的那段用来高亮的代码，真是累死我了……由于它是liquid代码。详情请参考我的源代码，另外参考<a href="https://github.com/mojombo/jekyll/issues/814">这里的讨论</a>。）</p>
+
+<h2 id="rake">采用rake简化工作</h2>
+
+<p>每个你写博客的markdown之前，需要插入<a href="http://jekyllrb.com/docs/frontmatter/">Front-matter部分</a>。</p>
+
+<p>但是每次输入这几行挺麻烦的，有没有偷懒的方法呢？</p>
+
+<p>请不要低估前人的创造力，我们有rake！安装方法：</p>
+
+<pre><code>sudo apt-get install rake
+</code></pre>
+
+<p>使用方法详见<a href="http://www.xutaopb.com/blog/2013/04/18/jekyll_blog_stepbystep/">这里</a>。</p>
+
+<p>建立题为<code>Hello World</code>的新文章：</p>
+
+<pre><code>rake post title="Hello World"
+</code></pre>
+
+<p>开启本地预览：</p>
+
+<pre><code>rake preview
+</code></pre>
+
+<p>文中还有安装新主题的介绍，我觉得都不太好看，捣鼓了一阵子后使用</p>
+
+<pre><code>git checkout HEAD
+</code></pre>
+
+<p>从而回到上个commit。真是省心！</p>
+
+<p>其他的技巧还有待探索。重要的是，现在就开始行动吧！</p>
+
+
+    <p class="meta"> -- EOF -- </p>
+
+    <ul class="pager">
+
+      
+
+      
+      <li class="previous"><a href="/2013/10/05/ubuntu-1304rhythmbox.html" title="Ubuntu 13.04下解决Rhythmbox乱码问题">&larr; Ubuntu 13.04下解决Rhythmbox乱码问题</a></li>
+      
+
+
+    </ul>
+
+    <div class="span8">
+      <p>声明: 本文采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="nofollow" title="署名-非商业性使用-相同方式共享">BY-NC-SA</a> 协议进行授权. 转载请注明转自: <a href="/2013/10/05/jekyll.html" title="用GitHub + Jekyll搭建博客 -- 以Ubuntu为例" rel="nofollow">用GitHub + Jekyll搭建博客 -- 以Ubuntu为例</a></p>
+    </div>
+
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_developer = 1;
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'trefoil'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+      BYB.includeScript('/assets/themes/twitter/prettify/prettify.js',function(){prettyPrint()});
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+  </div>
+  
+
+  <div class="span4 sidebar">
+    <h4 class="date">发布日期：<span>05 October 2013</span></h4>
+    <!-- <p class="meta">By <a href="/about.html" class="author" title="author">Trefoil</a><g:plusone size="small"></g:plusone></p> -->
+
+
+    
+    <h4>标签</h4>
+    <ul class="tag_box">
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#Jekyll-ref">Jekyll <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+      
+
+    <nav class="nav">
+      <ul>
+	<li><a href="/" >首页</a></li>
+	<li><a href="/archive.html" >归档</a></li>
+	<li><a href="/tags.html" >标签</a></li>
+	<li><a href="/about.html" >关于</a></li>
+	<li><a href="/atom.xml" target="_blank" >RSS</a></li>
+      </ul>
+    </nav> 
+
+
+    <div class="violet-aside-post">
+      <h4 class="v-section-tit">最近</h4>
+      <ul>
+           
+        <li class="v-aside-li">
+          <a href="/2013/12/07/compose-keycurly-opening-quotation-mark.html" title="如何使用Compose Key输入Curly Opening Quotation Mark" rel="bookmark">如何使用Compose Key输入Curly Opening Quotation Mark</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/12/07/apt-add-repository.html" title="如何设置代理使用apt-add-repository" rel="bookmark">如何设置代理使用apt-add-repository</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/23/cssmarkdown.html" title="使用css让markdown生成的网页里图片居中" rel="bookmark">使用css让markdown生成的网页里图片居中</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/21/css.html" title="在css中调整段落首行缩进和字体" rel="bookmark">在css中调整段落首行缩进和字体</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/20/tablextabs.html" title="如何从0-1数据得到列联表：R中table和xtabs函数的使用" rel="bookmark">如何从0-1数据得到列联表：R中table和xtabs函数的使用</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/20/markdown.html" title="markdown里自动生成目录" rel="bookmark">markdown里自动生成目录</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/19/vim.html" title="介绍几个新发掘的vim插件" rel="bookmark">介绍几个新发掘的vim插件</a>
+        </li>              	      	            
+           
+        <li class="v-aside-li">
+          <a href="/2013/10/15/rwithby.html" title="在R中使用with()和by()" rel="bookmark">在R中使用with()和by()</a>
+        </li>              	      	            
+        
+      </ul>  
+    </div>
+
+
+    <nav class="nav">
+      <h4 class="v-section-tit">链接</h4>
+      <ul>
+	<!--<li><a href="http://www.wutianqi.com/" target="_blank" rel="nofollow">Tanky Woo</a></li>
+	<li><a href="http://beiyuu.com/"  target="_blank" rel="nofollow">Beiyuu</a></li>
+	<li><a href="http://wangcong.org/blog/" target="_blank" rel="nofollow">王聪</a></li>
+	<li><a href="http://helloworld.tk/" target="_blank" rel="nofollow">邓甜</a></li>
+	<li><a href="http://www.cguage.com/" target="_blank" rel="nofollow">C瓜</a></li>
+	<li><a href="http://www.crazyshell.org/blog/" target="_blank" rel="nofollow">狂Shell</a></li>-->
+      </ul>
+    </nav> 
+
+
+  </div>
+</div>
+
+
+
+
+      </div>
+
+      <footer>
+      <p>&copy;
+      <a href="mailto:world1tim@gmail.com">Trefoil</a> 2013. 
+          Proudly powered by <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+      <!-- Start of StatCounter Code for Default Guide -->
+      <script type="text/javascript">
+      var sc_project=9302261; 
+      var sc_invisible=0; 
+      var sc_security="9d85d0ee"; 
+      var scJsHost = (("https:" == document.location.protocol) ?
+      "https://secure." : "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" +
+      scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+      </script>
+      <noscript><div class="statcounter"><a title="web counter"
+      href="http://statcounter.com/" target="_blank"><img
+      class="statcounter"
+      src="http://c.statcounter.com/9302261/0/9d85d0ee/0/"
+      alt="web counter"></a></div></noscript>
+      <!-- End of StatCounter Code for Default Guide -->
+
+        </p>
+
+      </footer>
+    </div> <!-- /container -->
+
+    
+
+
+  </body>
+</html>
+
